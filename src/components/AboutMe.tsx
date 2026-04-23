@@ -18,8 +18,8 @@ const AboutMe = () => {
         >
           {/* Photo */}
           <div className="flex justify-center md:justify-center">
-            <div className="w-72 h-96 md:w-80 md:h-[28rem] rounded-2xl overflow-hidden">
-              <img src={fotoMica} alt="Micaela - MIC AI Studio" className="w-full h-full object-cover" />
+            <div className="w-full max-w-md rounded-2xl overflow-hidden">
+              <img src={fotoMica} alt="Micaela - MIC AI Studio" className="w-full h-auto object-contain" />
             </div>
           </div>
 
