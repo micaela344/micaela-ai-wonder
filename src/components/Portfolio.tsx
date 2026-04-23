@@ -31,7 +31,16 @@ const Portfolio = () => {
           className="text-4xl md:text-6xl tracking-tight mb-4 text-center text-foreground"
           style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 400, letterSpacing: '-0.02em' }}
         >
-          Producción visual sin límites
+          Producción visual{" "}
+          <span
+            style={{
+              fontWeight: 600,
+              color: '#FFFFFF',
+              textShadow: '0 0 12px rgba(255,255,255,0.85), 0 0 28px rgba(255,255,255,0.55), 0 0 48px rgba(255,255,255,0.3)',
+            }}
+          >
+            sin límites
+          </span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
