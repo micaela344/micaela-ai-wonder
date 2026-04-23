@@ -28,7 +28,8 @@ const Portfolio = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-center text-foreground"
+          className="text-4xl md:text-6xl tracking-tight mb-4 text-center text-foreground"
+          style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 400, letterSpacing: '-0.02em' }}
         >
           Producción visual sin límites
         </motion.h2>
