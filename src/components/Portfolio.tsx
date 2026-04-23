@@ -31,7 +31,7 @@ const Portfolio = () => {
           className="text-4xl md:text-6xl tracking-tight mb-4 text-center text-foreground"
           style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 400, letterSpacing: '-0.02em' }}
         >
-          Crea tus fotos de campaña.
+          Producción visual sin límites
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
