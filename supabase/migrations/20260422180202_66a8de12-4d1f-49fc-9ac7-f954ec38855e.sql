@@ -1,0 +1,1 @@
+UPDATE public.articles SET cover_image = '/blog/animacion-imagenes-ia.jpg' WHERE id = '9ea82b2c-43a9-4bf9-9408-6795756b1789';
