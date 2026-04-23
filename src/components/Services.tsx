@@ -76,8 +76,8 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <service.icon className="text-muted-foreground mb-3" size={20} />
           <h3 className="text-foreground font-semibold text-lg mb-2">{service.title}</h3>
           <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.description}</p>
-          <span className="inline-flex items-center gap-1 text-sm text-foreground group-hover:gap-2 transition-all">
-            Ver más <ArrowRight size={14} />
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground bg-primary px-4 py-2 rounded-full shadow-md group-hover:gap-3 group-hover:shadow-lg transition-all">
+            Ver más <ArrowRight size={16} />
           </span>
         </div>
       </motion.div>
