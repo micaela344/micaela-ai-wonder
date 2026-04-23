@@ -1,0 +1,2 @@
+UPDATE public.articles SET published_at = '2026-04-14T00:00:00+00:00' WHERE title = 'Potencia tu contenido visual con IA';
+UPDATE public.articles SET published_at = '2026-04-13T00:00:00+00:00' WHERE title = '¿La inteligencia artificial supera la creatividad humana en el contenido visual?';
