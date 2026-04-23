@@ -1,11 +1,30 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 
-const VideosIA = () => (
+const videos = [
+  "/videos/final-animacion.mov",
+  "/videos/0309_1.mov",
+  "/videos/beauty-closeup.mp4",
+  "/videos/freepik-macro-closeup.mp4",
+  "/videos/freepik-cinematic-product.mp4",
+];
+
+const VideosIA = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByDir = (dir: "left" | "right") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8 * (dir === "left" ? -1 : 1);
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  return (
   <div className="min-h-screen bg-background">
     <Navbar />
     <section className="pt-28 pb-24">
@@ -28,16 +47,36 @@ const VideosIA = () => (
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center mb-12">
-            <div className="rounded-xl overflow-hidden border border-border aspect-[9/16]">
-              <video src="/videos/final-animacion.mov" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+          <div className="relative mb-12">
+            <div
+              ref={scrollerRef}
+              className="flex flex-row gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {videos.map((src) => (
+                <div
+                  key={src}
+                  className="snap-start shrink-0 w-[70%] sm:w-[45%] md:w-[calc((100%-3rem)/3)] rounded-xl overflow-hidden border border-border aspect-[9/16]"
+                >
+                  <video src={src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                </div>
+              ))}
             </div>
-            <div className="rounded-xl overflow-hidden border border-border aspect-[9/16]">
-              <video src="/videos/0309_1.mov" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-xl overflow-hidden border border-border aspect-[9/16]">
-              <video src="/videos/beauty-closeup.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            </div>
+            <button
+              type="button"
+              aria-label="Anterior"
+              onClick={() => scrollByDir("left")}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center text-foreground hover:bg-background transition-colors"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              aria-label="Siguiente"
+              onClick={() => scrollByDir("right")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center text-foreground hover:bg-background transition-colors"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
             Adaptamos cada pieza al formato que tu marca necesita: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
@@ -49,6 +88,7 @@ const VideosIA = () => (
     </section>
     <Footer />
   </div>
-);
+  );
+};
 
 export default VideosIA;
