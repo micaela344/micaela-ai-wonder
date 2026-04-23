@@ -28,8 +28,7 @@ const Portfolio = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-3xl md:text-5xl font-light tracking-tight mb-4 text-center"
-          style={{ color: "#EEEEEE", fontFamily: "'Playfair Display', serif" }}
+          className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-center text-foreground"
         >
           Producción visual sin límites
         </motion.h2>
