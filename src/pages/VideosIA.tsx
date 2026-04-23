@@ -1,11 +1,30 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 
-const VideosIA = () => (
+const videos = [
+  "/videos/final-animacion.mov",
+  "/videos/0309_1.mov",
+  "/videos/beauty-closeup.mp4",
+  "/videos/freepik-macro-closeup.mp4",
+  "/videos/freepik-cinematic-product.mp4",
+];
+
+const VideosIA = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByDir = (dir: "left" | "right") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8 * (dir === "left" ? -1 : 1);
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  return (
   <div className="min-h-screen bg-background">
     <Navbar />
     <section className="pt-28 pb-24">
