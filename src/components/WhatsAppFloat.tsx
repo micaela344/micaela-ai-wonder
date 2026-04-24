@@ -3,12 +3,10 @@ const WHATSAPP_URL =
 
 const WhatsAppFloat = () => {
   return (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      onClick={() => window.open(WHATSAPP_URL, '_blank')}
       aria-label="Chatea con nosotros por WhatsApp"
-      className="group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-[1.08] hover:brightness-110"
+      className="group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-[1.08] hover:brightness-110 cursor-pointer border-none"
       style={{ backgroundColor: "#25D366" }}
     >
       <svg
@@ -25,7 +23,7 @@ const WhatsAppFloat = () => {
       >
         Chatea con nosotros
       </span>
-    </a>
+    </button>
   );
 };
 
