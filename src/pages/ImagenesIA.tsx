@@ -22,6 +22,7 @@ import ambienteColorido from "@/assets/ambiente-colorido.png";
 import ambienteBoho from "@/assets/ambiente-boho.png";
 import ambienteNatural from "@/assets/ambiente-natural.png";
 import ambienteMediterraneo from "@/assets/ambiente-mediterraneo.png";
+import ambienteIndustrial from "@/assets/ambiente-industrial.png";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
@@ -34,6 +35,7 @@ const ambienteResultados = [
   { src: ambienteNatural, alt: "Decoración natural con plantas" },
   { src: ambienteColorido, alt: "Decoración colorida y vibrante" },
   { src: ambienteMediterraneo, alt: "Decoración mediterránea luminosa" },
+  { src: ambienteIndustrial, alt: "Decoración industrial loft" },
 ];
 
 const ImagenesIA = () => (
