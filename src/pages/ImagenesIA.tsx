@@ -21,6 +21,7 @@ import ambienteEscandinavo from "@/assets/ambiente-escandinavo.png";
 import ambienteColorido from "@/assets/ambiente-colorido.png";
 import ambienteBoho from "@/assets/ambiente-boho.png";
 import ambienteNatural from "@/assets/ambiente-natural.png";
+import ambienteMediterraneo from "@/assets/ambiente-mediterraneo.png";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
@@ -32,6 +33,7 @@ const ambienteResultados = [
   { src: ambienteBoho, alt: "Decoración boho con texturas naturales" },
   { src: ambienteNatural, alt: "Decoración natural con plantas" },
   { src: ambienteColorido, alt: "Decoración colorida y vibrante" },
+  { src: ambienteMediterraneo, alt: "Decoración mediterránea luminosa" },
 ];
 
 const ImagenesIA = () => (
