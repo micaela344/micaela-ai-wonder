@@ -13,6 +13,7 @@ const videos = [
   "/videos/beauty-closeup.mp4",
   "/videos/freepik-macro-closeup.mp4",
   "/videos/freepik-cinematic-product.mp4",
+  "/videos/sombra_de_maquillaje.mp4",
 ];
 
 const VideosIA = () => {
