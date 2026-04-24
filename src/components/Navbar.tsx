@@ -133,7 +133,7 @@ const Navbar = () => {
             className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white transition-all duration-300 cursor-pointer"
             style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
           >
-            ¡Contáctanos! <Sparkles size={14} className="ml-1" />
+            ¡Contáctanos!
           </button>
         </div>
 
@@ -186,7 +186,7 @@ const Navbar = () => {
                 className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white w-full transition-all duration-300 cursor-pointer"
                 style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
               >
-                ¡Contáctanos! <Sparkles size={14} className="ml-1" />
+                ¡Contáctanos!
               </button>
               <a
                 href="https://www.instagram.com/micaistudio/"
