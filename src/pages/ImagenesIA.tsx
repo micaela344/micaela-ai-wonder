@@ -15,6 +15,7 @@ import beautyIA4 from "@/assets/beauty-ia-4.png";
 import persona1 from "@/assets/persona-1.png";
 import persona2 from "@/assets/persona-2.png";
 import persona3 from "@/assets/persona-3.png";
+import persona4 from "@/assets/persona-4.png";
 import ambienteVacio from "@/assets/ambiente-vacio.png";
 import ambienteEscandinavo from "@/assets/ambiente-escandinavo.png";
 import ambienteColorido from "@/assets/ambiente-colorido.png";
@@ -25,7 +26,7 @@ import NextServiceLink from "@/components/NextServiceLink";
 
 const productoImages = [productoIA1, productoIA2, productoIA3, productoIA4];
 const beautyImages = [beautyIA1, beautyIA2, beautyIA3, beautyIA4];
-const personasImages = [persona1, persona2, persona3];
+const personasImages = [persona1, persona2, persona3, persona4];
 const ambienteResultados = [
   { src: ambienteEscandinavo, alt: "Decoración escandinava minimalista" },
   { src: ambienteBoho, alt: "Decoración boho con texturas naturales" },
@@ -68,7 +69,7 @@ const ImagenesIA = () => (
           </div>
 
           <h2 className="text-2xl font-semibold text-foreground mb-6">Personas Hiperrealistas</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
             {personasImages.map((img, i) => (
               <div key={i} className="rounded-lg overflow-hidden border border-border aspect-square">
                 <img src={img} alt={`Persona hiperrealista ${i + 1}`} className="w-full h-full object-cover" />
