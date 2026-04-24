@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import campaignCover from "@/assets/campanas-cover.png";
-import campanaCreativa from "@/assets/campana-creativa.png";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
+import campana1 from "@/assets/campana-1.png";
+import campana2 from "@/assets/campana-2.png";
+import campana3 from "@/assets/campana-3.png";
+import campana4 from "@/assets/campana-4.png";
+import campana6 from "@/assets/campana-6.png";
+import campanaFinalImg from "@/assets/campana-final.png";
+
+const ingredientes = [campana1, campana2, campana3, campana4, campana6, campanaFinalImg];
 
 const Campanas = () => (
   <div className="min-h-screen bg-background">
@@ -31,16 +38,50 @@ const Campanas = () => (
             ))}
           </div>
 
-          <h2 className="text-2xl font-semibold text-foreground mb-6">Estrategia creativa de producto</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div className="rounded-xl overflow-hidden border border-border">
-              <video src="/videos/anuncio_crema.mov" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+          <h2 className="text-2xl font-semibold text-foreground mb-2">Estrategia creativa de producto</h2>
+          <p className="text-muted-foreground mb-8">
+            Combinamos múltiples elementos visuales generados con IA para construir una campaña final coherente.
+          </p>
+
+          {/* Ingredientes con + entre medio */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+            {ingredientes.map((src, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="w-32 h-48 sm:w-40 sm:h-60 rounded-xl overflow-hidden border border-border bg-card shadow-md"
+                >
+                  <img src={src} alt={`Elemento ${i + 1}`} className="w-full h-full object-cover" />
+                </motion.div>
+                {i < ingredientes.length - 1 && (
+                  <Plus className="text-primary shrink-0" size={28} strokeWidth={3} />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Resultado final */}
+          <div className="flex flex-col items-center mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-12 bg-border" />
+              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Resultado</span>
+              <div className="h-px w-12 bg-border" />
             </div>
-            <div className="rounded-xl overflow-hidden border border-border">
-              <video src="/videos/beauty_product.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-xl overflow-hidden border border-border">
-              <video src="/videos/campana-freepik.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6 text-center">
+              Video animado final
+            </h3>
+            <div className="w-full max-w-md rounded-2xl overflow-hidden border border-border shadow-2xl">
+              <video
+                src="/videos/campana-final.mov"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
