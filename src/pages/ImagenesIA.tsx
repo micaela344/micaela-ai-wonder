@@ -21,6 +21,7 @@ import ambienteColorido from "@/assets/ambiente-colorido.png";
 import ambienteBoho from "@/assets/ambiente-boho.png";
 import ambienteNatural from "@/assets/ambiente-natural.png";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
+import NextServiceLink from "@/components/NextServiceLink";
 
 const productoImages = [productoIA1, productoIA2, productoIA3, productoIA4];
 const beautyImages = [beautyIA1, beautyIA2, beautyIA3, beautyIA4];
@@ -99,6 +100,8 @@ const ImagenesIA = () => (
           </p>
 
           <ServiceCTAButtons />
+
+          <NextServiceLink to="/servicios/videos-ia" label="Ver Animaciones/Shorts" />
 
         </motion.div>
       </div>

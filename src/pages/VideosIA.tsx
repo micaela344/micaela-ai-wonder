@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
+import NextServiceLink from "@/components/NextServiceLink";
 
 const videos = [
   "/videos/final-animacion.mov",
@@ -83,6 +84,8 @@ const VideosIA = () => {
           </p>
 
           <ServiceCTAButtons />
+
+          <NextServiceLink to="/servicios/campanas" label="Ver Campañas Publicitarias" />
         </motion.div>
       </div>
     </section>
