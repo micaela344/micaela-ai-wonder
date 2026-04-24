@@ -119,19 +119,13 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <a
-            href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: 'none' }}
+          <button
+            onClick={() => window.open('https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F', '_blank')}
+            className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white transition-all duration-300 cursor-pointer"
+            style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
           >
-            <button
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white transition-all duration-300 cursor-pointer"
-              style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
-            >
-              ¡Contáctanos! <Sparkles size={14} className="ml-1" />
-            </button>
-          </a>
+            ¡Contáctanos! <Sparkles size={14} className="ml-1" />
+          </button>
         </div>
 
         <button
@@ -175,19 +169,16 @@ const Navbar = () => {
                   </button>
                 )
               )}
-              <a
-                href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
+              <button
+                onClick={() => {
+                  setMobileOpen(false);
+                  window.open('https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F', '_blank');
+                }}
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white w-full transition-all duration-300 cursor-pointer"
+                style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
               >
-                <button
-                  className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white w-full transition-all duration-300 cursor-pointer"
-                  style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
-                >
-                  ¡Contáctanos! <Sparkles size={14} className="ml-1" />
-                </button>
-              </a>
+                ¡Contáctanos! <Sparkles size={14} className="ml-1" />
+              </button>
             </div>
           </motion.div>
         )}
