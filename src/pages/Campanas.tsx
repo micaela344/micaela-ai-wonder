@@ -44,7 +44,7 @@ const Campanas = () => (
           </p>
 
           {/* Layout: imágenes 3x2 a la izquierda + video resultado a la derecha */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-12 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_auto] gap-10 lg:gap-8 items-center mb-16">
             {/* Grid de ingredientes 3 arriba / 3 abajo con "+" entre medio */}
             <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-y-4 items-center justify-items-center">
               {ingredientes.map((src, i) => {
@@ -76,6 +76,11 @@ const Campanas = () => (
                 );
               })}
             </div>
+
+            {/* Signo "=" entre las imágenes y el video */}
+            <span className="hidden lg:block text-foreground/70 text-4xl font-extralight leading-none select-none">
+              =
+            </span>
 
             {/* Resultado: video al costado derecho, completo */}
             <div className="flex flex-col items-center lg:w-[280px]">
