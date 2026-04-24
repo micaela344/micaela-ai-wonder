@@ -81,19 +81,23 @@ const ImagenesIA = () => (
           <p className="text-muted-foreground text-base leading-relaxed max-w-3xl mb-6">
             Partimos de un espacio vacío y generamos múltiples propuestas de decoración con distintos estilos, manteniendo la arquitectura original intacta.
           </p>
-          <div className="mb-6">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Espacio original</p>
-            <div className="rounded-lg overflow-hidden border border-border max-w-2xl">
-              <img src={ambienteVacio} alt="Espacio vacío original" className="w-full h-auto object-cover" />
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Resultados</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
-            {ambienteResultados.map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-border">
-                <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start mb-16">
+            <div>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Espacio original</p>
+              <div className="rounded-lg overflow-hidden border border-border">
+                <img src={ambienteVacio} alt="Espacio vacío original" className="w-full h-auto object-cover" />
               </div>
-            ))}
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Resultados</p>
+              <div className="grid grid-cols-2 gap-4">
+                {ambienteResultados.map((img, i) => (
+                  <div key={i} className="rounded-lg overflow-hidden border border-border">
+                    <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
