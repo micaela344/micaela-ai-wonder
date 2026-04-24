@@ -14,6 +14,7 @@ const NextServiceLink = ({ to, label }: NextServiceLinkProps) => (
     </p>
     <Link
       to={to}
+      onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "auto" })}
       className="group inline-flex items-center gap-4 px-8 py-5 rounded-full bg-primary text-primary-foreground font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:gap-6"
     >
       <span>{label}</span>
