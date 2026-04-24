@@ -12,7 +12,6 @@ import Branding from "./pages/Branding.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
-import WhatsAppFloat from "./components/WhatsAppFloat.tsx";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +33,6 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ChatWidget />
-        <WhatsAppFloat />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
