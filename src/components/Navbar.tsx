@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, Instagram } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.png";
 
 const navLinks = [
@@ -118,7 +118,16 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://www.instagram.com/micaistudio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram de MIC AI Studio"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Instagram size={20} />
+          </a>
           <button
             onClick={() => window.open('https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F', '_blank')}
             className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-black text-white transition-all duration-300 cursor-pointer"
@@ -179,6 +188,16 @@ const Navbar = () => {
               >
                 ¡Contáctanos! <Sparkles size={14} className="ml-1" />
               </button>
+              <a
+                href="https://www.instagram.com/micaistudio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Instagram de MIC AI Studio"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Instagram size={20} /> Instagram
+              </a>
             </div>
           </motion.div>
         )}
