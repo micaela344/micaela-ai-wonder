@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Plus } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -57,7 +57,9 @@ const Campanas = () => (
                   <img src={src} alt={`Elemento ${i + 1}`} className="w-full h-full object-cover" />
                 </motion.div>
                 {i < ingredientes.length - 1 && (
-                  <Plus className="text-primary shrink-0" size={28} strokeWidth={3} />
+                  <span className="text-foreground/70 shrink-0 text-3xl font-extralight leading-none select-none">
+                    +
+                  </span>
                 )}
               </div>
             ))}
