@@ -11,6 +11,7 @@ import Campanas from "./pages/Campanas.tsx";
 import Branding from "./pages/Branding.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
+import ProduccionEjemplos from "./pages/ProduccionEjemplos.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/servicios/branding" element={<Branding />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
+          <Route path="/produccion-visual/ejemplos" element={<ProduccionEjemplos />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
