@@ -150,9 +150,10 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground inline-flex items-center justify-center w-11 h-11 -mr-2"
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
