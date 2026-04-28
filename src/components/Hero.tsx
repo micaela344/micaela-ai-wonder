@@ -67,7 +67,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.5 }}
-          className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto"
+          className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2"
         >
           Fotografía de producto, imágenes y campañas generadas con IA para pymes, ecommerce y agencias que quieren destacar
         </motion.p>
@@ -80,7 +80,7 @@ const Hero = () => {
         >
           <a
             href="#servicios"
-            className="inline-flex items-center justify-center px-10 py-4 text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
             style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
           >
             Ver nuestros servicios
