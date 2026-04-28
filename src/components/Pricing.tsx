@@ -181,7 +181,7 @@ const Pricing = () => {
                     <span className="text-sm text-foreground font-medium">{s.price}</span>
                     <button
                       onClick={() => setPaymentItem({ name: s.name, price: s.price })}
-                      className="px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+                      className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
                     >
                       Contratar
                     </button>
