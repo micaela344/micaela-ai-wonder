@@ -165,14 +165,14 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-4 flex flex-col gap-2">
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
                     key={link.href}
                     to={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`text-base transition-colors ${
+                    className={`text-base transition-colors py-3 min-h-[44px] flex items-center ${
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -182,7 +182,7 @@ const Navbar = () => {
                   <button
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`text-base transition-colors text-left bg-transparent border-none cursor-pointer ${
+                    className={`text-base transition-colors text-left bg-transparent border-none cursor-pointer py-3 min-h-[44px] flex items-center ${
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
