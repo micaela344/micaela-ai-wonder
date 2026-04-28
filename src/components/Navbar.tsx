@@ -87,12 +87,12 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="/" className="flex items-center">
-          <img src={micAiLogo} alt="MIC AI" className="h-28" />
+          <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-8 whitespace-nowrap">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
@@ -118,7 +118,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2 lg:gap-3">
           <a
             href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
             target="_blank"
@@ -150,9 +150,10 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground inline-flex items-center justify-center w-11 h-11 -mr-2"
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -164,14 +165,14 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-4 flex flex-col gap-2">
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
                     key={link.href}
                     to={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`text-base transition-colors ${
+                    className={`text-base transition-colors py-3 min-h-[44px] flex items-center ${
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -181,7 +182,7 @@ const Navbar = () => {
                   <button
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`text-base transition-colors text-left bg-transparent border-none cursor-pointer ${
+                    className={`text-base transition-colors text-left bg-transparent border-none cursor-pointer py-3 min-h-[44px] flex items-center ${
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >

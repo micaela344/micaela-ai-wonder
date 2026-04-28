@@ -70,7 +70,7 @@ const Pricing = () => {
 
   return (
     <section id="planes" className="pt-10 md:pt-12 pb-24 md:pb-32">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -96,7 +96,7 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className={`relative rounded-2xl p-7 flex flex-col ${
+                className={`relative rounded-2xl p-5 sm:p-7 flex flex-col ${
                   plan.highlighted
                     ? "bg-[#111111]"
                     : "border border-[#1a1a1a] bg-[#0d0d0d]"
@@ -139,7 +139,7 @@ const Pricing = () => {
 
                 <button
                   onClick={() => setPaymentItem({ name: `Plan ${plan.name}`, price: `${plan.price}${plan.period}` })}
-                  className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
+                  className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
                     plan.highlighted
                       ? ""
                       : "border border-[#333333] text-foreground hover:bg-[#141414]"
@@ -181,7 +181,7 @@ const Pricing = () => {
                     <span className="text-sm text-foreground font-medium">{s.price}</span>
                     <button
                       onClick={() => setPaymentItem({ name: s.name, price: s.price })}
-                      className="px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+                      className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
                     >
                       Contratar
                     </button>

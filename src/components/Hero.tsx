@@ -19,19 +19,19 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex justify-center mb-6"
         >
-          <span className="inline-block px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-sm font-normal font-sans tracking-wide">
+          <span className="inline-block px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-xs sm:text-sm font-normal font-sans tracking-wide">
             Desde 250€. Entrega en 3-7 días.
           </span>
         </motion.div>
         <motion.h1
-          className="text-[clamp(2rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
+          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center md:whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
           
         >
           <motion.span
@@ -67,7 +67,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.5 }}
-          className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto"
+          className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2"
         >
           Fotografía de producto, imágenes y campañas generadas con IA para pymes, ecommerce y agencias que quieren destacar
         </motion.p>
@@ -80,7 +80,7 @@ const Hero = () => {
         >
           <a
             href="#servicios"
-            className="inline-flex items-center justify-center px-10 py-4 text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
             style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
           >
             Ver nuestros servicios
