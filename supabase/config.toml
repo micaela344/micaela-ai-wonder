@@ -1,1 +1,4 @@
 project_id = "wlnspyyqlzrvkrlljofs"
+
+[functions.backfill-blog-images]
+verify_jwt = false
