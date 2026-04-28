@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getBlogCoverImage } from "@/lib/blogCoverImages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -14,6 +15,7 @@ type Article = {
   description: string;
   category: string;
   published_at: string;
+  cover_image: string | null;
 };
 
 const BlogArticle = () => {
@@ -93,10 +95,12 @@ const BlogArticle = () => {
               day: "numeric",
             })}
           </time>
-          {(article as any).cover_image && (
+          {getBlogCoverImage(article) && (
             <img
-              src={(article as any).cover_image}
+              src={getBlogCoverImage(article)!}
               alt={article.title}
+              width={1344}
+              height={768}
               className="w-full rounded-2xl mb-12 aspect-video object-cover"
             />
           )}
