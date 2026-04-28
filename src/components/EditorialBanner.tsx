@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const EditorialBanner = () => {
   return (
-    <section className="bg-[#0A0A0A] py-24 md:py-32 px-6">
+    <section className="bg-[#0A0A0A] pt-10 md:pt-12 pb-24 md:pb-32 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

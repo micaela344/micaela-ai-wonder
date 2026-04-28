@@ -7,7 +7,7 @@ const CTABanner = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 px-6" style={{ backgroundColor: '#0A0A0A' }}>
+    <section className="pt-10 md:pt-12 pb-24 md:pb-32 px-6" style={{ backgroundColor: '#0A0A0A' }}>
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -69,7 +69,7 @@ const Pricing = () => {
   const [paymentItem, setPaymentItem] = useState<{ name: string; price: string } | null>(null);
 
   return (
-    <section id="planes" className="py-24 md:py-32">
+    <section id="planes" className="pt-10 md:pt-12 pb-24 md:pb-32">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
