@@ -70,7 +70,7 @@ const Pricing = () => {
 
   return (
     <section id="planes" className="pt-10 md:pt-12 pb-24 md:pb-32">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           ref={ref}
