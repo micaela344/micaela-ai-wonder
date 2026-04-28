@@ -5,20 +5,20 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 // Placeholder examples — reusing existing portfolio assets until new ones are uploaded
-import portfolioObjeto from "@/assets/portfolio-objeto.png";
-import portfolioEspacio from "@/assets/portfolio-espacio.png";
-import portfolioModelo from "@/assets/portfolio-modelo.png";
-import portfolioDetalle from "@/assets/portfolio-detalle.png";
-import portfolioAngulo from "@/assets/portfolio-angulo.png";
-import portfolioEditorial from "@/assets/portfolio-editorial.png";
+import ejemplo1 from "@/assets/produccion/ejemplo-1.png";
+import ejemplo2 from "@/assets/produccion/ejemplo-2.png";
+import ejemplo3 from "@/assets/produccion/ejemplo-3.png";
+import ejemplo4 from "@/assets/produccion/ejemplo-4.png";
+import ejemplo5 from "@/assets/produccion/ejemplo-5.png";
+import ejemplo6 from "@/assets/produccion/ejemplo-6.png";
 
 const examples = [
-  { src: portfolioObjeto, caption: "Objeto" },
-  { src: portfolioEspacio, caption: "Espacio" },
-  { src: portfolioModelo, caption: "Modelo" },
-  { src: portfolioDetalle, caption: "Detalle" },
-  { src: portfolioAngulo, caption: "Ángulo" },
-  { src: portfolioEditorial, caption: "Editorial" },
+  { src: ejemplo1, caption: "Campaña Fitness" },
+  { src: ejemplo2, caption: "Producto" },
+  { src: ejemplo3, caption: "Retrato" },
+  { src: ejemplo4, caption: "Lifestyle" },
+  { src: ejemplo5, caption: "Detalle" },
+  { src: ejemplo6, caption: "Editorial" },
 ];
 
 const ProduccionEjemplos = () => {
