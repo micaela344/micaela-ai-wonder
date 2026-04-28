@@ -8,9 +8,11 @@ import marquee5 from "@/assets/marquee-5.jpg";
 import marquee6 from "@/assets/marquee-6.png";
 import marquee7 from "@/assets/marquee-7.png";
 import marqueeLipgloss from "@/assets/marquee-lipgloss.png";
+import marqueeYoga from "@/assets/marquee-yoga.png";
 
 const showcaseRow = [
   marquee1,
+  marqueeYoga,
   marquee2,
   marquee3,
   marquee4,
