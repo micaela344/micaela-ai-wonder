@@ -51,7 +51,7 @@ const StickyTabs = () => {
   const isInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="servicios" className="py-24 md:py-32">
+    <section id="servicios" className="pt-10 md:pt-12 pb-24 md:pb-32">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}

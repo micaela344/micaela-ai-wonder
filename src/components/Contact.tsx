@@ -12,7 +12,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="py-24 md:py-32">
+    <section id="contacto" className="pt-10 md:pt-12 pb-24 md:pb-32">
       <div className="max-w-2xl mx-auto px-6">
         <motion.div
           ref={ref}
