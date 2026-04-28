@@ -41,10 +41,10 @@ const PoliticaDeCookies = () => {
                 <li>
                   <strong className="text-foreground">Correo de contacto:</strong>{" "}
                   <a
-                    href="mailto:contacto@micaistudio.com"
+                    href="mailto:micaistudio1@gmail.com"
                     className="text-foreground underline hover:opacity-80"
                   >
-                    contacto@micaistudio.com
+                    micaistudio1@gmail.com
                   </a>
                 </li>
                 <li>
@@ -259,10 +259,10 @@ const PoliticaDeCookies = () => {
                 retirar el consentimiento otorgado. Puedes ejercer estos
                 derechos enviando una solicitud a{" "}
                 <a
-                  href="mailto:contacto@micaistudio.com"
+                  href="mailto:micaistudio1@gmail.com"
                   className="text-foreground underline hover:opacity-80"
                 >
-                  contacto@micaistudio.com
+                  micaistudio1@gmail.com
                 </a>
                 .
               </p>
@@ -296,10 +296,10 @@ const PoliticaDeCookies = () => {
                 Si tienes cualquier duda sobre esta Política de Cookies, puedes
                 escribirnos a{" "}
                 <a
-                  href="mailto:contacto@micaistudio.com"
+                  href="mailto:micaistudio1@gmail.com"
                   className="text-foreground underline hover:opacity-80"
                 >
-                  contacto@micaistudio.com
+                  micaistudio1@gmail.com
                 </a>
                 .
               </p>

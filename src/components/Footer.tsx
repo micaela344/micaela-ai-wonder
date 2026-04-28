@@ -36,10 +36,10 @@ const Footer = () => (
         <div>
           <h4 className="text-foreground text-sm font-medium mb-4">Contacto</h4>
           <a
-            href="mailto:contacto@micaistudio.com"
+            href="mailto:micaistudio1@gmail.com"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            contacto@micaistudio.com
+            micaistudio1@gmail.com
           </a>
           <a
             href="tel:+34663474019"
