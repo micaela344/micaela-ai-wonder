@@ -22,7 +22,7 @@ const results = [
 
 const Portfolio = () => {
   return (
-    <section id="resultados" className="py-20 md:py-32 bg-background overflow-hidden">
+    <section id="resultados" className="pt-8 md:pt-12 pb-20 md:pb-32 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
