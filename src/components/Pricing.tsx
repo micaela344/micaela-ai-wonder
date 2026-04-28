@@ -96,7 +96,7 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className={`relative rounded-2xl p-7 flex flex-col ${
+                className={`relative rounded-2xl p-5 sm:p-7 flex flex-col ${
                   plan.highlighted
                     ? "bg-[#111111]"
                     : "border border-[#1a1a1a] bg-[#0d0d0d]"
