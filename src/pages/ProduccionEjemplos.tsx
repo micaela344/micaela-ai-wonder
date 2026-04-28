@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 
 // Placeholder examples — reusing existing portfolio assets until new ones are uploaded
 import ejemplo1 from "@/assets/produccion/ejemplo-1.png";
@@ -85,6 +86,8 @@ const ProduccionEjemplos = () => {
               </motion.div>
             ))}
           </div>
+
+          <ServiceCTAButtons />
         </div>
       </section>
       <Footer />
