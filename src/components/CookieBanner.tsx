@@ -37,7 +37,7 @@ const CookieBanner = () => {
           <div className="mx-auto max-w-5xl rounded-2xl border border-border bg-background/95 backdrop-blur-xl shadow-2xl p-5 md:p-6">
             <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
               <div className="flex-1">
-                <h2 className="text-foreground text-base font-semibold mb-1">
+                <h2 className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "var(--font-heading)" }}>
                   Usamos cookies
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
