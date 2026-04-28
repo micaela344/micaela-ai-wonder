@@ -35,7 +35,7 @@ const services = [
     id: "campanas",
     label: "Campañas",
     image: null,
-    video: "/videos/campanas-portada-v2.mp4",
+    video: "/videos/campanas-portada-v3.mp4",
     align: "left" as const,
     benefits: [
       "Estrategia creativa basada en datos",
