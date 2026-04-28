@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
+import { getBlogCoverImage } from "@/lib/blogCoverImages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -57,48 +58,54 @@ const Blog = () => {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article, i) => (
-              <motion.div
-                key={article.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Link
-                  to={`/blog/${article.slug}`}
-                  className="group block rounded-2xl border border-border bg-secondary/20 overflow-hidden h-full hover:border-foreground/30 transition-colors duration-300"
+            {articles.map((article, i) => {
+              const coverImage = getBlogCoverImage(article);
+
+              return (
+                <motion.div
+                  key={article.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {article.cover_image && (
-                    <div className="w-full aspect-video overflow-hidden">
-                      <img
-                        src={article.cover_image}
-                        alt={article.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                  <Link
+                    to={`/blog/${article.slug}`}
+                    className="group block rounded-2xl border border-border bg-secondary/20 overflow-hidden h-full hover:border-foreground/30 transition-colors duration-300"
+                  >
+                    {coverImage && (
+                      <div className="w-full aspect-video overflow-hidden">
+                        <img
+                          src={coverImage}
+                          alt={article.title}
+                          loading="lazy"
+                          width={1344}
+                          height={768}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <span className="inline-block text-[11px] font-medium tracking-wide uppercase text-muted-foreground border border-border rounded-full px-3 py-1 mb-4">
+                        {article.category}
+                      </span>
+                      <h2 className="text-lg font-semibold leading-snug mb-3 group-hover:text-primary transition-colors">
+                        {article.title}
+                      </h2>
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
+                        {article.description}
+                      </p>
+                      <time className="text-xs text-muted-foreground">
+                        {new Date(article.published_at).toLocaleDateString("es-ES", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </time>
                     </div>
-                  )}
-                  <div className="p-6">
-                    <span className="inline-block text-[11px] font-medium tracking-wide uppercase text-muted-foreground border border-border rounded-full px-3 py-1 mb-4">
-                      {article.category}
-                    </span>
-                    <h2 className="text-lg font-semibold leading-snug mb-3 group-hover:text-primary transition-colors">
-                      {article.title}
-                    </h2>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
-                      {article.description}
-                    </p>
-                    <time className="text-xs text-muted-foreground">
-                      {new Date(article.published_at).toLocaleDateString("es-ES", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
         )}
       </main>
