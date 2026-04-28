@@ -19,19 +19,19 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex justify-center mb-6"
         >
-          <span className="inline-block px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-sm font-normal font-sans tracking-wide">
+          <span className="inline-block px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-xs sm:text-sm font-normal font-sans tracking-wide">
             Desde 250€. Entrega en 3-7 días.
           </span>
         </motion.div>
         <motion.h1
-          className="text-[clamp(2rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
+          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center md:whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
           
         >
           <motion.span
