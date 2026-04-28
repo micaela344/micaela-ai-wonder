@@ -40,13 +40,14 @@ const CookieBanner = () => {
                 <h2 className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "var(--font-heading)" }}>
                   Usamos cookies
                 </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: "var(--font-heading)" }}>
                   Utilizamos cookies propias y de terceros para mejorar tu experiencia,
                   analizar el tráfico y personalizar el contenido. Puedes aceptarlas,
                   rechazarlas o conocer más en nuestra{" "}
                   <Link
                     to="/politica-de-cookies"
                     className="underline text-foreground hover:opacity-80"
+                    style={{ fontFamily: "var(--font-heading)" }}
                   >
                     Política de Cookies
                   </Link>
