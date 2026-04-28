@@ -50,10 +50,16 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="mt-16 pt-8 border-t border-border">
+      <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <p className="site-logo-lock text-xs text-text-muted">
           © 2026 MIC AI. Todos los derechos reservados.
         </p>
+        <a
+          href="/politica-de-cookies"
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Política de Cookies
+        </a>
       </div>
     </div>
   </footer>
