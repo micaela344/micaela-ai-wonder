@@ -39,7 +39,7 @@ const Marquee = () => {
       <div className="flex gap-8 overflow-hidden px-6">
         <div className={`flex gap-8 ${isFast ? "animate-marquee-left-fast" : "animate-marquee-left"}`}>
           {[...showcaseRow, ...showcaseRow].map((img, i) => (
-            <div key={i} className="flex-shrink-0 w-[26rem] h-72 md:w-[32rem] md:h-80 rounded-lg overflow-hidden">
+            <div key={i} className="flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden">
               <img src={img} alt="Muestra creativa" className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
