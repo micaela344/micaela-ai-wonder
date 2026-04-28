@@ -139,7 +139,7 @@ const Pricing = () => {
 
                 <button
                   onClick={() => setPaymentItem({ name: `Plan ${plan.name}`, price: `${plan.price}${plan.period}` })}
-                  className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
+                  className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
                     plan.highlighted
                       ? ""
                       : "border border-[#333333] text-foreground hover:bg-[#141414]"
