@@ -30,13 +30,23 @@ const AboutMe = () => {
               <span style={{ fontWeight: 800, color: '#ffffff' }}>Micaela.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Soy directora de arte y fundadora de MIC AI Studio. Llevo 2 años trabajando en el mundo creativo, con experiencia en agencias y produciendo contenido para distintas marcas.
+              Directora creativa y fundadora de MIC AI Studio.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Creé MIC AI Studio porque vi de cerca cómo las marcas perdían oportunidades por no tener contenido visual a la altura — y supe que podía resolverlo de otra manera.
+              Trabajo creando contenido visual y campañas para marcas utilizando inteligencia artificial generativa, combinando dirección de arte con nuevas herramientas para producir de forma más ágil, pero con criterio.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Creé MIC AI Studio después de ver cómo muchas marcas perdían oportunidades por no tener un lenguaje visual claro y coherente.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Hoy ayudo a marcas a construir sistemas visuales que no solo se ven bien, sino que comunican, posicionan y venden.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Trabajo con marcas de producto, e-commerce y proyectos que entienden el valor de la imagen en su crecimiento.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Combino inteligencia artificial generativa con dirección de arte humana para producir contenido visual y audiovisual con propósito estratégico. No solo rápido — sino coherente, intencional y orientado a resultados reales.
+              No se trata solo de generar contenido.<br />
+              Se trata de construir un universo visual coherente y escalable para marcas.
             </p>
           </div>
         </motion.div>
