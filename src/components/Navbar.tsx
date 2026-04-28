@@ -92,7 +92,7 @@ const Navbar = () => {
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-8 whitespace-nowrap">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
