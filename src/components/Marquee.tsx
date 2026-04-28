@@ -48,9 +48,14 @@ const Marquee = () => {
                 e.preventDefault();
                 document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden cursor-pointer"
+              className="group flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden cursor-pointer"
             >
-              <img src={img} alt="Muestra creativa" className="w-full h-full object-cover" loading="lazy" />
+              <img
+                src={img}
+                alt="Muestra creativa"
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                loading="lazy"
+              />
             </a>
           ))}
         </div>
