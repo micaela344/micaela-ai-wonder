@@ -30,23 +30,23 @@ const AboutMe = () => {
               <span style={{ fontWeight: 800, color: '#ffffff' }}>Micaela.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Directora creativa y fundadora de MIC AI Studio.
+              <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>Directora creativa</span> y fundadora de MIC AI Studio.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Trabajo creando contenido visual y campañas para marcas utilizando inteligencia artificial generativa, combinando dirección de arte con nuevas herramientas para producir de forma más ágil, pero con criterio.
+              Trabajo creando <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>contenido visual y campañas</span> para marcas utilizando <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>IA generativa</span>, combinando dirección de arte con nuevas herramientas para producir de forma más ágil, pero con criterio.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Creé MIC AI Studio al ver cómo muchas marcas invertían tiempo y dinero en contenido poco eficiente, cuando con IA es posible crear más rápido, escalar mejor y elevar la creatividad.
+              Creé MIC AI Studio al ver cómo muchas marcas invertían tiempo y dinero en contenido poco eficiente, cuando con IA es posible crear más <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>rápido, escalar mejor</span> y elevar la creatividad.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Hoy ayudo a marcas a construir sistemas visuales que no solo se ven bien, sino que comunican, posicionan y venden.
+              Hoy ayudo a marcas a construir sistemas visuales que no solo se ven bien, sino que <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>comunican, posicionan y venden</span>.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Trabajo con marcas de producto, e-commerce y proyectos que entienden el valor de la imagen en su crecimiento.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               No se trata solo de generar contenido.<br />
-              Se trata de construir un universo visual coherente y escalable para marcas.
+              Se trata de construir un <span style={{ color: '#FFFFFF', fontWeight: 500, textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>universo visual coherente</span> y escalable para marcas.
             </p>
           </div>
         </motion.div>
