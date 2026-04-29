@@ -69,7 +69,7 @@ const Pricing = () => {
   const [paymentItem, setPaymentItem] = useState<{ name: string; price: string } | null>(null);
 
   return (
-    <section id="planes" className="pt-10 md:pt-12 pb-24 md:pb-32">
+    <section id="planes" className="pt-8 md:pt-12 pb-12 md:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
@@ -77,7 +77,7 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">Planes</p>
           <h2 className="text-3xl md:text-4xl tracking-tight">

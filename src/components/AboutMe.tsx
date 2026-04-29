@@ -7,14 +7,14 @@ const AboutMe = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="sobre-mi" className="pt-10 md:pt-12 pb-24 md:pb-32">
+    <section id="sobre-mi" className="pt-8 md:pt-12 pb-12 md:pb-32">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
         >
           {/* Photo */}
           <div className="flex justify-center md:justify-center">
