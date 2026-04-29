@@ -201,11 +201,16 @@ const Pricing = () => {
             >
               <p className="text-foreground font-semibold text-base mb-1">¿Aún tienes dudas?</p>
               <p className="text-muted-foreground text-sm font-light mb-4">
-                Contáctame y te llamo en menos de 48h para resolverlas.
+                Contáctame y te las resuelvo en menos de 24 horas.
               </p>
               <a
-                href="#contacto"
-                className="inline-flex items-center gap-1 px-5 py-2 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-all"
+                href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background transition-all hover:scale-105"
+                style={{
+                  boxShadow: '0 0 20px rgba(255,255,255,0.45), 0 0 40px rgba(255,255,255,0.25), 0 0 60px rgba(255,255,255,0.12)',
+                }}
               >
                 Hablar con Micaela <ArrowRight size={14} />
               </a>
