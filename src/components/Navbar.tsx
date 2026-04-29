@@ -102,7 +102,7 @@ const Navbar = () => {
                   isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {link.label}
+                <span translate="no" className="notranslate">{link.label}</span>
               </Link>
             ) : (
               <button
@@ -112,7 +112,7 @@ const Navbar = () => {
                   isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {link.label}
+                <span translate="no" className="notranslate">{link.label}</span>
               </button>
             )
           )}
@@ -176,7 +176,7 @@ const Navbar = () => {
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {link.label}
+                    <span translate="no" className="notranslate">{link.label}</span>
                   </Link>
                 ) : (
                   <button
@@ -186,7 +186,7 @@ const Navbar = () => {
                       isActive(link) ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {link.label}
+                    <span translate="no" className="notranslate">{link.label}</span>
                   </button>
                 )
               )}
