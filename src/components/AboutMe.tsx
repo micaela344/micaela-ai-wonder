@@ -36,7 +36,7 @@ const AboutMe = () => {
               Trabajo creando contenido visual y campañas para marcas utilizando inteligencia artificial generativa, combinando dirección de arte con nuevas herramientas para producir de forma más ágil, pero con criterio.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Creé MIC AI Studio después de ver cómo muchas marcas perdían oportunidades por no tener un lenguaje visual claro y coherente.
+              Creé MIC AI Studio al ver cómo muchas marcas invertían tiempo y dinero en contenido poco eficiente, cuando con IA es posible crear más rápido, escalar mejor y elevar la creatividad.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Hoy ayudo a marcas a construir sistemas visuales que no solo se ven bien, sino que comunican, posicionan y venden.
