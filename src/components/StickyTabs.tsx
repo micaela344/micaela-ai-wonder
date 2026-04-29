@@ -51,14 +51,14 @@ const StickyTabs = () => {
   const isInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="servicios" className="pt-10 md:pt-12 pb-24 md:pb-32">
+    <section id="servicios" className="pt-6 md:pt-12 pb-12 md:pb-32">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
           <h2 className="text-5xl md:text-6xl tracking-tight">
             <span style={{ fontWeight: 300, color: '#666666' }}>Nuestros </span>
@@ -66,7 +66,7 @@ const StickyTabs = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-12 md:space-y-20">
           {services.map((service, i) => (
             <motion.div
               key={service.id}

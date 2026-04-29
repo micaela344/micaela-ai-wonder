@@ -2,8 +2,8 @@ import micAiLogo from "@/assets/logo_sin_fondo.png";
 
 const Footer = () => (
   <footer className="border-t border-border">
-    <div className="max-w-7xl mx-auto px-6 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div className="max-w-7xl mx-auto px-6 py-10 md:py-16">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
         <div>
           <img src={micAiLogo} alt="MIC AI" className="h-28" />
           
@@ -50,7 +50,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <p className="site-logo-lock text-xs text-text-muted">
           © 2026 MIC AI. Todos los derechos reservados.
         </p>

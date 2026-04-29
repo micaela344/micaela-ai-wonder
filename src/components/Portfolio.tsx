@@ -22,7 +22,7 @@ const results = [
 
 const Portfolio = () => {
   return (
-    <section id="resultados" className="pt-8 md:pt-12 pb-20 md:pb-32 bg-background overflow-hidden">
+    <section id="resultados" className="pt-6 md:pt-12 pb-12 md:pb-32 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const Portfolio = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-center text-sm md:text-base tracking-widest uppercase mb-16"
+          className="text-center text-sm md:text-base tracking-widest uppercase mb-10 md:mb-16"
           style={{ color: "#888888" }}
         >
           De los ingredientes al resultado final

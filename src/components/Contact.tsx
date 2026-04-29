@@ -12,14 +12,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="pt-10 md:pt-12 pb-24 md:pb-32">
+    <section id="contacto" className="pt-8 md:pt-12 pb-12 md:pb-32">
       <div className="max-w-2xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
           <h2 className="text-3xl md:text-4xl tracking-tight mb-4">
             <span style={{ fontWeight: 300, color: '#666666' }}>¿Listo para </span>

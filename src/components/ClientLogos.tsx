@@ -11,13 +11,13 @@ const ClientLogos = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-12 md:py-24 overflow-hidden">
       <motion.p
         ref={ref}
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="site-logo-lock text-center text-muted-foreground text-sm uppercase tracking-widest mb-12 px-6"
+        className="site-logo-lock text-center text-muted-foreground text-sm uppercase tracking-widest mb-8 md:mb-12 px-6"
       >
         Marcas que confían en MIC AI Studio
       </motion.p>

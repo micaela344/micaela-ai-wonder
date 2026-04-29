@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const ValueProp = () => {
   return (
-    <section className="bg-background py-20 md:py-28 px-6">
+    <section className="bg-background py-12 md:py-28 px-6">
       <div className="max-w-5xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
