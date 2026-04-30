@@ -16,8 +16,7 @@ const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
   const converted = Math.round((eurAmount * rate) / round) * round;
   const formatted = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(converted);
   if (currency === "EUR") return `${formatted}€`;
-  if (currency === "USD") return `USD ${formatted}`;
-  return `CLP ${formatted}`;
+  return `$${formatted}`;
 };
 
 const plans = [
