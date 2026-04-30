@@ -5,19 +5,19 @@ import PaymentModal from "./PaymentModal";
 
 type CurrencyCode = "EUR" | "USD" | "CLP";
 
-const currencies: Record<CurrencyCode, { symbol: string; rate: number; locale: string; round: number }> = {
-  EUR: { symbol: "€", rate: 1, locale: "de-DE", round: 1 },
-  USD: { symbol: "$", rate: 1.08, locale: "en-US", round: 1 },
-  CLP: { symbol: "$", rate: 1050, locale: "es-CL", round: 1000 },
+const currencies: Record<CurrencyCode, { rate: number; locale: string; round: number }> = {
+  EUR: { rate: 1, locale: "de-DE", round: 1 },
+  USD: { rate: 1.08, locale: "en-US", round: 1 },
+  CLP: { rate: 1050, locale: "de-DE", round: 1000 },
 };
 
 const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
-  const { symbol, rate, locale, round } = currencies[currency];
+  const { rate, locale, round } = currencies[currency];
   const converted = Math.round((eurAmount * rate) / round) * round;
   const formatted = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(converted);
-  // For EUR keep symbol after, for $ currencies put symbol before
-  if (currency === "EUR") return `${formatted}${symbol}`;
-  return `${symbol}${formatted}`;
+  if (currency === "EUR") return `${formatted}€`;
+  if (currency === "USD") return `USD ${formatted}`;
+  return `CLP ${formatted}`;
 };
 
 const plans = [
