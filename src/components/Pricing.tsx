@@ -3,10 +3,28 @@ import { motion, useInView } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import PaymentModal from "./PaymentModal";
 
+type CurrencyCode = "EUR" | "USD" | "CLP";
+
+const currencies: Record<CurrencyCode, { symbol: string; rate: number; locale: string; round: number }> = {
+  EUR: { symbol: "€", rate: 1, locale: "de-DE", round: 1 },
+  USD: { symbol: "$", rate: 1.08, locale: "en-US", round: 1 },
+  CLP: { symbol: "$", rate: 1050, locale: "es-CL", round: 1000 },
+};
+
+const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
+  const { symbol, rate, locale, round } = currencies[currency];
+  const converted = Math.round((eurAmount * rate) / round) * round;
+  const formatted = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(converted);
+  // For EUR keep symbol after, for $ currencies put symbol before
+  if (currency === "EUR") return `${formatted}${symbol}`;
+  return `${symbol}${formatted}`;
+};
+
 const plans = [
   {
     name: "Starter",
-    price: "Desde 450€",
+    priceEUR: 450,
+    pricePrefix: "Desde ",
     period: "/mes",
     subtitle: "Renueva tu catálogo y presencia digital",
     features: [
@@ -21,7 +39,8 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "Desde 800€",
+    priceEUR: 800,
+    pricePrefix: "Desde ",
     period: "/mes",
     badge: "Recomendado",
     subtitle: "Crea tu calendario de marketing completo",
@@ -39,7 +58,8 @@ const plans = [
   },
   {
     name: "Studio",
-    price: "Desde 1.500€",
+    priceEUR: 1500,
+    pricePrefix: "Desde ",
     period: "/mes",
     subtitle: "Producción creativa mensual completa",
     features: [
@@ -57,16 +77,23 @@ const plans = [
 ];
 
 const serviciosPuntuales = [
-  { name: "Pack Catálogo (10 piezas)", price: "desde 250€" },
-  { name: "Pack Campaña (6 piezas)", price: "desde 390€" },
-  { name: "Video corto para redes", price: "desde 200€" },
-  { name: "Campaña completa", price: "desde 800€" },
+  { name: "Pack Catálogo (10 piezas)", priceEUR: 250, pricePrefix: "desde " },
+  { name: "Pack Campaña (6 piezas)", priceEUR: 390, pricePrefix: "desde " },
+  { name: "Video corto para redes", priceEUR: 200, pricePrefix: "desde " },
+  { name: "Campaña completa", priceEUR: 800, pricePrefix: "desde " },
 ];
 
 const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [paymentItem, setPaymentItem] = useState<{ name: string; price: string } | null>(null);
+  const [currency, setCurrency] = useState<CurrencyCode>("EUR");
+
+  const currencyOptions: { code: CurrencyCode; label: string }[] = [
+    { code: "EUR", label: "EUR €" },
+    { code: "USD", label: "USD $" },
+    { code: "CLP", label: "CLP $" },
+  ];
 
   return (
     <section id="planes" className="pt-8 md:pt-12 pb-12 md:pb-32">
@@ -77,7 +104,7 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16"
+          className="text-center mb-6 md:mb-10"
         >
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">Planes</p>
           <h2 className="text-3xl md:text-4xl tracking-tight">
@@ -86,11 +113,52 @@ const Pricing = () => {
           </h2>
         </motion.div>
 
+        {/* Currency Selector */}
+        <div className="flex justify-center mb-8 md:mb-12">
+          <div
+            role="tablist"
+            aria-label="Seleccionar moneda"
+            className="inline-flex items-center gap-1 p-1 rounded-full"
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              backdropFilter: 'blur(12px)',
+            }}
+          >
+            {currencyOptions.map((opt) => {
+              const active = currency === opt.code;
+              return (
+                <button
+                  key={opt.code}
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setCurrency(opt.code)}
+                  className={`px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all ${
+                    active ? "text-background" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  style={
+                    active
+                      ? {
+                          background: '#ffffff',
+                          boxShadow: '0 0 12px rgba(255,255,255,0.25)',
+                        }
+                      : {}
+                  }
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Two-column layout: Plans + Servicios Puntuales */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
           {/* Left: Plans Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {plans.map((plan, i) => (
+            {plans.map((plan, i) => {
+              const displayPrice = `${plan.pricePrefix}${formatPrice(plan.priceEUR, currency)}`;
+              return (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 40 }}
@@ -120,7 +188,7 @@ const Pricing = () => {
                 <p className="text-muted-foreground text-sm font-light tracking-wide">{plan.name}</p>
 
                 <div className="mt-3 mb-2">
-                  <span className="text-2xl font-bold text-foreground tracking-tight">{plan.price}</span>
+                  <span className="text-2xl font-bold text-foreground tracking-tight">{displayPrice}</span>
                   <span className="text-muted-foreground text-sm font-light">{plan.period}</span>
                 </div>
 
@@ -138,7 +206,7 @@ const Pricing = () => {
                 </ul>
 
                 <button
-                  onClick={() => setPaymentItem({ name: `Plan ${plan.name}`, price: `${plan.price}${plan.period}` })}
+                  onClick={() => setPaymentItem({ name: `Plan ${plan.name}`, price: `${displayPrice}${plan.period}` })}
                   className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
                     plan.highlighted
                       ? ""
@@ -153,7 +221,8 @@ const Pricing = () => {
                   Comenzar
                 </button>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right: Servicios Puntuales */}
@@ -168,7 +237,9 @@ const Pricing = () => {
             </h3>
 
             <div className="border border-[#1a1a1a] rounded-2xl divide-y divide-[#1a1a1a] bg-[#0d0d0d]">
-              {serviciosPuntuales.map((s, i) => (
+              {serviciosPuntuales.map((s, i) => {
+                const displayPrice = `${s.pricePrefix}${formatPrice(s.priceEUR, currency)}`;
+                return (
                 <motion.div
                   key={s.name}
                   initial={{ opacity: 0 }}
@@ -178,16 +249,17 @@ const Pricing = () => {
                 >
                   <span className="text-sm text-muted-foreground font-light block">{s.name}</span>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-foreground font-medium">{s.price}</span>
+                    <span className="text-sm text-foreground font-medium">{displayPrice}</span>
                     <button
-                      onClick={() => setPaymentItem({ name: s.name, price: s.price })}
+                      onClick={() => setPaymentItem({ name: s.name, price: displayPrice })}
                       className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
                     >
                       Contratar
                     </button>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Doubt Banner */}
