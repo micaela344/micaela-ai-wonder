@@ -30,7 +30,7 @@ const FAQ = () => {
   return (
     <section className="bg-background text-foreground py-16 md:py-24 px-6">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-10 md:mb-14 text-center">
+        <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-10 md:mb-14 text-center">
           Preguntas frecuentes.
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-3">
