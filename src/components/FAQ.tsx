@@ -12,6 +12,18 @@ const faqs = [
     answer:
       "Con inteligencia artificial generativa y dirección de arte, transformamos cualquier foto de tu producto — incluso tomada con el móvil — en una imagen de campaña profesional. Sin estudio, sin fotógrafo, sin esperas de semanas. En MIC AI Studio recibimos tu imagen de referencia, aplicamos criterio creativo y te entregamos imágenes listas para usar en redes sociales, ecommerce o publicidad. El resultado es indistinguible de una producción tradicional — y el proceso es hasta un 70% más económico.",
   },
+  {
+    question:
+      "¿Qué diferencia hay entre usar una app de IA como Canva o Midjourney y contratar un estudio creativo con IA?",
+    answer:
+      "Las apps generan imágenes, pero no tienen criterio. No conocen tu marca, tu tono ni tu cliente. En MIC AI Studio hay una directora creativa detrás de cada proyecto que decide qué funciona y qué no — elige los encuadres, ajusta la estética, cuida la coherencia visual. La diferencia entre usar una app y contratarnos es la misma que entre imprimir una foto y encargar una campaña. El resultado no se parece en nada.",
+  },
+  {
+    question:
+      "¿Las imágenes creadas con IA se ven artificiales o parecen fotos reales?",
+    answer:
+      "Depende completamente de quién las produce. Una app sola puede generar resultados inconsistentes — proporciones extrañas, texturas incorrectas, fondos que no convencen. Con dirección de arte humana aplicada al proceso, el resultado es fotorrealista e indistinguible de una producción tradicional. De hecho, muchas de las imágenes que ves en campañas de grandes marcas ya están generadas con IA. En MIC AI Studio ninguna imagen sale sin pasar por criterio creativo — esa es nuestra garantía de calidad.",
+  },
 ];
 
 const FAQ = () => {
