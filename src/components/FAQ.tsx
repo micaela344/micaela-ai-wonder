@@ -33,10 +33,10 @@ const FAQ = () => {
                   "0 0 12px rgba(255,255,255,0.35), 0 0 24px rgba(255,255,255,0.18), 0 0 36px rgba(255,255,255,0.08)",
               }}
             >
-              <AccordionTrigger className="text-left text-sm md:text-base font-normal text-white px-5 md:px-6 py-4 hover:no-underline">
+              <AccordionTrigger className="text-left text-base md:text-lg font-medium text-white px-5 md:px-6 py-4 hover:no-underline [&>svg]:text-white/70">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-white/70 leading-relaxed px-5 md:px-6 pb-5">
+              <AccordionContent className="text-sm md:text-[15px] font-normal leading-relaxed px-5 md:px-6 pt-4 pb-5 mt-1 border-t border-white/10" style={{ color: '#a0a0a0' }}>
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
