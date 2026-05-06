@@ -10,6 +10,7 @@ import CTABanner from "@/components/CTABanner";
 import EditorialBanner from "@/components/EditorialBanner";
 import Pricing from "@/components/Pricing";
 import AboutMe from "@/components/AboutMe";
+import FAQ from "@/components/FAQ";
 import ClientLogos from "@/components/ClientLogos";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -39,6 +40,7 @@ const Index = () => {
       <CTABanner />
       <Pricing />
       <AboutMe />
+      <FAQ />
       <Contact />
       <Footer />
       
