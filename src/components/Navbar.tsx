@@ -89,7 +89,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <a href="/" className="flex items-center notranslate" translate="no">
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
