@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
-import featureBranding from "@/assets/feature-branding.jpg";
+import featureBranding from "@/assets/feature-branding.webp";
 
 const Branding = () => (
   <div className="min-h-screen bg-background">

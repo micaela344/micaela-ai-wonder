@@ -3,11 +3,11 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Image, Video, Megaphone, Palette } from "lucide-react";
-import aiImageCover from "@/assets/ai-image-cover.png";
-import campaignCover from "@/assets/campanas-cover.png";
-import aiImage2 from "@/assets/ai-image-2.jpg";
-import aiImage3 from "@/assets/ai-image-3.jpg";
-import aiImage4 from "@/assets/ai-image-4.jpg";
+import aiImageCover from "@/assets/ai-image-cover.webp";
+import campaignCover from "@/assets/campanas-cover.webp";
+import aiImage2 from "@/assets/ai-image-2.webp";
+import aiImage3 from "@/assets/ai-image-3.webp";
+import aiImage4 from "@/assets/ai-image-4.webp";
 
 const services = [
   {

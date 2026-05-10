@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import marquee1 from "@/assets/marquee-1.png";
-import marquee2 from "@/assets/marquee-2.png";
-import marquee3 from "@/assets/marquee-3.png";
-import marquee4 from "@/assets/marquee-4.png";
-import marquee5 from "@/assets/marquee-5.jpg";
-import marquee6 from "@/assets/marquee-6.png";
-import marquee7 from "@/assets/marquee-7.png";
-import marqueeLipgloss from "@/assets/marquee-lipgloss.png";
-import marqueeYoga from "@/assets/marquee-yoga.png";
+import marquee1 from "@/assets/marquee-1.webp";
+import marquee2 from "@/assets/marquee-2.webp";
+import marquee3 from "@/assets/marquee-3.webp";
+import marquee4 from "@/assets/marquee-4.webp";
+import marquee5 from "@/assets/marquee-5.webp";
+import marquee6 from "@/assets/marquee-6.webp";
+import marquee7 from "@/assets/marquee-7.webp";
+import marqueeLipgloss from "@/assets/marquee-lipgloss.webp";
+import marqueeYoga from "@/assets/marquee-yoga.webp";
 
 const showcaseRow = [
   marquee1,
@@ -55,6 +55,7 @@ const Marquee = () => {
                 alt="Muestra creativa"
                 className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 loading="lazy"
+                decoding="async"
               />
             </a>
           ))}

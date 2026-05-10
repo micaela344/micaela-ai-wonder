@@ -4,16 +4,16 @@ import { ChevronDown } from "lucide-react";
 const Hero = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Subtle animated gradient background */}
+      {/* Subtle gradient background — animated blobs only on md+ to keep mobile scroll fluid */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(0_0%_8%)_0%,_hsl(0_0%_4%)_70%)]" />
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-muted/20 blur-[120px]"
+          className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-muted/20 blur-[120px]"
           animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-muted/10 blur-[100px]"
+          className="hidden md:block absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-muted/10 blur-[100px]"
           animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />

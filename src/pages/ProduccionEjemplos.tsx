@@ -7,12 +7,12 @@ import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 
 // Placeholder examples — reusing existing portfolio assets until new ones are uploaded
-import ejemplo1 from "@/assets/produccion/ejemplo-1.png";
-import ejemplo2 from "@/assets/produccion/ejemplo-2.png";
-import ejemplo3 from "@/assets/produccion/ejemplo-3.png";
-import ejemplo4 from "@/assets/produccion/ejemplo-4.png";
-import ejemplo5 from "@/assets/produccion/ejemplo-5.png";
-import ejemplo6 from "@/assets/produccion/ejemplo-6.png";
+import ejemplo1 from "@/assets/produccion/ejemplo-1.webp";
+import ejemplo2 from "@/assets/produccion/ejemplo-2.webp";
+import ejemplo3 from "@/assets/produccion/ejemplo-3.webp";
+import ejemplo4 from "@/assets/produccion/ejemplo-4.webp";
+import ejemplo5 from "@/assets/produccion/ejemplo-5.webp";
+import ejemplo6 from "@/assets/produccion/ejemplo-6.webp";
 
 const examples = [
   { src: ejemplo1, caption: "Campaña Fitness" },

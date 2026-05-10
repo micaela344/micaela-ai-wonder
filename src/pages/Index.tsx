@@ -1,20 +1,21 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import ValueProp from "@/components/ValueProp";
-import StickyTabs from "@/components/StickyTabs";
-import Portfolio from "@/components/Portfolio";
-import CTABanner from "@/components/CTABanner";
-import EditorialBanner from "@/components/EditorialBanner";
-import Pricing from "@/components/Pricing";
-import AboutMe from "@/components/AboutMe";
-import FAQ from "@/components/FAQ";
-import ClientLogos from "@/components/ClientLogos";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
+
+// Lazy-load below-the-fold sections to keep the initial JS small on mobile
+const Marquee = lazy(() => import("@/components/Marquee"));
+const ValueProp = lazy(() => import("@/components/ValueProp"));
+const StickyTabs = lazy(() => import("@/components/StickyTabs"));
+const Portfolio = lazy(() => import("@/components/Portfolio"));
+const CTABanner = lazy(() => import("@/components/CTABanner"));
+const EditorialBanner = lazy(() => import("@/components/EditorialBanner"));
+const Pricing = lazy(() => import("@/components/Pricing"));
+const AboutMe = lazy(() => import("@/components/AboutMe"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const ClientLogos = lazy(() => import("@/components/ClientLogos"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   const location = useLocation();
@@ -31,19 +32,20 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <Marquee />
-      <ValueProp />
-      <ClientLogos />
-      <StickyTabs />
-      <Portfolio />
-      <EditorialBanner />
-      <CTABanner />
-      <Pricing />
-      <AboutMe />
-      <FAQ />
-      <Contact />
-      <Footer />
-      
+      <Suspense fallback={null}>
+        <Marquee />
+        <ValueProp />
+        <ClientLogos />
+        <StickyTabs />
+        <Portfolio />
+        <EditorialBanner />
+        <CTABanner />
+        <Pricing />
+        <AboutMe />
+        <FAQ />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 };

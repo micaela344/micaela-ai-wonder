@@ -165,12 +165,47 @@
 
 .animate-marquee-left {
   animation: marquee-left 60s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-left-fast {
   animation: marquee-left 25s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-right {
   animation: marquee-right 40s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile performance: shorten transitions, drop expensive blurs and reduce motion */
+@media (max-width: 767px) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 200ms !important;
+    animation-duration: 300ms;
+  }
+  .animate-marquee-left,
+  .animate-marquee-left-fast,
+  .animate-marquee-right {
+    animation-duration: 60s;
+  }
+  /* Heavy blurs tank scroll FPS on mobile GPUs */
+  [class*="blur-["],
+  [class*="backdrop-blur"] {
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
