@@ -168,6 +168,7 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
+              <div className="pb-2"><LanguageToggle /></div>
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
