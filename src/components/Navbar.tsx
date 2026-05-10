@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles, Instagram } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.webp";
+import LanguageToggle from "./LanguageToggle";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
