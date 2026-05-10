@@ -3,14 +3,14 @@ import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import campaignCover from "@/assets/campanas-cover.png";
+import campaignCover from "@/assets/campanas-cover.webp";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
-import campana1 from "@/assets/campana-1.png";
-import campana2 from "@/assets/campana-2.png";
-import campana3 from "@/assets/campana-3.png";
-import campana4 from "@/assets/campana-4.png";
-import campana6 from "@/assets/campana-6.png";
-import campanaFinalImg from "@/assets/campana-final.png";
+import campana1 from "@/assets/campana-1.webp";
+import campana2 from "@/assets/campana-2.webp";
+import campana3 from "@/assets/campana-3.webp";
+import campana4 from "@/assets/campana-4.webp";
+import campana6 from "@/assets/campana-6.webp";
+import campanaFinalImg from "@/assets/campana-final.webp";
 
 const ingredientes = [campana1, campana2, campana3, campana4, campana6, campanaFinalImg];
 

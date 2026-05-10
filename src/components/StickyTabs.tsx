@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
-import serviciosImagenesCover from "@/assets/servicios-imagenes-cover.png";
-import serviciosCampanasCover from "@/assets/campanas-cover.png";
+import serviciosImagenesCover from "@/assets/servicios-imagenes-cover.webp";
+import serviciosCampanasCover from "@/assets/campanas-cover.webp";
 
 const services = [
   {

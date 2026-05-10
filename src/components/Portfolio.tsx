@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import portfolioObjeto from "@/assets/portfolio-objeto.png";
-import portfolioEspacio from "@/assets/portfolio-espacio.png";
-import portfolioModelo from "@/assets/portfolio-modelo.png";
-import portfolioDetalle from "@/assets/portfolio-detalle.png";
-import portfolioAngulo from "@/assets/portfolio-angulo.png";
-import portfolioEditorial from "@/assets/portfolio-editorial.png";
+import portfolioObjeto from "@/assets/portfolio-objeto.webp";
+import portfolioEspacio from "@/assets/portfolio-espacio.webp";
+import portfolioModelo from "@/assets/portfolio-modelo.webp";
+import portfolioDetalle from "@/assets/portfolio-detalle.webp";
+import portfolioAngulo from "@/assets/portfolio-angulo.webp";
+import portfolioEditorial from "@/assets/portfolio-editorial.webp";
 
 const ingredients = [
   { src: portfolioObjeto, caption: "Objeto" },

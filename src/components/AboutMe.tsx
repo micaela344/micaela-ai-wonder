@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import fotoMica from "@/assets/foto_mica.png";
+import fotoMica from "@/assets/foto_mica.webp";
 
 const AboutMe = () => {
   const ref = useRef(null);

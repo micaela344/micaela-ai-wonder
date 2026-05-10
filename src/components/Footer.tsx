@@ -1,4 +1,4 @@
-import micAiLogo from "@/assets/logo_sin_fondo.png";
+import micAiLogo from "@/assets/logo_sin_fondo.webp";
 
 const Footer = () => (
   <footer className="border-t border-border">
