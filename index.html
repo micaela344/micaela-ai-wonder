@@ -58,11 +58,21 @@
 
   <!-- Google Translate -->
   <style>
-    /* Hide Google Translate default UI */
+    /* Hide Google Translate default UI completely */
     #google_translate_element { display: none !important; }
-    .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon, .goog-logo-link, .goog-te-gadget span { display: none !important; }
-    body { top: 0 !important; }
-    .goog-tooltip, .goog-tooltip:hover, .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    iframe.goog-te-banner-frame,
+    .skiptranslate > iframe,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    .goog-tooltip,
+    .goog-te-gadget-icon,
+    .goog-logo-link,
+    .goog-te-gadget span { display: none !important; visibility: hidden !important; }
+    body { top: 0 !important; position: static !important; }
+    html { margin-top: 0 !important; }
+    .goog-text-highlight { background: none !important; box-shadow: none !important; }
   </style>
   <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -75,6 +85,21 @@
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+  <script>
+    // Continuously remove Google Translate banner if it appears
+    (function () {
+      function clean() {
+        document.querySelectorAll('.goog-te-banner-frame, iframe.goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame').forEach(function (el) { el.remove(); });
+        if (document.body && document.body.style.top) document.body.style.top = '';
+      }
+      var obs = new MutationObserver(clean);
+      document.addEventListener('DOMContentLoaded', function () {
+        clean();
+        obs.observe(document.body, { childList: true, subtree: true });
+      });
+      setInterval(clean, 1000);
+    })();
+  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMQS5KSP3N"></script>
