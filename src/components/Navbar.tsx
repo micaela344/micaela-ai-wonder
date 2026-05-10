@@ -120,6 +120,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          <LanguageToggle />
           <a
             href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
             target="_blank"
