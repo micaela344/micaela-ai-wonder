@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles, Instagram } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.webp";
+import LanguageToggle from "./LanguageToggle";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -88,7 +89,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <a href="/" className="flex items-center notranslate" translate="no">
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
@@ -119,6 +120,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          <LanguageToggle />
           <a
             href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
             target="_blank"
@@ -166,6 +168,7 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
+              <div className="pb-2"><LanguageToggle /></div>
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
