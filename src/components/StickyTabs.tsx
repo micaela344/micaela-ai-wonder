@@ -78,9 +78,23 @@ const StickyTabs = () => {
             >
               <div className="rounded-xl overflow-hidden border border-border mb-6">
                 {service.video ? (
-                  <video src={service.video} autoPlay loop muted playsInline className="w-full h-64 md:h-96 object-cover" />
+                  <video
+                    src={service.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-64 md:h-96 object-cover"
+                  />
                 ) : (
-                  <img src={service.image!} alt={service.label} className="w-full h-64 md:h-96 object-cover" />
+                  <img
+                    src={service.image!}
+                    alt={service.label}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-64 md:h-96 object-cover"
+                  />
                 )}
               </div>
 
