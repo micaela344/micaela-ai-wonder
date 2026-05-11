@@ -11,6 +11,12 @@ import estudioCreativoIa from "@/assets/blog/estudio-creativo-ia.webp";
 import direccionArteIaGenerativa from "@/assets/blog/direccion-arte-ia-generativa.webp";
 import videosCortosRedesSocialesIa from "@/assets/blog/videos-cortos-redes-sociales-ia.webp";
 import animacionDigitalRedesSocialesIa from "@/assets/blog/animacion-digital-redes-sociales-ia.webp";
+import produccionAudiovisualIa from "@/assets/blog/produccion-audiovisual-ia.webp";
+import campanasPublicitariasIa from "@/assets/blog/campanas-publicitarias-ia.webp";
+import tendenciasMarketingPymes2026 from "@/assets/blog/tendencias-marketing-pymes-2026.webp";
+import futuroFotografiaPublicitariaIa from "@/assets/blog/futuro-fotografia-publicitaria-ia.webp";
+import publicidadDigitalIa from "@/assets/blog/publicidad-digital-ia.webp";
+import iaGenerativaAgenciasCreativas from "@/assets/blog/ia-generativa-agencias-creativas.webp";
 
 type ArticleCoverSource = {
   slug: string;
@@ -31,6 +37,12 @@ const fallbackCoversBySlug: Record<string, string> = {
   "direccion-de-arte-con-ia-generativa-creatividad-con-criterio-estrategico-1777791630707": direccionArteIaGenerativa,
   "como-producir-videos-cortos-para-redes-sociales-con-ia-generativa-1777878027949": videosCortosRedesSocialesIa,
   "animacion-digital-redes-sociales-ia-1777964426278": animacionDigitalRedesSocialesIa,
+  "produccion-audiovisual-con-ia-rapido-profesional-sin-equipo-tecnico-1778050826150": produccionAudiovisualIa,
+  "como-crear-campanas-publicitarias-completas-con-inteligencia-artificial-1778137226314": campanasPublicitariasIa,
+  "tendencias-marketing-visual-pymes-2026-1778223631238": tendenciasMarketingPymes2026,
+  "futuro-fotografia-publicitaria-ia-1778310032955": futuroFotografiaPublicitariaIa,
+  "como-esta-cambiando-la-publicidad-digital-con-inteligencia-artificial-1778396423286": publicidadDigitalIa,
+  "ia-generativa-agencias-creativas-nuevo-estandar-sector-1778482836535": iaGenerativaAgenciasCreativas,
 };
 
 export const getBlogCoverImage = (article: ArticleCoverSource) => {
