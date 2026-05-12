@@ -17,6 +17,7 @@ import tendenciasMarketingPymes2026 from "@/assets/blog/tendencias-marketing-pym
 import futuroFotografiaPublicitariaIa from "@/assets/blog/futuro-fotografia-publicitaria-ia.webp";
 import publicidadDigitalIa from "@/assets/blog/publicidad-digital-ia.webp";
 import iaGenerativaAgenciasCreativas from "@/assets/blog/ia-generativa-agencias-creativas.webp";
+import marcasSinIaPierdenClientes from "@/assets/blog/marcas-sin-ia-pierden-clientes.webp";
 
 type ArticleCoverSource = {
   slug: string;
@@ -43,9 +44,11 @@ const fallbackCoversBySlug: Record<string, string> = {
   "futuro-fotografia-publicitaria-ia-1778310032955": futuroFotografiaPublicitariaIa,
   "como-esta-cambiando-la-publicidad-digital-con-inteligencia-artificial-1778396423286": publicidadDigitalIa,
   "ia-generativa-agencias-creativas-nuevo-estandar-sector-1778482836535": iaGenerativaAgenciasCreativas,
+  "marcas-sin-ia-contenido-visual-pierden-clientes-1778569227021": marcasSinIaPierdenClientes,
 };
 
 export const getBlogCoverImage = (article: ArticleCoverSource) => {
   const storedCover = article.cover_image?.trim();
   return storedCover || fallbackCoversBySlug[article.slug] || null;
 };
+
