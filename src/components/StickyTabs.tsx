@@ -17,6 +17,7 @@ const services = [
       "Iteraciones ilimitadas en minutos",
     ],
     href: "/servicios/imagenes-ia",
+    faqId: "faq-imagenes",
   },
   {
     id: "animaciones",
@@ -30,6 +31,7 @@ const services = [
       "Producción 10x más rápida que lo tradicional",
     ],
     href: "/servicios/videos-ia",
+    faqId: "faq-videos",
   },
   {
     id: "campanas",
@@ -43,6 +45,7 @@ const services = [
       "Assets para todas las plataformas",
     ],
     href: "/servicios/campanas",
+    faqId: "faq-campanas",
   },
 ];
 
@@ -98,7 +101,34 @@ const StickyTabs = () => {
                 )}
               </div>
 
-              <h3 className="text-xl font-semibold text-foreground mb-4">{service.label}</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <h3 className="text-xl font-semibold text-foreground">{service.label}</h3>
+                <button
+                  type="button"
+                  aria-label="Ver detalles del servicio"
+                  title="Ver detalles del servicio"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const id = service.faqId;
+                    if (window.location.hash === `#${id}`) window.location.hash = "";
+                    window.location.hash = `#${id}`;
+                  }}
+                  className="w-5 h-5 rounded-full flex items-center justify-center italic text-[11px] leading-none transition-all duration-200"
+                  style={{ border: "1px solid #444", background: "transparent", color: "#888" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#fff";
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.background = "#1a1a1a";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "#444";
+                    e.currentTarget.style.color = "#888";
+                    e.currentTarget.style.background = "transparent";
+                  }}
+                >
+                  i
+                </button>
+              </div>
 
               <ul className="space-y-3">
                 {service.benefits.map((b) => (
