@@ -10,13 +10,15 @@ const ContactMarquee = () => {
   };
 
   const spanStyle: React.CSSProperties = {
-    color: "#0a0a0a",
+    color: "#FFFFFF",
     fontFamily: "Inter, sans-serif",
     fontWeight: 600,
     fontSize: "14px",
     textTransform: "uppercase",
     letterSpacing: "0.1em",
     paddingRight: "1rem",
+    textShadow:
+      "0 0 12px rgba(255,255,255,0.85), 0 0 28px rgba(255,255,255,0.55), 0 0 48px rgba(255,255,255,0.3)",
   };
 
   return (
@@ -25,7 +27,12 @@ const ContactMarquee = () => {
       role="button"
       aria-label="Contáctanos por WhatsApp"
       className="w-full h-12 overflow-hidden cursor-pointer hover:brightness-110 transition-all duration-300"
-      style={{ backgroundColor: "#EDD9B0" }}
+      style={{
+        background:
+          "linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0, #F5E6C4, #FBF1D9)",
+        boxShadow:
+          "0 0 24px rgba(245,230,196,0.6), 0 0 48px rgba(237,217,176,0.35)",
+      }}
     >
       <div
         className="flex whitespace-nowrap h-full items-center"
