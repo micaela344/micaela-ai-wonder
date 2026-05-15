@@ -40,6 +40,7 @@ const App = () => (
         </Routes>
         <ChatWidget />
         <CookieBanner />
+        <NewsletterPopup />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
