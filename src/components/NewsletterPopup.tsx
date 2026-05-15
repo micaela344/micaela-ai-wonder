@@ -57,6 +57,7 @@ const NewsletterPopup = () => {
       setStatus("success");
       return;
     }
+    console.error("[NewsletterPopup] Supabase insert error:", error);
     const code = (error as any).code;
     const msg = (error.message || "").toLowerCase();
     if (code === "23505" || msg.includes("duplicate") || msg.includes("unique")) {
