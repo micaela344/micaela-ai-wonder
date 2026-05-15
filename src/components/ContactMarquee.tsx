@@ -29,7 +29,7 @@ const ContactMarquee = () => {
     >
       <div
         className="flex whitespace-nowrap h-full items-center"
-        style={{ animation: "contact-marquee-scroll 8s linear infinite", width: "max-content" }}
+        style={{ animation: "contact-marquee-scroll 20s linear infinite", width: "max-content" }}
       >
         <span style={spanStyle}>{repeated}</span>
         <span style={spanStyle}>{repeated}</span>
