@@ -116,7 +116,14 @@ const Hero = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <ChevronDown className="text-muted-foreground" size={28} />
+          <div
+            className="rounded-full"
+            style={{
+              boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)',
+            }}
+          >
+            <ChevronDown className="text-muted-foreground" size={28} />
+          </div>
         </motion.div>
       </div>
 
