@@ -45,6 +45,7 @@ const services = [
       "Assets para todas las plataformas",
     ],
     href: "/servicios/campanas",
+    faqId: "faq-campanas",
   },
 ];
 
