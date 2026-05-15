@@ -31,6 +31,7 @@ const services = [
       "Producción 10x más rápida que lo tradicional",
     ],
     href: "/servicios/videos-ia",
+    faqId: "faq-videos",
   },
   {
     id: "campanas",
