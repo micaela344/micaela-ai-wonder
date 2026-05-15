@@ -56,8 +56,7 @@ const Hero = () => {
           </span>
         </motion.div>
         <motion.h1
-          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center md:whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
-          
+          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.05] text-center md:whitespace-nowrap [&>span]:leading-[1.05] [&>span]:m-0 [&>span]:p-0"
         >
           <motion.span
             className="block"
@@ -65,8 +64,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Creatividad </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>con propósito,</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Creatividad </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>con propósito,</span>
           </motion.span>
           <motion.span
             className="block"
@@ -74,8 +73,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Estrategia </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>con criterio,</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Estrategia </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>con criterio,</span>
           </motion.span>
           <motion.span
             className="block"
@@ -83,8 +82,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.1 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Resultados </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>que venden.</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Resultados </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>que venden.</span>
           </motion.span>
         </motion.h1>
 
