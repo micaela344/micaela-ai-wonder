@@ -277,22 +277,6 @@ const PaymentStep = ({
   itemPrice,
   email,
   onSuccess,
-}: {
-  itemName: string;
-  itemPrice: string;
-  email: string;
-  onSuccess: () => void;
-}) => {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [processing, setProcessing] = useState(false);
-  const [error, setError] = useState("");
-
-const PaymentStep = ({
-  itemName,
-  itemPrice,
-  email,
-  onSuccess,
   onPayLater,
   payLaterLoading,
 }: {
