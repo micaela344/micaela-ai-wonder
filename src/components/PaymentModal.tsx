@@ -365,17 +365,41 @@ const PaymentStep = ({
 const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProps) => {
   const [step, setStep] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [payLater, setPayLater] = useState(false);
+  const [payLaterLoading, setPayLaterLoading] = useState(false);
 
   const [step1, setStep1] = useState({ service: "", plan: "" });
   const [step2, setStep2] = useState({ company: "", hasWeb: false, webUrl: "", sector: "", teamSize: "" });
   const [step3, setStep3] = useState({ expectations: "", references: "", deadline: "" });
   const [step4, setStep4] = useState({ name: "", email: "", phone: "" });
 
+  // Debounced auto-save (800ms) on every relevant field change while modal is open
+  const debounceRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!isOpen) return;
+    if (!isValidEmail(step4.email)) return;
+    if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    debounceRef.current = window.setTimeout(() => {
+      saveContact({
+        email: step4.email,
+        nombre: step4.name,
+        compania: step2.company,
+        phone: step4.phone,
+        plan_selected: step1.plan || itemName,
+        source: "plan_form",
+      });
+    }, 800);
+    return () => {
+      if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    };
+  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName]);
+
   const handleClose = () => {
     onClose();
     setTimeout(() => {
       setStep(0);
       setSuccess(false);
+      setPayLater(false);
     }, 300);
   };
 
@@ -388,6 +412,38 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
   };
 
   const totalSteps = 5;
+
+  const handlePaymentSuccess = async () => {
+    await saveContact({
+      email: step4.email,
+      nombre: step4.name,
+      compania: step2.company,
+      phone: step4.phone,
+      plan_selected: step1.plan || itemName,
+      source: "plan_form",
+      payment_status: "initiated",
+    });
+    setSuccess(true);
+  };
+
+  const handlePayLater = async () => {
+    if (!isValidEmail(step4.email)) return;
+    setPayLaterLoading(true);
+    await saveContact({
+      email: step4.email,
+      nombre: step4.name,
+      compania: step2.company,
+      phone: step4.phone,
+      plan_selected: step1.plan || itemName,
+      source: "plan_form",
+      payment_status: "pay_later",
+    });
+    setPayLaterLoading(false);
+    setPayLater(true);
+    const planLabel = step1.plan || itemName;
+    const msg = encodeURIComponent(`Hola, quiero reservar el plan ${planLabel} y pagar más tarde.`);
+    window.open(`https://wa.me/34663474019?text=${msg}`, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <AnimatePresence>
@@ -410,7 +466,21 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
               <X size={18} />
             </button>
 
-            {success ? (
+            {payLater ? (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-8">
+                <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
+                <h3 className="text-foreground text-xl font-semibold mb-2">¡Listo!</h3>
+                <p className="text-muted-foreground text-sm">
+                  Guardamos tu solicitud. Te contactaremos para coordinar el pago cuando estés listo.
+                </p>
+                <button
+                  onClick={handleClose}
+                  className="mt-6 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-opacity"
+                >
+                  Cerrar
+                </button>
+              </motion.div>
+            ) : success ? (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-8">
                 <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
                 <h3 className="text-foreground text-xl font-semibold mb-2">¡Todo listo! 🎉</h3>
@@ -425,9 +495,6 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                   Cerrar
                 </button>
               </motion.div>
-            ) : (
-              <>
-                <ProgressBar step={step} total={totalSteps} />
 
                 <AnimatePresence mode="wait">
                   <motion.div
