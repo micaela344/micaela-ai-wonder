@@ -202,6 +202,93 @@ const categories: Category[] = [
     ],
   },
   {
+    title: "Detalles de cada servicio",
+    faqs: [
+      {
+        id: "faq-imagenes",
+        question: "¿Qué incluye exactamente el servicio de imágenes con IA?",
+        answer: (
+          <>
+            El servicio de imágenes con IA incluye:
+            <ul className="list-disc pl-5 mt-3 space-y-1">
+              <li>Imágenes de producto en alta resolución (mínimo 2048x2048px)</li>
+              <li>Formato entregado: JPG y PNG con fondo transparente si se requiere</li>
+              <li>Ratio disponibles: 1:1, 4:5, 9:16, 16:9 según necesidad</li>
+              <li>Dirección de arte incluida (paleta, estilo, composición)</li>
+              <li>Hasta 2 rondas de revisión por imagen</li>
+              <li>Entrega de archivos por WeTransfer o Google Drive</li>
+              <li>No incluye: fotografía de producto real, modelos humanos reales, retoque de fotos existentes</li>
+            </ul>
+            <p className="mt-3">Tiempo estimado: 24-48h para proyectos de hasta 5 imágenes.</p>
+          </>
+        ),
+      },
+      {
+        id: "faq-videos",
+        question: "¿Qué incluye el servicio de videos con IA? ¿Cuánto duran los videos?",
+        answer: (
+          <>
+            El servicio de videos con IA incluye:
+            <ul className="list-disc pl-5 mt-3 space-y-1">
+              <li>Duración estándar: 5 a 15 segundos por video (formato Reels/TikTok/Stories)</li>
+              <li>Duración extendida: hasta 30 segundos (consultar disponibilidad)</li>
+              <li>Formato: MP4 en alta calidad, ratio 9:16 para vertical o 16:9 para horizontal</li>
+              <li>Resolución: 1080p mínimo</li>
+              <li>Música de fondo: incluida (librería libre de derechos) — se puede solicitar sin música</li>
+              <li>Voz en off: NO incluida en el plan estándar — disponible como servicio adicional</li>
+              <li>Subtítulos: disponibles como servicio adicional</li>
+              <li>Hasta 1 ronda de revisión por video</li>
+              <li>No incluye: grabación de video real, actores, locaciones físicas</li>
+            </ul>
+            <p className="mt-3">Tiempo estimado: 3-5 días por video según complejidad.</p>
+          </>
+        ),
+      },
+      {
+        id: "faq-campanas",
+        question: "¿Qué incluye una campaña publicitaria completa con IA?",
+        answer: (
+          <>
+            El servicio de campañas publicitarias incluye:
+            <ul className="list-disc pl-5 mt-3 space-y-1">
+              <li>Concepto creativo y estrategia visual de la campaña</li>
+              <li>Pack de imágenes adaptadas a distintos formatos (feed, stories, banner)</li>
+              <li>Copies sugeridos para cada pieza (opcional)</li>
+              <li>Videos cortos de 5-15 segundos para activación en redes (según plan)</li>
+              <li>Adaptación a múltiples ratios: 1:1, 4:5, 9:16, 16:9</li>
+              <li>Coherencia de marca en todas las piezas</li>
+              <li>Hasta 2 rondas de revisión general</li>
+              <li>Entrega organizada por carpetas según formato y plataforma</li>
+              <li>No incluye: gestión de pauta publicitaria, publicación en redes, community management</li>
+            </ul>
+            <p className="mt-3">Tiempo estimado: 5-10 días según el volumen de piezas.</p>
+          </>
+        ),
+      },
+      {
+        id: "faq-branding",
+        question: "¿Qué incluye el servicio de branding y contenido con IA?",
+        answer: (
+          <>
+            El servicio de branding y contenido incluye:
+            <ul className="list-disc pl-5 mt-3 space-y-1">
+              <li>Pack de contenido visual para redes sociales (imágenes + videos cortos)</li>
+              <li>Coherencia de marca: paleta de colores, estilo visual, tipografía</li>
+              <li>Imágenes para feed de Instagram/LinkedIn adaptadas al estilo de la marca</li>
+              <li>Videos de 5-15 segundos para Reels o Stories</li>
+              <li>Música de fondo libre de derechos incluida en videos</li>
+              <li>Voz en off: disponible como servicio adicional</li>
+              <li>Formatos entregados: JPG, PNG, MP4</li>
+              <li>Hasta 2 rondas de revisión</li>
+              <li>No incluye: diseño de logo, diseño web, gestión de redes sociales</li>
+            </ul>
+            <p className="mt-3">Tiempo estimado: 5-7 días según el volumen acordado.</p>
+          </>
+        ),
+      },
+    ],
+  },
+  {
     title: "Atención y proceso de trabajo",
     faqs: [
       {
