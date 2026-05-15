@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-[calc(100vh-110px)] h-[calc(100vh-110px)] flex items-center justify-center overflow-hidden pt-16">
       {/* Subtle gradient background — animated blobs only on md+ to keep mobile scroll fluid */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(0_0%_8%)_0%,_hsl(0_0%_4%)_70%)]" />
@@ -56,8 +56,7 @@ const Hero = () => {
           </span>
         </motion.div>
         <motion.h1
-          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.15] text-center md:whitespace-nowrap [&>span]:leading-[1.15] [&>span]:m-0 [&>span]:p-0"
-          
+          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.05] text-center md:whitespace-nowrap [&>span]:leading-[1.05] [&>span]:m-0 [&>span]:p-0"
         >
           <motion.span
             className="block"
@@ -65,8 +64,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Creatividad </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>con propósito,</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Creatividad </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>con propósito,</span>
           </motion.span>
           <motion.span
             className="block"
@@ -74,8 +73,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Estrategia </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>con criterio,</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Estrategia </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>con criterio,</span>
           </motion.span>
           <motion.span
             className="block"
@@ -83,8 +82,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.1 }}
           >
-            <span style={{ fontWeight: 300, color: '#666666' }}>Resultados </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>que venden.</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>Resultados </span>
+            <span style={{ fontWeight: 300, color: '#666666' }}>que venden.</span>
           </motion.span>
         </motion.h1>
 
@@ -114,12 +113,15 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
         <ChevronDown className="text-muted-foreground" size={24} />
       </motion.div>
+
+      {/* Bottom fade into the marquee strip below */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-background z-10" />
     </section>
   );
 };
