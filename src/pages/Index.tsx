@@ -38,6 +38,7 @@ const Index = () => {
         <ValueProp />
         <ClientLogos />
         <StickyTabs />
+        <ContactMarquee />
         <Portfolio />
         <EditorialBanner />
         <CTABanner />
