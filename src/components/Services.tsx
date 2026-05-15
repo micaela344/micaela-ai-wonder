@@ -52,6 +52,21 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const handleInfoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = service.faqId;
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
+    if (window.location.hash === `#${id}`) {
+      // force re-trigger
+      window.location.hash = "";
+    }
+    window.location.hash = `#${id}`;
+  };
+
   return (
     <Link to={service.slug}>
       <motion.div
@@ -61,6 +76,30 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         transition={{ duration: 0.6, delay: index * 0.15 }}
         className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-muted-foreground/30 transition-all duration-500 hover:-translate-y-1"
       >
+        <button
+          type="button"
+          onClick={handleInfoClick}
+          aria-label="Ver detalles del servicio"
+          title="Ver detalles del servicio"
+          className="absolute top-3 right-3 z-10 w-5 h-5 rounded-full flex items-center justify-center italic text-[11px] leading-none transition-all duration-200"
+          style={{
+            border: "1px solid #444",
+            background: "transparent",
+            color: "#888",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "#fff";
+            e.currentTarget.style.color = "#fff";
+            e.currentTarget.style.background = "#1a1a1a";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "#444";
+            e.currentTarget.style.color = "#888";
+            e.currentTarget.style.background = "transparent";
+          }}
+        >
+          i
+        </button>
         <div className="aspect-[4/3] overflow-hidden">
           {service.video ? (
             <video
