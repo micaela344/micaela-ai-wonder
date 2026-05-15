@@ -47,7 +47,7 @@ const NewsletterPopup = () => {
     setStatus("loading");
 
     const { error } = await (supabase as any)
-      .from('contacts')
+      .from('contactos')
       .insert({
         'nombre': '',
         'correo electrónico': value,
