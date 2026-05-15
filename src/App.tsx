@@ -15,6 +15,7 @@ import ProduccionEjemplos from "./pages/ProduccionEjemplos.tsx";
 import PoliticaDeCookies from "./pages/PoliticaDeCookies.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
+import NewsletterPopup from "./components/NewsletterPopup.tsx";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
         </Routes>
         <ChatWidget />
         <CookieBanner />
+        <NewsletterPopup />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
