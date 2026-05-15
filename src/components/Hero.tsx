@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Info } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const Hero = () => {
   return (
@@ -26,8 +27,32 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex justify-center mb-6"
         >
-          <span className="inline-block px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-xs sm:text-sm font-normal font-sans tracking-wide">
+          <span className="inline-flex items-center gap-1.5 px-5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white text-xs sm:text-sm font-normal font-sans tracking-wide">
             Desde 250€. Entrega en 3-7 días.
+            <TooltipProvider delayDuration={150}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a
+                    href="#faq-entrega"
+                    aria-label="Ver detalles sobre el plazo de entrega"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (window.location.hash === "#faq-entrega") {
+                        window.dispatchEvent(new HashChangeEvent("hashchange"));
+                      } else {
+                        window.location.hash = "faq-entrega";
+                      }
+                    }}
+                    className="inline-flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                  >
+                    <Info size={14} strokeWidth={1.75} />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="text-xs">
+                  Ver detalles
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </span>
         </motion.div>
         <motion.h1
