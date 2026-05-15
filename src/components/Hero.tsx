@@ -112,7 +112,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="mt-4 flex justify-center z-10"
+          className="mt-2 flex justify-center z-10"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
