@@ -9,12 +9,16 @@ const ServiceCTAButtons = () => {
 
   const handleVerPlanes = () => {
     navigate("/");
-    setTimeout(() => {
+    let attempts = 0;
+    const tryScroll = () => {
       const el = document.getElementById("planes");
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (attempts++ < 40) {
+        setTimeout(tryScroll, 100);
       }
-    }, 150);
+    };
+    setTimeout(tryScroll, 100);
   };
 
   return (
