@@ -25,7 +25,7 @@ const ContactMarquee = () => {
       role="button"
       aria-label="Contáctanos por WhatsApp"
       className="w-full h-12 overflow-hidden cursor-pointer hover:brightness-110 transition-all duration-300"
-      style={{ backgroundColor: "#C8FF00" }}
+      style={{ backgroundColor: "#EDD9B0" }}
     >
       <div
         className="flex whitespace-nowrap h-full items-center"
