@@ -27,6 +27,14 @@ const ValueProp = () => {
           <p className="mt-5 text-base md:text-lg font-sans font-light" style={{ color: '#888888' }}>
             Envíanos cualquier imagen de referencia. Nosotros la convertimos en una fotografía profesional.
           </p>
+          <a
+            href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 rounded-full bg-background text-foreground border-[1.5px] border-white px-8 py-3 text-base font-medium shadow-[0_0_15px_rgba(255,255,255,0.3),0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5),0_0_40px_rgba(255,255,255,0.25)] transition-all duration-300"
+          >
+            Contáctanos
+          </a>
         </motion.div>
       </div>
     </section>
