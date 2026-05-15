@@ -14,14 +14,14 @@ const faqs = [
       <>
         El plazo de 3 a 7 días es una estimación orientativa para proyectos estándar. El tiempo de entrega final depende de varios factores:
         <ul className="list-disc pl-5 mt-3 space-y-1">
-          <li>Tipo de trabajo solicitado (imágenes, videos, campaña completa)</li>
+          <li>Tipo de trabajo solicitado (imágenes, videos o campañas completas)</li>
           <li>Cantidad de creatividades incluidas en el proyecto</li>
           <li>Complejidad y duración de las animaciones</li>
           <li>Número de revisiones solicitadas</li>
           <li>Tiempo de respuesta del cliente para aprobar materiales</li>
         </ul>
         <p className="mt-3">
-          Para proyectos simples (1-3 imágenes), el plazo suele ser de 24-48 horas. Para campañas completas con video, el plazo puede extenderse a 2-3 semanas. Siempre comunicamos el tiempo estimado exacto antes de comenzar el proyecto.
+          Para proyectos simples (1–3 imágenes), el plazo suele ser de 24–48 horas. En proyectos más complejos o campañas completas con video, el tiempo de entrega puede extenderse según el alcance y los requerimientos específicos del proyecto. Siempre comunicamos el plazo estimado exacto antes de comenzar.
         </p>
       </>
     ),
