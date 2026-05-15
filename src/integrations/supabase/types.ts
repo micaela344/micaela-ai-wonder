@@ -97,7 +97,19 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      upsert_contact: {
+        Args: {
+          p_compania?: string
+          p_email: string
+          p_message?: string
+          p_nombre?: string
+          p_payment_status?: string
+          p_phone?: string
+          p_plan_selected?: string
+          p_source?: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
