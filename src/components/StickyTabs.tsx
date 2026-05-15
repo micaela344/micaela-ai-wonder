@@ -17,6 +17,7 @@ const services = [
       "Iteraciones ilimitadas en minutos",
     ],
     href: "/servicios/imagenes-ia",
+    faqId: "faq-imagenes",
   },
   {
     id: "animaciones",
