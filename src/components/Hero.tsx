@@ -56,7 +56,7 @@ const Hero = () => {
           </span>
         </motion.div>
         <motion.h1
-          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[1.05] text-center md:whitespace-nowrap [&>span]:leading-[1.05] [&>span]:m-0 [&>span]:p-0"
+          className="text-[clamp(1.6rem,5vw,4.8rem)] tracking-tight leading-[0.92] text-center md:whitespace-nowrap [&>span]:leading-[0.92] [&>span]:m-0 [&>span]:p-0"
         >
           <motion.span
             className="block"
