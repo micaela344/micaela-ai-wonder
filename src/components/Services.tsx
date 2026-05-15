@@ -17,6 +17,7 @@ const services = [
     image: aiImageCover,
     video: null,
     slug: "/servicios/imagenes-ia",
+    faqId: "faq-imagenes",
   },
   {
     icon: Video,
@@ -25,6 +26,7 @@ const services = [
     image: null,
     video: "/videos/sombra_de_maquillaje.mp4",
     slug: "/servicios/videos-ia",
+    faqId: "faq-videos",
   },
   {
     icon: Megaphone,
@@ -33,6 +35,7 @@ const services = [
     image: null,
     video: "/videos/campanas-portada.mp4",
     slug: "/servicios/campanas",
+    faqId: "faq-campanas",
   },
   {
     icon: Palette,
@@ -41,6 +44,7 @@ const services = [
     image: aiImage4,
     video: null,
     slug: "/servicios/branding",
+    faqId: "faq-branding",
   },
 ];
 
