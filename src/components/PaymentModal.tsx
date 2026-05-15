@@ -1,8 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { supabase } from "@/integrations/supabase/client";
+
+const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+
+const saveContact = async (payload: {
+  email: string;
+  nombre?: string;
+  compania?: string;
+  phone?: string;
+  plan_selected?: string;
+  message?: string;
+  source?: string;
+  payment_status?: string;
+}) => {
+  const email = payload.email.trim().toLowerCase();
+  if (!isValidEmail(email)) return;
+  try {
+    const { error } = await supabase.rpc("upsert_contact", {
+      p_email: email,
+      p_nombre: payload.nombre?.trim() || null,
+      p_compania: payload.compania?.trim() || null,
+      p_phone: payload.phone?.trim() || null,
+      p_plan_selected: payload.plan_selected?.trim() || null,
+      p_message: payload.message?.trim() || null,
+      p_source: payload.source || "plan_form",
+      p_payment_status: payload.payment_status || null,
+    });
+    if (error) console.error("contact save error", error);
+  } catch (e) {
+    console.error("contact save threw", e);
+  }
+};
 
 const stripePromise = loadStripe("pk_test_51TEDFIC1QQPOr4ssWrWvdlkMcoPTCFeumI4Dwnw6ZNCZZN5XCutH5ib9o69wZApQfqlqwuhrLObFNsTFRijLyHQU00eWDjXqfZ");
 
