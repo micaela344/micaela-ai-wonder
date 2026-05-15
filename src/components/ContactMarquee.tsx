@@ -10,9 +10,9 @@ const ContactMarquee = () => {
   };
 
   const spanStyle: React.CSSProperties = {
-    color: "#FFFFFF",
+    color: "#0a0a0a",
     fontFamily: "Inter, sans-serif",
-    fontWeight: 600,
+    fontWeight: 700,
     fontSize: "14px",
     textTransform: "uppercase",
     letterSpacing: "0.1em",
