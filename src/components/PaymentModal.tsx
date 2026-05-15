@@ -288,6 +288,26 @@ const PaymentStep = ({
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
 
+const PaymentStep = ({
+  itemName,
+  itemPrice,
+  email,
+  onSuccess,
+  onPayLater,
+  payLaterLoading,
+}: {
+  itemName: string;
+  itemPrice: string;
+  email: string;
+  onSuccess: () => void;
+  onPayLater: () => void;
+  payLaterLoading: boolean;
+}) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!stripe || !elements) return;
@@ -338,6 +358,17 @@ const PaymentStep = ({
         >
           {processing ? "Procesando..." : "Confirmar y pagar"}
         </button>
+
+        <div className="text-center pt-1">
+          <button
+            type="button"
+            onClick={onPayLater}
+            disabled={payLaterLoading}
+            className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors disabled:opacity-50"
+          >
+            {payLaterLoading ? "Guardando..." : "¿Prefieres pagar más tarde? Guarda tu solicitud →"}
+          </button>
+        </div>
       </form>
 
       <p className="text-center text-[11px] text-muted-foreground/50">
