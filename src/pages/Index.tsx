@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 const Marquee = lazy(() => import("@/components/Marquee"));
 const ValueProp = lazy(() => import("@/components/ValueProp"));
 const StickyTabs = lazy(() => import("@/components/StickyTabs"));
+const ContactMarquee = lazy(() => import("@/components/ContactMarquee"));
 const Portfolio = lazy(() => import("@/components/Portfolio"));
 const CTABanner = lazy(() => import("@/components/CTABanner"));
 const EditorialBanner = lazy(() => import("@/components/EditorialBanner"));
