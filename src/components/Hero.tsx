@@ -109,6 +109,12 @@ const Hero = () => {
           >
             Ver nuestros servicios
           </a>
+          <button
+            onClick={() => window.open('https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F', '_blank')}
+            className="inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full bg-transparent text-white tracking-wide transition-all duration-300 border border-white/40 hover:border-white hover:bg-white/10"
+          >
+            ¡Contáctanos!
+          </button>
         </motion.div>
       </div>
 
