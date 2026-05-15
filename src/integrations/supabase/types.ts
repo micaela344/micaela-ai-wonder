@@ -14,7 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          category: string
+          content: string
+          cover_image: string | null
+          created_at: string
+          description: string
+          id: string
+          published_at: string
+          slug: string
+          title: string
+        }
+        Insert: {
+          category?: string
+          content: string
+          cover_image?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          published_at?: string
+          slug: string
+          title: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          cover_image?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          published_at?: string
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      contacts: {
+        Row: {
+          compania: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          nombre: string | null
+          payment_status: string | null
+          phone: string | null
+          plan_selected: string | null
+          source: string | null
+          updated_at: string
+        }
+        Insert: {
+          compania?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          nombre?: string | null
+          payment_status?: string | null
+          phone?: string | null
+          plan_selected?: string | null
+          source?: string | null
+          updated_at?: string
+        }
+        Update: {
+          compania?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          nombre?: string | null
+          payment_status?: string | null
+          phone?: string | null
+          plan_selected?: string | null
+          source?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
