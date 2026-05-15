@@ -186,8 +186,9 @@ const Pricing = () => {
 
                 <p className="text-muted-foreground text-sm font-light tracking-wide">{plan.name}</p>
 
-                <div className="mt-3 mb-2">
-                  <span className="text-2xl font-bold text-foreground tracking-tight">{displayPrice}</span>
+                <div className="mt-3 mb-2 flex items-baseline gap-1">
+                  <span className="text-xs text-muted-foreground font-light tracking-wide">{plan.pricePrefix}</span>
+                  <span className="text-3xl font-bold text-foreground tracking-tight">{formatPrice(plan.priceEUR, currency)}</span>
                   <span className="text-muted-foreground text-sm font-light">{plan.period}</span>
                 </div>
 
