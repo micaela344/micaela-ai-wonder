@@ -81,21 +81,19 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           onClick={handleInfoClick}
           aria-label="Ver detalles del servicio"
           title="Ver detalles del servicio"
-          className="absolute top-3 right-3 z-10 w-5 h-5 rounded-full flex items-center justify-center italic text-[11px] leading-none transition-all duration-200"
+          className="absolute top-3 right-3 z-20 w-5 h-5 rounded-full flex items-center justify-center italic text-[11px] leading-none transition-all duration-200 backdrop-blur-sm"
           style={{
-            border: "1px solid #444",
-            background: "transparent",
-            color: "#888",
+            border: "1px solid rgba(255,255,255,0.5)",
+            background: "rgba(0,0,0,0.55)",
+            color: "#fff",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = "#fff";
-            e.currentTarget.style.color = "#fff";
             e.currentTarget.style.background = "#1a1a1a";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "#444";
-            e.currentTarget.style.color = "#888";
-            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
+            e.currentTarget.style.background = "rgba(0,0,0,0.55)";
           }}
         >
           i
