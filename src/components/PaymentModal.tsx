@@ -495,6 +495,9 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                   Cerrar
                 </button>
               </motion.div>
+            ) : (
+              <>
+                <ProgressBar step={step} total={totalSteps} />
 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -514,7 +517,9 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                           itemName={itemName}
                           itemPrice={itemPrice}
                           email={step4.email}
-                          onSuccess={() => setSuccess(true)}
+                          onSuccess={handlePaymentSuccess}
+                          onPayLater={handlePayLater}
+                          payLaterLoading={payLaterLoading}
                         />
                       </Elements>
                     )}
