@@ -113,11 +113,11 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-14 left-0 right-0 flex justify-center z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ChevronDown className="text-muted-foreground" size={24} />
+        <ChevronDown className="text-muted-foreground" size={28} />
       </motion.div>
 
       {/* Bottom fade into the marquee strip below */}
