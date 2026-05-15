@@ -1,8 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { supabase } from "@/integrations/supabase/client";
+
+const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+
+const saveContact = async (payload: {
+  email: string;
+  nombre?: string;
+  compania?: string;
+  phone?: string;
+  plan_selected?: string;
+  message?: string;
+  source?: string;
+  payment_status?: string;
+}) => {
+  const email = payload.email.trim().toLowerCase();
+  if (!isValidEmail(email)) return;
+  try {
+    const { error } = await supabase.rpc("upsert_contact", {
+      p_email: email,
+      p_nombre: payload.nombre?.trim() || null,
+      p_compania: payload.compania?.trim() || null,
+      p_phone: payload.phone?.trim() || null,
+      p_plan_selected: payload.plan_selected?.trim() || null,
+      p_message: payload.message?.trim() || null,
+      p_source: payload.source || "plan_form",
+      p_payment_status: payload.payment_status || null,
+    });
+    if (error) console.error("contact save error", error);
+  } catch (e) {
+    console.error("contact save threw", e);
+  }
+};
 
 const stripePromise = loadStripe("pk_test_51TEDFIC1QQPOr4ssWrWvdlkMcoPTCFeumI4Dwnw6ZNCZZN5XCutH5ib9o69wZApQfqlqwuhrLObFNsTFRijLyHQU00eWDjXqfZ");
 
@@ -245,11 +277,15 @@ const PaymentStep = ({
   itemPrice,
   email,
   onSuccess,
+  onPayLater,
+  payLaterLoading,
 }: {
   itemName: string;
   itemPrice: string;
   email: string;
   onSuccess: () => void;
+  onPayLater: () => void;
+  payLaterLoading: boolean;
 }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -306,6 +342,17 @@ const PaymentStep = ({
         >
           {processing ? "Procesando..." : "Confirmar y pagar"}
         </button>
+
+        <div className="text-center pt-1">
+          <button
+            type="button"
+            onClick={onPayLater}
+            disabled={payLaterLoading}
+            className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors disabled:opacity-50"
+          >
+            {payLaterLoading ? "Guardando..." : "¿Prefieres pagar más tarde? Guarda tu solicitud →"}
+          </button>
+        </div>
       </form>
 
       <p className="text-center text-[11px] text-muted-foreground/50">
@@ -318,17 +365,41 @@ const PaymentStep = ({
 const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProps) => {
   const [step, setStep] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [payLater, setPayLater] = useState(false);
+  const [payLaterLoading, setPayLaterLoading] = useState(false);
 
   const [step1, setStep1] = useState({ service: "", plan: "" });
   const [step2, setStep2] = useState({ company: "", hasWeb: false, webUrl: "", sector: "", teamSize: "" });
   const [step3, setStep3] = useState({ expectations: "", references: "", deadline: "" });
   const [step4, setStep4] = useState({ name: "", email: "", phone: "" });
 
+  // Debounced auto-save (800ms) on every relevant field change while modal is open
+  const debounceRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!isOpen) return;
+    if (!isValidEmail(step4.email)) return;
+    if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    debounceRef.current = window.setTimeout(() => {
+      saveContact({
+        email: step4.email,
+        nombre: step4.name,
+        compania: step2.company,
+        phone: step4.phone,
+        plan_selected: step1.plan || itemName,
+        source: "plan_form",
+      });
+    }, 800);
+    return () => {
+      if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    };
+  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName]);
+
   const handleClose = () => {
     onClose();
     setTimeout(() => {
       setStep(0);
       setSuccess(false);
+      setPayLater(false);
     }, 300);
   };
 
@@ -341,6 +412,38 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
   };
 
   const totalSteps = 5;
+
+  const handlePaymentSuccess = async () => {
+    await saveContact({
+      email: step4.email,
+      nombre: step4.name,
+      compania: step2.company,
+      phone: step4.phone,
+      plan_selected: step1.plan || itemName,
+      source: "plan_form",
+      payment_status: "initiated",
+    });
+    setSuccess(true);
+  };
+
+  const handlePayLater = async () => {
+    if (!isValidEmail(step4.email)) return;
+    setPayLaterLoading(true);
+    await saveContact({
+      email: step4.email,
+      nombre: step4.name,
+      compania: step2.company,
+      phone: step4.phone,
+      plan_selected: step1.plan || itemName,
+      source: "plan_form",
+      payment_status: "pay_later",
+    });
+    setPayLaterLoading(false);
+    setPayLater(true);
+    const planLabel = step1.plan || itemName;
+    const msg = encodeURIComponent(`Hola, quiero reservar el plan ${planLabel} y pagar más tarde.`);
+    window.open(`https://wa.me/34663474019?text=${msg}`, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <AnimatePresence>
@@ -363,7 +466,21 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
               <X size={18} />
             </button>
 
-            {success ? (
+            {payLater ? (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-8">
+                <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
+                <h3 className="text-foreground text-xl font-semibold mb-2">¡Listo!</h3>
+                <p className="text-muted-foreground text-sm">
+                  Guardamos tu solicitud. Te contactaremos para coordinar el pago cuando estés listo.
+                </p>
+                <button
+                  onClick={handleClose}
+                  className="mt-6 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-opacity"
+                >
+                  Cerrar
+                </button>
+              </motion.div>
+            ) : success ? (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-8">
                 <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
                 <h3 className="text-foreground text-xl font-semibold mb-2">¡Todo listo! 🎉</h3>
@@ -400,7 +517,9 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                           itemName={itemName}
                           itemPrice={itemPrice}
                           email={step4.email}
-                          onSuccess={() => setSuccess(true)}
+                          onSuccess={handlePaymentSuccess}
+                          onPayLater={handlePayLater}
+                          payLaterLoading={payLaterLoading}
                         />
                       </Elements>
                     )}

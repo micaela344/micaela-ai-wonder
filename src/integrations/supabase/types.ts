@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.4"
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -50,12 +50,66 @@ export type Database = {
         }
         Relationships: []
       }
+      contacts: {
+        Row: {
+          compania: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          nombre: string | null
+          payment_status: string | null
+          phone: string | null
+          plan_selected: string | null
+          source: string | null
+          updated_at: string
+        }
+        Insert: {
+          compania?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          nombre?: string | null
+          payment_status?: string | null
+          phone?: string | null
+          plan_selected?: string | null
+          source?: string | null
+          updated_at?: string
+        }
+        Update: {
+          compania?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          nombre?: string | null
+          payment_status?: string | null
+          phone?: string | null
+          plan_selected?: string | null
+          source?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      upsert_contact: {
+        Args: {
+          p_compania?: string
+          p_email: string
+          p_message?: string
+          p_nombre?: string
+          p_payment_status?: string
+          p_phone?: string
+          p_plan_selected?: string
+          p_source?: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
