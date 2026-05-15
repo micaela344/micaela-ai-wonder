@@ -46,12 +46,13 @@ const NewsletterPopup = () => {
     if (!value) return;
     setStatus("loading");
 
-    const { error } = await (supabase as any).from("contactos").insert({
-      correo_electronico: value,
-      source: "popup_newsletter",
-      nombre: "",
-      compania: "",
-    });
+    const { error } = await (supabase as any)
+      .from('contacts')
+      .insert({
+        'nombre': '',
+        'correo electrónico': value,
+        'compañía': '',
+      });
 
     if (!error) {
       setStatus("success");
