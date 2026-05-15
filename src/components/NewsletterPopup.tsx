@@ -46,20 +46,37 @@ const NewsletterPopup = () => {
     if (!value) return;
     setStatus("loading");
 
-    const { error } = await (supabase as any)
-      .from('newsletter')
-      .insert({ email: value });
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/newsletter`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({ email: value }),
+        }
+      );
 
-    if (!error) {
-      setStatus("success");
-      return;
-    }
-    console.error("[NewsletterPopup] Full error:", JSON.stringify(error));
-    const code = (error as any).code;
-    const msg = (error.message || "").toLowerCase();
-    if (code === "23505" || msg.includes("duplicate") || msg.includes("unique")) {
-      setStatus("duplicate");
-    } else {
+      if (response.ok) {
+        setStatus("success");
+        return;
+      }
+
+      const errorData = await response.json().catch(() => ({}));
+      console.error("[NewsletterPopup] Full error:", JSON.stringify(errorData));
+      const code = (errorData as any).code;
+      const msg = ((errorData as any).message || "").toLowerCase();
+      if (code === "23505" || msg.includes("duplicate") || msg.includes("unique")) {
+        setStatus("duplicate");
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("[NewsletterPopup] Network error:", err);
       setStatus("error");
     }
   };
