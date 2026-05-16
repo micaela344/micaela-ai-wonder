@@ -79,7 +79,22 @@ const StickyTabs = () => {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className={`w-full md:w-[90%] ${service.align === "left" ? "mr-auto" : "ml-auto"}`}
             >
-              <div className="rounded-xl overflow-hidden border border-border mb-6">
+              <div className="relative rounded-xl overflow-hidden border border-border mb-6">
+                <button
+                  type="button"
+                  aria-label="Ver detalles del servicio"
+                  title="Ver detalles del servicio"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const id = service.faqId;
+                    if (window.location.hash === `#${id}`) window.location.hash = "";
+                    window.location.hash = `#${id}`;
+                  }}
+                  className="absolute top-4 right-4 z-30 w-8 h-8 rounded-full flex items-center justify-center italic text-sm leading-none border border-foreground/60 bg-background/80 text-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:border-foreground hover:bg-secondary"
+                >
+                  i
+                </button>
                 {service.video ? (
                   <video
                     src={service.video}
@@ -103,31 +118,6 @@ const StickyTabs = () => {
 
               <div className="flex items-center gap-2 mb-4">
                 <h3 className="text-xl font-semibold text-foreground">{service.label}</h3>
-                <button
-                  type="button"
-                  aria-label="Ver detalles del servicio"
-                  title="Ver detalles del servicio"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const id = service.faqId;
-                    if (window.location.hash === `#${id}`) window.location.hash = "";
-                    window.location.hash = `#${id}`;
-                  }}
-                  className="w-5 h-5 rounded-full flex items-center justify-center italic text-[11px] leading-none transition-all duration-200"
-                  style={{ border: "1px solid #444", background: "transparent", color: "#888" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "#fff";
-                    e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.background = "#1a1a1a";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "#444";
-                    e.currentTarget.style.color = "#888";
-                    e.currentTarget.style.background = "transparent";
-                  }}
-                >
-                  i
-                </button>
               </div>
 
               <ul className="space-y-3">
