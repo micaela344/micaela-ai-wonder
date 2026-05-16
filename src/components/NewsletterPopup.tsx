@@ -43,10 +43,17 @@ const NewsletterPopup = () => {
 
   const close = () => setOpen(false);
 
+  const emailValid = isValidEmail(email);
+  const showEmailError = touched && !emailValid && email.length > 0;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const value = email.trim();
-    if (!value) return;
+    setTouched(true);
+    if (!emailValid) {
+      emailRef.current?.focus();
+      return;
+    }
+    const value = email.trim().toLowerCase();
     setStatus("loading");
 
     try {
