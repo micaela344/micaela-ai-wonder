@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { EMAIL_ERROR, isValidEmail } from "@/lib/formValidation";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error";
 
@@ -9,7 +10,9 @@ const SESSION_KEY = "newsletter_popup_shown";
 const NewsletterPopup = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [touched, setTouched] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
+  const emailRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -40,10 +43,17 @@ const NewsletterPopup = () => {
 
   const close = () => setOpen(false);
 
+  const emailValid = isValidEmail(email);
+  const showEmailError = touched && !emailValid && email.length > 0;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const value = email.trim();
-    if (!value) return;
+    setTouched(true);
+    if (!emailValid) {
+      emailRef.current?.focus();
+      return;
+    }
+    const value = email.trim().toLowerCase();
     setStatus("loading");
 
     try {
@@ -123,21 +133,32 @@ const NewsletterPopup = () => {
               En tu primera campaña o creatividad con IA.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Escribe tu email aquí..."
-                disabled={status === "loading"}
-                maxLength={255}
-                className="w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors"
-              />
+            <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+              <div className="relative">
+                <input
+                  ref={emailRef}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  placeholder="Escribe tu email aquí... *"
+                  disabled={status === "loading"}
+                  maxLength={255}
+                  className={`w-full rounded-lg bg-black/40 border px-4 py-3 pr-10 text-white placeholder:text-white/40 focus:outline-none transition-colors ${
+                    showEmailError ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-white/40"
+                  }`}
+                />
+                {emailValid && (
+                  <Check size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />
+                )}
+              </div>
+              {showEmailError && (
+                <p className="text-red-400 text-xs">{EMAIL_ERROR}</p>
+              )}
               <button
                 type="submit"
-                disabled={status === "loading"}
-                className="w-full rounded-lg bg-white text-black font-medium py-3 hover:bg-white/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                disabled={status === "loading" || !emailValid}
+                className="w-full rounded-lg bg-white text-black font-medium py-3 hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === "loading" ? "Enviando..." : "Quiero mi descuento →"}
               </button>

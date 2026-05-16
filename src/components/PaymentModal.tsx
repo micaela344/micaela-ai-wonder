@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers } from "lucide-react";
+import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers, Check } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
-
-const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+import { isValidEmail, EMAIL_ERROR, isValidPhone, Country } from "@/lib/formValidation";
+import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 
 const saveContact = async (payload: {
   email: string;
@@ -263,26 +263,76 @@ const Step3 = ({
 const Step4 = ({
   data,
   onChange,
+  country,
+  onCountryChange,
+  showErrors,
 }: {
   data: { name: string; email: string; phone: string };
   onChange: (d: Partial<typeof data>) => void;
-}) => (
-  <div className="space-y-5">
-    <h3 className="text-foreground text-lg font-semibold mb-1">Tus datos de contacto</h3>
-    <div>
-      <label className={labelClass}>Nombre completo</label>
-      <input className={inputClass} value={data.name} onChange={(e) => onChange({ name: e.target.value })} placeholder="Tu nombre" />
+  country: Country;
+  onCountryChange: (c: Country) => void;
+  showErrors: boolean;
+}) => {
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const emailValid = isValidEmail(data.email);
+  const nameErr = !data.name.trim() ? "Este campo es obligatorio" : "";
+  const emailErr = !data.email.trim()
+    ? "Este campo es obligatorio"
+    : !emailValid
+    ? EMAIL_ERROR
+    : "";
+  const phoneErr = data.phone.trim() && !isValidPhone(data.phone) ? "El número de teléfono es demasiado corto" : "";
+
+  const showName = (showErrors || touched.name) && nameErr;
+  const showEmail = (showErrors || touched.email) && emailErr;
+  const showPhone = (showErrors || touched.phone) && phoneErr;
+
+  return (
+    <div className="space-y-5">
+      <h3 className="text-foreground text-lg font-semibold mb-1">Tus datos de contacto</h3>
+      <div>
+        <label className={labelClass}>Nombre completo *</label>
+        <input
+          className={`${inputClass} ${showName ? "border-red-500" : ""}`}
+          value={data.name}
+          onChange={(e) => onChange({ name: e.target.value })}
+          onBlur={() => setTouched((p) => ({ ...p, name: true }))}
+          placeholder="Tu nombre"
+        />
+        {showName && <p className="mt-1 text-xs text-red-400">{nameErr}</p>}
+      </div>
+      <div>
+        <label className={labelClass}>Email *</label>
+        <div className="relative">
+          <input
+            className={`${inputClass} ${showEmail ? "border-red-500" : ""} ${emailValid ? "pr-10" : ""}`}
+            type="email"
+            value={data.email}
+            onChange={(e) => onChange({ email: e.target.value })}
+            onBlur={() => setTouched((p) => ({ ...p, email: true }))}
+            placeholder="tu@email.com"
+          />
+          {emailValid && (
+            <Check size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />
+          )}
+        </div>
+        {showEmail && <p className="mt-1 text-xs text-red-400">{emailErr}</p>}
+      </div>
+      <div>
+        <label className={labelClass}>Teléfono (opcional)</label>
+        <div onBlur={() => setTouched((p) => ({ ...p, phone: true }))}>
+          <PhoneInput
+            country={country}
+            onCountryChange={onCountryChange}
+            value={data.phone}
+            onChange={(v) => onChange({ phone: v })}
+            error={showPhone ? phoneErr : null}
+          />
+        </div>
+      </div>
     </div>
-    <div>
-      <label className={labelClass}>Email</label>
-      <input className={inputClass} type="email" value={data.email} onChange={(e) => onChange({ email: e.target.value })} placeholder="tu@email.com" />
-    </div>
-    <div>
-      <label className={labelClass}>Teléfono (opcional)</label>
-      <input className={inputClass} value={data.phone} onChange={(e) => onChange({ phone: e.target.value })} placeholder="+34 600 000 000" />
-    </div>
-  </div>
-);
+  );
+};
 
 // Stripe Payment Step
 const cardElementOptions = {
@@ -397,6 +447,10 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
   const [step2, setStep2] = useState({ company: "", hasWeb: false, webUrl: "", sector: "", teamSize: "" });
   const [step3, setStep3] = useState({ expectations: "", references: "", deadline: "" });
   const [step4, setStep4] = useState({ name: "", email: "", phone: "" });
+  const [country, setCountry] = useDefaultCountry();
+  const [showStep4Errors, setShowStep4Errors] = useState(false);
+
+  const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
   // Debounced auto-save (800ms) on every relevant field change while modal is open
   const debounceRef = useRef<number | null>(null);
@@ -409,7 +463,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
         email: step4.email,
         nombre: step4.name,
         compania: step2.company,
-        phone: step4.phone,
+        phone: formattedPhone,
         plan_selected: step1.plan || itemName,
         source: "plan_form",
       });
@@ -428,12 +482,25 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
     }, 300);
   };
 
+  const step4Valid =
+    !!step4.name.trim() &&
+    isValidEmail(step4.email) &&
+    (!step4.phone.trim() || isValidPhone(step4.phone));
+
   const canNext = () => {
     if (step === 0) return step1.service && step1.plan;
     if (step === 1) return step2.company && step2.sector && step2.teamSize;
     if (step === 2) return step3.deadline;
-    if (step === 3) return step4.name && step4.email;
+    if (step === 3) return step4Valid;
     return true;
+  };
+
+  const handleNext = () => {
+    if (step === 3 && !step4Valid) {
+      setShowStep4Errors(true);
+      return;
+    }
+    setStep(step + 1);
   };
 
   const totalSteps = 5;
@@ -443,7 +510,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
       email: step4.email,
       nombre: step4.name,
       compania: step2.company,
-      phone: step4.phone,
+      phone: formattedPhone,
       plan_selected: step1.plan || itemName,
       source: "plan_form",
       payment_status: "initiated",
@@ -458,7 +525,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
       email: step4.email,
       nombre: step4.name,
       compania: step2.company,
-      phone: step4.phone,
+      phone: formattedPhone,
       plan_selected: step1.plan || itemName,
       source: "plan_form",
       payment_status: "pay_later",
@@ -535,7 +602,15 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                     {step === 0 && <Step1 data={step1} onChange={(d) => setStep1((p) => ({ ...p, ...d }))} />}
                     {step === 1 && <Step2 data={step2} onChange={(d) => setStep2((p) => ({ ...p, ...d }))} />}
                     {step === 2 && <Step3 data={step3} onChange={(d) => setStep3((p) => ({ ...p, ...d }))} />}
-                    {step === 3 && <Step4 data={step4} onChange={(d) => setStep4((p) => ({ ...p, ...d }))} />}
+                    {step === 3 && (
+                      <Step4
+                        data={step4}
+                        onChange={(d) => setStep4((p) => ({ ...p, ...d }))}
+                        country={country}
+                        onCountryChange={setCountry}
+                        showErrors={showStep4Errors}
+                      />
+                    )}
                     {step === 4 && (
                       <Elements stripe={stripePromise}>
                         <PaymentStep
@@ -564,9 +639,9 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                       <div />
                     )}
                     <button
-                      onClick={() => setStep(step + 1)}
+                      onClick={handleNext}
                       disabled={!canNext()}
-                      className="flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {step === 3 ? "Ir al pago" : "Siguiente"} <ArrowRight size={14} />
                     </button>
