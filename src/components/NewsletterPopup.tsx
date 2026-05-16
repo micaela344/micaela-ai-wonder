@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, Check } from "lucide-react";
 import { EMAIL_ERROR, isValidEmail } from "@/lib/formValidation";
 import { useNewsletter } from "@/hooks/useNewsletter";
+import { saveToNewsletter } from "@/lib/my-supabase";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error";
 
@@ -56,6 +57,7 @@ const NewsletterPopup = () => {
     }
     const value = email.trim().toLowerCase();
     setStatus("loading");
+    saveToNewsletter(value);
     const { ok, duplicate } = await saveEmail(value);
     if (duplicate) setStatus("duplicate");
     else if (ok) setStatus("success");

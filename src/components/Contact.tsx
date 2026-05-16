@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 import { useContactForm } from "@/hooks/useContactForm";
+import { saveToContacts } from "@/lib/my-supabase";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -62,6 +63,13 @@ const Contact = () => {
         company: form.compania.trim() || undefined,
         phone,
         message,
+      });
+      saveToContacts({
+        name: form.nombre.trim(),
+        email: form.email.trim().toLowerCase(),
+        company: form.compania.trim() || undefined,
+        message,
+        source: "contact_form",
       });
     } catch (err) {
       console.warn("[Contact] silent fallback", err);
