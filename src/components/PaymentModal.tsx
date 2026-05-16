@@ -447,6 +447,10 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
   const [step2, setStep2] = useState({ company: "", hasWeb: false, webUrl: "", sector: "", teamSize: "" });
   const [step3, setStep3] = useState({ expectations: "", references: "", deadline: "" });
   const [step4, setStep4] = useState({ name: "", email: "", phone: "" });
+  const [country, setCountry] = useDefaultCountry();
+  const [showStep4Errors, setShowStep4Errors] = useState(false);
+
+  const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
   // Debounced auto-save (800ms) on every relevant field change while modal is open
   const debounceRef = useRef<number | null>(null);
