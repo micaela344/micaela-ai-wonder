@@ -463,7 +463,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
         email: step4.email,
         nombre: step4.name,
         compania: step2.company,
-        phone: step4.phone,
+        phone: formattedPhone,
         plan_selected: step1.plan || itemName,
         source: "plan_form",
       });
