@@ -263,26 +263,76 @@ const Step3 = ({
 const Step4 = ({
   data,
   onChange,
+  country,
+  onCountryChange,
+  showErrors,
 }: {
   data: { name: string; email: string; phone: string };
   onChange: (d: Partial<typeof data>) => void;
-}) => (
-  <div className="space-y-5">
-    <h3 className="text-foreground text-lg font-semibold mb-1">Tus datos de contacto</h3>
-    <div>
-      <label className={labelClass}>Nombre completo</label>
-      <input className={inputClass} value={data.name} onChange={(e) => onChange({ name: e.target.value })} placeholder="Tu nombre" />
+  country: Country;
+  onCountryChange: (c: Country) => void;
+  showErrors: boolean;
+}) => {
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const emailValid = isValidEmail(data.email);
+  const nameErr = !data.name.trim() ? "Este campo es obligatorio" : "";
+  const emailErr = !data.email.trim()
+    ? "Este campo es obligatorio"
+    : !emailValid
+    ? EMAIL_ERROR
+    : "";
+  const phoneErr = data.phone.trim() && !isValidPhone(data.phone) ? "El número de teléfono es demasiado corto" : "";
+
+  const showName = (showErrors || touched.name) && nameErr;
+  const showEmail = (showErrors || touched.email) && emailErr;
+  const showPhone = (showErrors || touched.phone) && phoneErr;
+
+  return (
+    <div className="space-y-5">
+      <h3 className="text-foreground text-lg font-semibold mb-1">Tus datos de contacto</h3>
+      <div>
+        <label className={labelClass}>Nombre completo *</label>
+        <input
+          className={`${inputClass} ${showName ? "border-red-500" : ""}`}
+          value={data.name}
+          onChange={(e) => onChange({ name: e.target.value })}
+          onBlur={() => setTouched((p) => ({ ...p, name: true }))}
+          placeholder="Tu nombre"
+        />
+        {showName && <p className="mt-1 text-xs text-red-400">{nameErr}</p>}
+      </div>
+      <div>
+        <label className={labelClass}>Email *</label>
+        <div className="relative">
+          <input
+            className={`${inputClass} ${showEmail ? "border-red-500" : ""} ${emailValid ? "pr-10" : ""}`}
+            type="email"
+            value={data.email}
+            onChange={(e) => onChange({ email: e.target.value })}
+            onBlur={() => setTouched((p) => ({ ...p, email: true }))}
+            placeholder="tu@email.com"
+          />
+          {emailValid && (
+            <Check size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />
+          )}
+        </div>
+        {showEmail && <p className="mt-1 text-xs text-red-400">{emailErr}</p>}
+      </div>
+      <div>
+        <label className={labelClass}>Teléfono (opcional)</label>
+        <div onBlur={() => setTouched((p) => ({ ...p, phone: true }))}>
+          <PhoneInput
+            country={country}
+            onCountryChange={onCountryChange}
+            value={data.phone}
+            onChange={(v) => onChange({ phone: v })}
+            error={showPhone ? phoneErr : null}
+          />
+        </div>
+      </div>
     </div>
-    <div>
-      <label className={labelClass}>Email</label>
-      <input className={inputClass} type="email" value={data.email} onChange={(e) => onChange({ email: e.target.value })} placeholder="tu@email.com" />
-    </div>
-    <div>
-      <label className={labelClass}>Teléfono (opcional)</label>
-      <input className={inputClass} value={data.phone} onChange={(e) => onChange({ phone: e.target.value })} placeholder="+34 600 000 000" />
-    </div>
-  </div>
-);
+  );
+};
 
 // Stripe Payment Step
 const cardElementOptions = {
