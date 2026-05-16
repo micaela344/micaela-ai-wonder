@@ -1,23 +1,16 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { z } from "zod";
+import { Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-
-const schema = z.object({
-  nombre: z.string().trim().min(1, "Nombre requerido").max(120),
-  email: z.string().trim().toLowerCase().email("Email inválido").max(200),
-  compania: z.string().trim().max(120).optional().or(z.literal("")),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
-  servicio: z.string().trim().max(60).optional().or(z.literal("")),
-  message: z.string().trim().max(2000).optional().or(z.literal("")),
-});
+import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib/formValidation";
+import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [country, setCountry] = useDefaultCountry();
   const [form, setForm] = useState({
     nombre: "",
     compania: "",
@@ -26,27 +19,48 @@ const Contact = () => {
     servicio: "",
     message: "",
   });
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [showErrors, setShowErrors] = useState(false);
+
+  const nombreRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [k]: e.target.value }));
 
+  const errors = useMemo(() => {
+    const e: Record<string, string> = {};
+    if (!form.nombre.trim()) e.nombre = "Este campo es obligatorio";
+    if (!form.email.trim()) e.email = "Este campo es obligatorio";
+    else if (!isValidEmail(form.email)) e.email = EMAIL_ERROR;
+    if (!form.message.trim()) e.message = "Este campo es obligatorio";
+    if (form.phone.trim() && !isValidPhone(form.phone)) e.phone = "El número de teléfono es demasiado corto";
+    return e;
+  }, [form]);
+
+  const formValid = Object.keys(errors).length === 0;
+  const emailValid = isValidEmail(form.email);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    const parsed = schema.safeParse(form);
-    if (!parsed.success) {
-      setError(parsed.error.issues[0]?.message ?? "Revisa los datos");
+    setShowErrors(true);
+    if (!formValid) {
+      const target = errors.nombre ? nombreRef.current : errors.email ? emailRef.current : errors.message ? messageRef.current : null;
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+      target?.focus();
       return;
     }
     setSubmitting(true);
     try {
-      const v = parsed.data;
-      const message = [v.servicio ? `Servicio: ${v.servicio}` : "", v.message].filter(Boolean).join(" — ");
+      const email = form.email.trim().toLowerCase();
+      const phone = form.phone.trim() ? `${country.dial} ${form.phone.trim()}` : null;
+      const message = [form.servicio ? `Servicio: ${form.servicio}` : "", form.message].filter(Boolean).join(" — ");
       const { error: rpcError } = await supabase.rpc("upsert_contact", {
-        p_email: v.email,
-        p_nombre: v.nombre,
-        p_compania: v.compania || null,
-        p_phone: v.phone || null,
+        p_email: email,
+        p_nombre: form.nombre.trim(),
+        p_compania: form.compania.trim() || null,
+        p_phone: phone,
         p_plan_selected: null,
         p_message: message || null,
         p_source: "contact_form",
@@ -60,6 +74,10 @@ const Contact = () => {
       setSubmitted(true);
     }
   };
+
+  const shouldShow = (k: string) => (showErrors || touched[k]) && errors[k];
+  const baseInput = "w-full px-4 py-3 text-sm bg-card border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all";
+  const inputCls = (k: string) => `${baseInput} ${shouldShow(k) ? "border-red-500" : "border-border"}`;
 
   return (
     <section id="contacto" className="pt-8 md:pt-12 pb-12 md:pb-32">
@@ -95,45 +113,58 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleSubmit}
+            noValidate
             className="space-y-5"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <input
-                type="text"
-                placeholder="Nombre completo"
-                required
-                maxLength={120}
-                value={form.nombre}
-                onChange={update("nombre")}
-                className="w-full px-4 py-3 text-sm bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all"
-              />
+              <div>
+                <input
+                  ref={nombreRef}
+                  type="text"
+                  placeholder="Nombre completo *"
+                  maxLength={120}
+                  value={form.nombre}
+                  onChange={update("nombre")}
+                  onBlur={() => setTouched((p) => ({ ...p, nombre: true }))}
+                  className={inputCls("nombre")}
+                />
+                {shouldShow("nombre") && <p className="mt-1 text-xs text-red-400">{errors.nombre}</p>}
+              </div>
               <input
                 type="text"
                 placeholder="Empresa / Marca"
                 maxLength={120}
                 value={form.compania}
                 onChange={update("compania")}
-                className="w-full px-4 py-3 text-sm bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all"
+                className={inputCls("compania")}
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                maxLength={200}
-                value={form.email}
-                onChange={update("email")}
-                className="w-full px-4 py-3 text-sm bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all"
-              />
-              <input
-                type="tel"
-                placeholder="Teléfono (opcional)"
-                maxLength={40}
-                value={form.phone}
-                onChange={update("phone")}
-                className="w-full px-4 py-3 text-sm bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all"
-              />
+              <div className="relative">
+                <input
+                  ref={emailRef}
+                  type="email"
+                  placeholder="Email *"
+                  maxLength={200}
+                  value={form.email}
+                  onChange={update("email")}
+                  onBlur={() => setTouched((p) => ({ ...p, email: true }))}
+                  className={`${inputCls("email")} ${emailValid ? "pr-10" : ""}`}
+                />
+                {emailValid && (
+                  <Check size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />
+                )}
+                {shouldShow("email") && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+              </div>
+              <div>
+                <PhoneInput
+                  country={country}
+                  onCountryChange={setCountry}
+                  value={form.phone}
+                  onChange={(v) => setForm((p) => ({ ...p, phone: v }))}
+                  error={shouldShow("phone") ? errors.phone : null}
+                />
+              </div>
             </div>
             <select
               value={form.servicio}
@@ -149,20 +180,24 @@ const Contact = () => {
               <option value="branding">Branding</option>
               <option value="otro">Otro</option>
             </select>
-            <textarea
-              placeholder="Mensaje o descripción del proyecto"
-              rows={4}
-              maxLength={2000}
-              value={form.message}
-              onChange={update("message")}
-              className="w-full px-4 py-3 text-sm bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground/20 transition-all resize-none"
-            />
-            {error && <p className="text-red-400 text-xs">{error}</p>}
+            <div>
+              <textarea
+                ref={messageRef}
+                placeholder="Mensaje o descripción del proyecto *"
+                rows={4}
+                maxLength={2000}
+                value={form.message}
+                onChange={update("message")}
+                onBlur={() => setTouched((p) => ({ ...p, message: true }))}
+                className={`${inputCls("message")} resize-none`}
+              />
+              {shouldShow("message") && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
+            </div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                disabled={submitting}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 text-base font-semibold rounded-full bg-black text-white transition-all duration-300 disabled:opacity-60"
+                disabled={submitting || !formValid}
+                className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 text-base font-semibold rounded-full bg-black text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
               >
                 {submitting ? "Enviando..." : "Enviar"}
