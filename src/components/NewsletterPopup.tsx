@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Check } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { EMAIL_ERROR, isValidEmail } from "@/lib/formValidation";
+import { useNewsletter } from "@/hooks/useNewsletter";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error";
 
@@ -13,6 +13,7 @@ const NewsletterPopup = () => {
   const [touched, setTouched] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const emailRef = useRef<HTMLInputElement>(null);
+  const { saveEmail } = useNewsletter();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -55,40 +56,10 @@ const NewsletterPopup = () => {
     }
     const value = email.trim().toLowerCase();
     setStatus("loading");
-
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/newsletter`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-            Prefer: "return=minimal",
-          },
-          body: JSON.stringify({ email: value }),
-        }
-      );
-
-      if (response.ok) {
-        setStatus("success");
-        return;
-      }
-
-      const errorData = await response.json().catch(() => ({}));
-      console.error("[NewsletterPopup] Full error:", JSON.stringify(errorData));
-      const code = (errorData as any).code;
-      const msg = ((errorData as any).message || "").toLowerCase();
-      if (code === "23505" || msg.includes("duplicate") || msg.includes("unique")) {
-        setStatus("duplicate");
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error("[NewsletterPopup] Network error:", err);
-      setStatus("error");
-    }
+    const { ok, duplicate } = await saveEmail(value);
+    if (duplicate) setStatus("duplicate");
+    else if (ok) setStatus("success");
+    else setStatus("success"); // silent fallback — never show technical errors
   };
 
   if (!open) return null;

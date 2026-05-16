@@ -11,6 +11,7 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [country, setCountry] = useDefaultCountry();
+  const { submitContact } = useContactForm();
   const [form, setForm] = useState({
     nombre: "",
     compania: "",
