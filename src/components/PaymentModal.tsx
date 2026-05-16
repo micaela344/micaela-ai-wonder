@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers } from "lucide-react";
+import { X, CreditCard, CheckCircle, ArrowRight, ArrowLeft, Camera, Megaphone, Palette, Video, Layers, Check } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
-
-const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+import { isValidEmail, EMAIL_ERROR, isValidPhone, Country } from "@/lib/formValidation";
+import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 
 const saveContact = async (payload: {
   email: string;
