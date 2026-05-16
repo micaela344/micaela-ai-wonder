@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { EMAIL_ERROR, isValidEmail } from "@/lib/formValidation";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error";
 
