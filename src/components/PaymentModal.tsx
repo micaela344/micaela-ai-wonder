@@ -639,9 +639,9 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                       <div />
                     )}
                     <button
-                      onClick={() => setStep(step + 1)}
+                      onClick={handleNext}
                       disabled={!canNext()}
-                      className="flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {step === 3 ? "Ir al pago" : "Siguiente"} <ArrowRight size={14} />
                     </button>
