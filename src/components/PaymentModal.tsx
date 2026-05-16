@@ -427,6 +427,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   // Debounced auto-save (800ms) via reusable hook
   const { saveProgress } = usePricingForm();
+  const myDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (!isOpen) return;
     if (!isValidEmail(step4.email)) return;
@@ -437,6 +438,17 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
       phone: formattedPhone,
       plan_selected: step1.plan || itemName,
     });
+    if (myDebounceRef.current) clearTimeout(myDebounceRef.current);
+    myDebounceRef.current = setTimeout(() => {
+      saveToContacts({
+        name: step4.name?.trim() || undefined,
+        email: step4.email.trim().toLowerCase(),
+        company: step2.company?.trim() || undefined,
+        phone: formattedPhone || undefined,
+        plan_selected: (step1.plan || itemName)?.trim() || undefined,
+        source: "plan_form",
+      });
+    }, 800);
   }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName, saveProgress, formattedPhone]);
 
   const handleClose = () => {
