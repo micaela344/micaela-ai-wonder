@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { isValidEmail, EMAIL_ERROR, isValidPhone, Country } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 import { usePricingForm } from "@/hooks/usePricingForm";
+import { saveToContacts } from "@/lib/my-supabase";
 
 const stripePromise = loadStripe("pk_test_51TEDFIC1QQPOr4ssWrWvdlkMcoPTCFeumI4Dwnw6ZNCZZN5XCutH5ib9o69wZApQfqlqwuhrLObFNsTFRijLyHQU00eWDjXqfZ");
 
