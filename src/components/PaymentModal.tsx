@@ -482,12 +482,25 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
     }, 300);
   };
 
+  const step4Valid =
+    !!step4.name.trim() &&
+    isValidEmail(step4.email) &&
+    (!step4.phone.trim() || isValidPhone(step4.phone));
+
   const canNext = () => {
     if (step === 0) return step1.service && step1.plan;
     if (step === 1) return step2.company && step2.sector && step2.teamSize;
     if (step === 2) return step3.deadline;
-    if (step === 3) return step4.name && step4.email;
+    if (step === 3) return step4Valid;
     return true;
+  };
+
+  const handleNext = () => {
+    if (step === 3 && !step4Valid) {
+      setShowStep4Errors(true);
+      return;
+    }
+    setStep(step + 1);
   };
 
   const totalSteps = 5;
