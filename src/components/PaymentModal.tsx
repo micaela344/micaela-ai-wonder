@@ -602,7 +602,15 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
                     {step === 0 && <Step1 data={step1} onChange={(d) => setStep1((p) => ({ ...p, ...d }))} />}
                     {step === 1 && <Step2 data={step2} onChange={(d) => setStep2((p) => ({ ...p, ...d }))} />}
                     {step === 2 && <Step3 data={step3} onChange={(d) => setStep3((p) => ({ ...p, ...d }))} />}
-                    {step === 3 && <Step4 data={step4} onChange={(d) => setStep4((p) => ({ ...p, ...d }))} />}
+                    {step === 3 && (
+                      <Step4
+                        data={step4}
+                        onChange={(d) => setStep4((p) => ({ ...p, ...d }))}
+                        country={country}
+                        onCountryChange={setCountry}
+                        showErrors={showStep4Errors}
+                      />
+                    )}
                     {step === 4 && (
                       <Elements stripe={stripePromise}>
                         <PaymentStep
