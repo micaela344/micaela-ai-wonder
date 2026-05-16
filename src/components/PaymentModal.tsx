@@ -179,10 +179,35 @@ const Step2 = ({
     <div>
       <label className={labelClass}>¿En qué sector opera tu empresa?</label>
       <div className="flex flex-wrap gap-2">
-        {sectorOptions.map((s) => (
-          <SelectionChip key={s} label={s} selected={data.sector === s} onClick={() => onChange({ sector: s })} />
-        ))}
+        {sectorOptions.map((s) => {
+          const isOtro = s === "Otro";
+          const predefined = sectorOptions.filter((o) => o !== "Otro");
+          const otroSelected = !!data.sector && !predefined.includes(data.sector);
+          const selected = isOtro ? otroSelected : data.sector === s;
+          return (
+            <SelectionChip
+              key={s}
+              label={s}
+              selected={selected}
+              onClick={() => onChange({ sector: isOtro ? "Otro" : s })}
+            />
+          );
+        })}
       </div>
+      {(() => {
+        const predefined = sectorOptions.filter((o) => o !== "Otro");
+        const showInput = !!data.sector && !predefined.includes(data.sector);
+        if (!showInput) return null;
+        return (
+          <input
+            className={`${inputClass} mt-3`}
+            value={data.sector === "Otro" ? "" : data.sector}
+            onChange={(e) => onChange({ sector: e.target.value || "Otro" })}
+            placeholder="Especifica tu sector"
+            autoFocus
+          />
+        );
+      })()}
     </div>
     <div>
       <label className={labelClass}>¿Cuántas personas forman tu equipo?</label>
