@@ -6,35 +6,7 @@ import { Elements, CardElement, useStripe, useElements } from "@stripe/react-str
 import { supabase } from "@/integrations/supabase/client";
 import { isValidEmail, EMAIL_ERROR, isValidPhone, Country } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
-
-const saveContact = async (payload: {
-  email: string;
-  nombre?: string;
-  compania?: string;
-  phone?: string;
-  plan_selected?: string;
-  message?: string;
-  source?: string;
-  payment_status?: string;
-}) => {
-  const email = payload.email.trim().toLowerCase();
-  if (!isValidEmail(email)) return;
-  try {
-    const { error } = await supabase.rpc("upsert_contact", {
-      p_email: email,
-      p_nombre: payload.nombre?.trim() || null,
-      p_compania: payload.compania?.trim() || null,
-      p_phone: payload.phone?.trim() || null,
-      p_plan_selected: payload.plan_selected?.trim() || null,
-      p_message: payload.message?.trim() || null,
-      p_source: payload.source || "plan_form",
-      p_payment_status: payload.payment_status || null,
-    });
-    if (error) console.error("contact save error", error);
-  } catch (e) {
-    console.error("contact save threw", e);
-  }
-};
+import { usePricingForm } from "@/hooks/usePricingForm";
 
 const stripePromise = loadStripe("pk_test_51TEDFIC1QQPOr4ssWrWvdlkMcoPTCFeumI4Dwnw6ZNCZZN5XCutH5ib9o69wZApQfqlqwuhrLObFNsTFRijLyHQU00eWDjXqfZ");
 
@@ -452,26 +424,19 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
-  // Debounced auto-save (800ms) on every relevant field change while modal is open
-  const debounceRef = useRef<number | null>(null);
+  // Debounced auto-save (800ms) via reusable hook
+  const { saveProgress } = usePricingForm();
   useEffect(() => {
     if (!isOpen) return;
     if (!isValidEmail(step4.email)) return;
-    if (debounceRef.current) window.clearTimeout(debounceRef.current);
-    debounceRef.current = window.setTimeout(() => {
-      saveContact({
-        email: step4.email,
-        nombre: step4.name,
-        compania: step2.company,
-        phone: formattedPhone,
-        plan_selected: step1.plan || itemName,
-        source: "plan_form",
-      });
-    }, 800);
-    return () => {
-      if (debounceRef.current) window.clearTimeout(debounceRef.current);
-    };
-  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName]);
+    saveProgress({
+      email: step4.email,
+      name: step4.name,
+      company: step2.company,
+      phone: formattedPhone,
+      plan_selected: step1.plan || itemName,
+    });
+  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName, saveProgress, formattedPhone]);
 
   const handleClose = () => {
     onClose();
