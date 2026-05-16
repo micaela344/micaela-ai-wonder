@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Instagram } from "lucide-react";
 import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 import { useContactForm } from "@/hooks/useContactForm";
