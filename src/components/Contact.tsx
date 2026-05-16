@@ -1,9 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
+import { useContactForm } from "@/hooks/useContactForm";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -53,22 +53,17 @@ const Contact = () => {
     }
     setSubmitting(true);
     try {
-      const email = form.email.trim().toLowerCase();
-      const phone = form.phone.trim() ? `${country.dial} ${form.phone.trim()}` : null;
+      const phone = form.phone.trim() ? `${country.dial} ${form.phone.trim()}` : undefined;
       const message = [form.servicio ? `Servicio: ${form.servicio}` : "", form.message].filter(Boolean).join(" — ");
-      const { error: rpcError } = await supabase.rpc("upsert_contact", {
-        p_email: email,
-        p_nombre: form.nombre.trim(),
-        p_compania: form.compania.trim() || null,
-        p_phone: phone,
-        p_plan_selected: null,
-        p_message: message || null,
-        p_source: "contact_form",
-        p_payment_status: "contact_only",
+      await submitContact({
+        name: form.nombre.trim(),
+        email: form.email,
+        company: form.compania.trim() || undefined,
+        phone,
+        message,
       });
-      if (rpcError) console.error("contact upsert failed", rpcError);
     } catch (err) {
-      console.error("contact submit error", err);
+      console.warn("[Contact] silent fallback", err);
     } finally {
       setSubmitting(false);
       setSubmitted(true);
