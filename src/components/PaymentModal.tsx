@@ -470,31 +470,34 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   const totalSteps = 5;
 
+  const savePaymentStatus = async (payment_status: string) => {
+    const email = step4.email.trim().toLowerCase();
+    if (!isValidEmail(email)) return;
+    try {
+      await supabase.rpc("upsert_contact", {
+        p_email: email,
+        p_nombre: step4.name?.trim() || null,
+        p_compania: step2.company?.trim() || null,
+        p_phone: formattedPhone || null,
+        p_plan_selected: (step1.plan || itemName)?.trim() || null,
+        p_message: null,
+        p_source: "plan_form",
+        p_payment_status: payment_status,
+      });
+    } catch (e) {
+      console.warn("[PaymentModal] silent fallback", e);
+    }
+  };
+
   const handlePaymentSuccess = async () => {
-    await saveContact({
-      email: step4.email,
-      nombre: step4.name,
-      compania: step2.company,
-      phone: formattedPhone,
-      plan_selected: step1.plan || itemName,
-      source: "plan_form",
-      payment_status: "initiated",
-    });
+    await savePaymentStatus("initiated");
     setSuccess(true);
   };
 
   const handlePayLater = async () => {
     if (!isValidEmail(step4.email)) return;
     setPayLaterLoading(true);
-    await saveContact({
-      email: step4.email,
-      nombre: step4.name,
-      compania: step2.company,
-      phone: formattedPhone,
-      plan_selected: step1.plan || itemName,
-      source: "plan_form",
-      payment_status: "pay_later",
-    });
+    await savePaymentStatus("pay_later");
     setPayLaterLoading(false);
     setPayLater(true);
     const planLabel = step1.plan || itemName;
