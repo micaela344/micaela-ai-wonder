@@ -133,21 +133,32 @@ const NewsletterPopup = () => {
               En tu primera campaña o creatividad con IA.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Escribe tu email aquí..."
-                disabled={status === "loading"}
-                maxLength={255}
-                className="w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors"
-              />
+            <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+              <div className="relative">
+                <input
+                  ref={emailRef}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  placeholder="Escribe tu email aquí... *"
+                  disabled={status === "loading"}
+                  maxLength={255}
+                  className={`w-full rounded-lg bg-black/40 border px-4 py-3 pr-10 text-white placeholder:text-white/40 focus:outline-none transition-colors ${
+                    showEmailError ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-white/40"
+                  }`}
+                />
+                {emailValid && (
+                  <Check size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />
+                )}
+              </div>
+              {showEmailError && (
+                <p className="text-red-400 text-xs">{EMAIL_ERROR}</p>
+              )}
               <button
                 type="submit"
-                disabled={status === "loading"}
-                className="w-full rounded-lg bg-white text-black font-medium py-3 hover:bg-white/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                disabled={status === "loading" || !emailValid}
+                className="w-full rounded-lg bg-white text-black font-medium py-3 hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === "loading" ? "Enviando..." : "Quiero mi descuento →"}
               </button>
