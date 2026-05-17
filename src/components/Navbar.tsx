@@ -5,13 +5,26 @@ import { Menu, X, Sparkles, Instagram } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.webp";
 import LanguageToggle from "./LanguageToggle";
 
-const navLinks = [
+const navLinksES = [
   { label: "Servicios", href: "#servicios" },
   { label: "Planes", href: "#planes" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "#contacto" },
 ];
+
+const navLinksEN = [
+  { label: "Services", href: "#servicios" },
+  { label: "Plans", href: "#planes" },
+  { label: "About me", href: "#sobre-mi" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "#contacto" },
+];
+
+const isEnglish = () => {
+  if (typeof document === "undefined") return false;
+  return /googtrans=\/[a-z]{2}\/en/i.test(document.cookie);
+};
 
 const sectionIds = ["servicios", "planes", "sobre-mi", "contacto"];
 
