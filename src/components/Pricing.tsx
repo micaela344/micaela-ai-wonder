@@ -239,9 +239,20 @@ const Pricing = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <h3 className="text-lg md:text-xl tracking-tight mb-6">
-              <span style={{ fontWeight: 300, color: '#666666' }}>Servicios </span>
-              <span style={{ fontWeight: 800, color: '#ffffff' }}>puntuales</span>
+            <h3 className="text-lg md:text-xl tracking-tight mb-6 flex items-center gap-2">
+              <span>
+                <span style={{ fontWeight: 300, color: '#666666' }}>Servicios </span>
+                <span style={{ fontWeight: 800, color: '#ffffff' }}>puntuales</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => scrollToFaq("faq-imagenes")}
+                aria-label="Ver detalles de cada servicio en preguntas frecuentes"
+                title="Ver detalles de cada servicio"
+                className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#333333] text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+              >
+                <Info size={13} />
+              </button>
             </h3>
 
             <div className="border border-[#1a1a1a] rounded-2xl divide-y divide-[#1a1a1a] bg-[#0d0d0d]">
@@ -255,7 +266,18 @@ const Pricing = () => {
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
                   className="px-5 py-4 space-y-2"
                 >
-                  <span className="text-sm text-muted-foreground font-light block">{s.name}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground font-light">{s.name}</span>
+                    <button
+                      type="button"
+                      onClick={() => scrollToFaq(s.faqId)}
+                      aria-label={`Ver detalles de ${s.name}`}
+                      title="Ver detalles"
+                      className="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Info size={12} />
+                    </button>
+                  </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-foreground font-medium">{displayPrice}</span>
                     <button
