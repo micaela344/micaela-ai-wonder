@@ -5,13 +5,26 @@ import { Menu, X, Sparkles, Instagram } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.webp";
 import LanguageToggle from "./LanguageToggle";
 
-const navLinks = [
+const navLinksES = [
   { label: "Servicios", href: "#servicios" },
   { label: "Planes", href: "#planes" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "#contacto" },
 ];
+
+const navLinksEN = [
+  { label: "Services", href: "#servicios" },
+  { label: "Plans", href: "#planes" },
+  { label: "About me", href: "#sobre-mi" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "#contacto" },
+];
+
+const isEnglish = () => {
+  if (typeof document === "undefined") return false;
+  return /googtrans=\/[a-z]{2}\/en/i.test(document.cookie);
+};
 
 const sectionIds = ["servicios", "planes", "sobre-mi", "contacto"];
 
@@ -21,6 +34,13 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [english, setEnglish] = useState(false);
+  const navLinks = english ? navLinksEN : navLinksES;
+
+  useEffect(() => {
+    setEnglish(isEnglish());
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -93,7 +113,7 @@ const Navbar = () => {
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
-        <div className="hidden md:flex items-center gap-5 lg:gap-8 whitespace-nowrap">
+        <div translate="no" className="notranslate hidden md:flex items-center gap-5 lg:gap-8 whitespace-nowrap">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
@@ -169,6 +189,7 @@ const Navbar = () => {
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               <div className="pb-2"><LanguageToggle /></div>
+              <div translate="no" className="notranslate contents">
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
@@ -193,6 +214,7 @@ const Navbar = () => {
                   </button>
                 )
               )}
+              </div>
               <button
                 onClick={() => {
                   setMobileOpen(false);
