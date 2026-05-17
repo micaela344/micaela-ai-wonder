@@ -76,11 +76,19 @@ const plans = [
 ];
 
 const serviciosPuntuales = [
-  { name: "Pack Catálogo (10 piezas)", priceEUR: 250, pricePrefix: "desde " },
-  { name: "Pack Campaña (6 piezas)", priceEUR: 390, pricePrefix: "desde " },
-  { name: "Video corto para redes", priceEUR: 200, pricePrefix: "desde " },
-  { name: "Campaña completa", priceEUR: 800, pricePrefix: "desde " },
+  { name: "Pack Catálogo (10 piezas)", priceEUR: 250, pricePrefix: "desde ", faqId: "faq-imagenes" },
+  { name: "Pack Campaña (6 piezas)", priceEUR: 390, pricePrefix: "desde ", faqId: "faq-campanas" },
+  { name: "Video corto para redes", priceEUR: 200, pricePrefix: "desde ", faqId: "faq-videos" },
+  { name: "Campaña completa", priceEUR: 800, pricePrefix: "desde ", faqId: "faq-campanas" },
 ];
+
+const scrollToFaq = (faqId: string) => {
+  if (window.location.hash === `#${faqId}`) {
+    document.getElementById(faqId)?.scrollIntoView({ behavior: "smooth", block: "center" });
+  } else {
+    window.location.hash = faqId;
+  }
+};
 
 const Pricing = () => {
   const ref = useRef(null);
