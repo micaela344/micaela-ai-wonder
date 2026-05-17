@@ -71,6 +71,8 @@ const Marquee = () => {
                   decoding="async"
                 />
               )}
+            </a>
+          ))}
         </div>
       </div>
     </section>
