@@ -69,27 +69,18 @@ const Hero = () => {
         >
           <a
             href="#servicios"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
+            className="group inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full bg-black text-white tracking-wide transition-all duration-300"
             style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
           >
             Ver nuestros servicios
+            <motion.span
+              className="ml-2 inline-flex"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowRight size={16} />
+            </motion.span>
           </a>
-        </motion.div>
-
-        <motion.div
-          className="mt-2 flex justify-center z-10"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div
-            className="rounded-full"
-            style={{
-              boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)',
-            }}
-          >
-            <ChevronDown className="text-muted-foreground" size={28} />
-          </div>
-        </motion.div>
       </div>
 
       {/* Bottom fade into the marquee strip below */}
