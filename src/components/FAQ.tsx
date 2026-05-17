@@ -211,15 +211,16 @@ const categories: Category[] = [
           <>
             El servicio de imágenes con IA incluye:
             <ul className="list-disc pl-5 mt-3 space-y-1">
-              <li>Imágenes de producto en alta resolución (mínimo 2048x2048px)</li>
+              <li>Imágenes de producto en alta resolución (mínimo 2048x2048px) — consideramos el producto real a partir de una foto básica que nos envíes como referencia</li>
               <li>Formato entregado: JPG y PNG con fondo transparente si se requiere</li>
               <li>Ratio disponibles: 1:1, 4:5, 9:16, 16:9 según necesidad</li>
               <li>Dirección de arte incluida (paleta, estilo, composición)</li>
               <li>Hasta 2 rondas de revisión por imagen</li>
               <li>Entrega de archivos por WeTransfer o Google Drive</li>
-              <li>No incluye: fotografía de producto real, modelos humanos reales, retoque de fotos existentes</li>
+              <li>Modelos humanos generados con IA (no contratamos modelos reales)</li>
             </ul>
-            <p className="mt-3">Tiempo estimado: 24-48h para proyectos de hasta 5 imágenes.</p>
+            <p className="mt-3">Solo necesitamos una foto básica de tu producto como referencia; el resto lo hacemos nosotros con inteligencia artificial y dirección de arte profesional.</p>
+            <p className="mt-2">Tiempo estimado: 24-48h para proyectos de hasta 5 imágenes.</p>
           </>
         ),
       },
