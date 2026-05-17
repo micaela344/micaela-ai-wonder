@@ -35,6 +35,13 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [english, setEnglish] = useState(false);
+  const navLinks = english ? navLinksEN : navLinksES;
+
+  useEffect(() => {
+    setEnglish(isEnglish());
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
