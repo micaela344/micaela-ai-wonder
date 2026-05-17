@@ -42,7 +42,7 @@ const Marquee = () => {
 
       <div className="flex gap-8 overflow-hidden px-6">
         <div className={`flex gap-8 ${isFast ? "animate-marquee-left-fast" : "animate-marquee-left"}`}>
-          {[...showcaseRow, ...showcaseRow].map((img, i) => (
+          {[...showcaseRow, ...showcaseRow].map((item, i) => (
             <a
               key={i}
               href="#servicios"
@@ -52,15 +52,25 @@ const Marquee = () => {
               }}
               className="group flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden cursor-pointer"
             >
-              <img
-                src={img}
-                alt="Muestra creativa"
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          ))}
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt="Muestra creativa"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
         </div>
       </div>
     </section>
