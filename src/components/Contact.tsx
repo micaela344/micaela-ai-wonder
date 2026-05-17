@@ -120,7 +120,7 @@ const Contact = () => {
             </a>
           </div>
           <p className="text-muted-foreground">
-            Completa el formulario y recibe tu propuesta en menos de 24 horas
+            Completa el formulario y recibe tu respuesta en menos de 24 horas
           </p>
         </motion.div>
 
