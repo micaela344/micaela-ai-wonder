@@ -81,6 +81,7 @@ const Hero = () => {
               <ArrowRight size={16} />
             </motion.span>
           </a>
+        </motion.div>
       </div>
 
       {/* Bottom fade into the marquee strip below */}
