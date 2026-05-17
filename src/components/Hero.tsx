@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[calc(100vh-260px)] flex items-center justify-center overflow-hidden pt-16 md:pt-20 lg:pt-24 pb-12">
+    <section className="relative min-h-[calc(100vh-340px)] flex items-center justify-center overflow-hidden pt-16 md:pt-20 lg:pt-24 pb-12">
       {/* Subtle gradient background — animated blobs only on md+ to keep mobile scroll fluid */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(0_0%_8%)_0%,_hsl(0_0%_4%)_70%)]" />
