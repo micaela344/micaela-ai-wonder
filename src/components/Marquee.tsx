@@ -7,19 +7,21 @@ import marquee4 from "@/assets/marquee-4.webp";
 import marquee5 from "@/assets/marquee-5.webp";
 import marquee6 from "@/assets/marquee-6.webp";
 import marquee7 from "@/assets/marquee-7.webp";
-import marqueeLipgloss from "@/assets/marquee-lipgloss.webp";
 import marqueeYoga from "@/assets/marquee-yoga.webp";
+import marqueeLotusVideo from "@/assets/marquee-lotus.mp4";
 
-const showcaseRow = [
-  marquee1,
-  marqueeYoga,
-  marquee2,
-  marquee3,
-  marquee4,
-  marquee5,
-  marquee6,
-  marquee7,
-  marqueeLipgloss,
+type ShowcaseItem = { type: "image"; src: string } | { type: "video"; src: string };
+
+const showcaseRow: ShowcaseItem[] = [
+  { type: "image", src: marquee1 },
+  { type: "image", src: marqueeYoga },
+  { type: "image", src: marquee2 },
+  { type: "image", src: marquee3 },
+  { type: "video", src: marqueeLotusVideo },
+  { type: "image", src: marquee4 },
+  { type: "image", src: marquee5 },
+  { type: "image", src: marquee6 },
+  { type: "image", src: marquee7 },
 ];
 
 const Marquee = () => {
@@ -40,7 +42,7 @@ const Marquee = () => {
 
       <div className="flex gap-8 overflow-hidden px-6">
         <div className={`flex gap-8 ${isFast ? "animate-marquee-left-fast" : "animate-marquee-left"}`}>
-          {[...showcaseRow, ...showcaseRow].map((img, i) => (
+          {[...showcaseRow, ...showcaseRow].map((item, i) => (
             <a
               key={i}
               href="#servicios"
@@ -50,13 +52,25 @@ const Marquee = () => {
               }}
               className="group flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden cursor-pointer"
             >
-              <img
-                src={img}
-                alt="Muestra creativa"
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                loading="lazy"
-                decoding="async"
-              />
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt="Muestra creativa"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
             </a>
           ))}
         </div>
