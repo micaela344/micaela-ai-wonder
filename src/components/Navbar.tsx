@@ -189,6 +189,7 @@ const Navbar = () => {
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               <div className="pb-2"><LanguageToggle /></div>
+              <div translate="no" className="notranslate contents">
               {navLinks.map((link) =>
                 link.href.startsWith("/") ? (
                   <Link
@@ -213,6 +214,7 @@ const Navbar = () => {
                   </button>
                 )
               )}
+              </div>
               <button
                 onClick={() => {
                   setMobileOpen(false);
