@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Info } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
