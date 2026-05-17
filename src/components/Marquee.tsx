@@ -9,17 +9,21 @@ import marquee6 from "@/assets/marquee-6.webp";
 import marquee7 from "@/assets/marquee-7.webp";
 import marqueeLipgloss from "@/assets/marquee-lipgloss.webp";
 import marqueeYoga from "@/assets/marquee-yoga.webp";
+import marqueeLotusVideo from "@/assets/marquee-lotus.mp4";
 
-const showcaseRow = [
-  marquee1,
-  marqueeYoga,
-  marquee2,
-  marquee3,
-  marquee4,
-  marquee5,
-  marquee6,
-  marquee7,
-  marqueeLipgloss,
+type ShowcaseItem = { type: "image"; src: string } | { type: "video"; src: string };
+
+const showcaseRow: ShowcaseItem[] = [
+  { type: "image", src: marquee1 },
+  { type: "image", src: marqueeYoga },
+  { type: "image", src: marquee2 },
+  { type: "image", src: marquee3 },
+  { type: "video", src: marqueeLotusVideo },
+  { type: "image", src: marquee4 },
+  { type: "image", src: marquee5 },
+  { type: "image", src: marquee6 },
+  { type: "image", src: marquee7 },
+  { type: "image", src: marqueeLipgloss },
 ];
 
 const Marquee = () => {
