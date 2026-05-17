@@ -18,7 +18,7 @@ const CTABanner = () => {
           className="space-y-6"
         >
           <h2
-            className="font-sans tracking-tight leading-[1.1]"
+            className="font-sans tracking-tight leading-[1.1] inline-flex items-center justify-center flex-wrap gap-2"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(1.75rem, 4vw, 3.5rem)",
@@ -26,8 +26,24 @@ const CTABanner = () => {
               color: '#F5F5F0',
             }}
           >
-            Tu próxima campaña, lista en{" "}
-            <span style={{ fontWeight: 700, color: '#FFFFFF' }}>3-7 días</span>.
+            <span>Tu próxima campaña, lista en{" "}</span>
+            <span style={{ fontWeight: 700, color: '#FFFFFF' }}>3-7 días</span>
+            <span>.</span>
+            <a
+              href="#faq-entrega"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = "faq-entrega";
+                setTimeout(() => {
+                  document.getElementById("faq-entrega")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 50);
+              }}
+              className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all"
+              aria-label="Más información sobre tiempos de entrega"
+              title="Más información sobre tiempos de entrega"
+            >
+              <Info size={14} />
+            </a>
           </h2>
 
           <p
