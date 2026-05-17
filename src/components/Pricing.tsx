@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Info } from "lucide-react";
 import PaymentModal from "./PaymentModal";
 
 type CurrencyCode = "EUR" | "USD" | "CLP";
