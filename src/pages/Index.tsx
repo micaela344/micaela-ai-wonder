@@ -44,8 +44,8 @@ const Index = () => {
         <CTABanner />
         <Pricing />
         <AboutMe />
-        <FAQ />
         <Contact />
+        <FAQ />
         <Footer />
       </Suspense>
     </div>
