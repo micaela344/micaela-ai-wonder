@@ -470,8 +470,9 @@ const FAQ = () => {
                 ))}
               </div>
             </div>
-          ))}
-        </Accordion>
+            ))}
+          </Accordion>
+        )}
       </div>
     </section>
   );
