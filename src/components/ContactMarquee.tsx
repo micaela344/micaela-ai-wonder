@@ -1,5 +1,5 @@
 const ContactMarquee = () => {
-  const phrases = ["IMAGENES", "ANIMACIONES", "CAMPAÑAS", "Y MÁS!", "CONTACTANOS!"];
+  const phrases = ["IMÁGENES", "ANIMACIONES", "CAMPAÑAS", "Y MÁS!", "CONTACTANOS!"];
   const repeated = Array.from({ length: 8 }, () => phrases).flat()
     .map((p) => `${p} ✦ `).join("");
 
