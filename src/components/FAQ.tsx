@@ -1,4 +1,5 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { Search, X } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
