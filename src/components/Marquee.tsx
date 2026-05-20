@@ -17,7 +17,7 @@ const showcaseRow: ShowcaseItem[] = [
   { type: "image", src: marquee2 },
   { type: "image", src: marquee3 },
   { type: "image", src: marquee4 },
-  { type: "image", src: marquee5 },
+  
   { type: "image", src: marquee6 },
   { type: "image", src: marquee7 },
 ];
