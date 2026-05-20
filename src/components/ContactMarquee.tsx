@@ -1,6 +1,7 @@
 const ContactMarquee = () => {
-  const text = "¡CONTÁCTANOS! ✦ ";
-  const repeated = Array.from({ length: 20 }, () => text).join("");
+  const phrases = ["IMAGENES", "ANIMACIONES", "CAMPAÑAS", "Y MÁS!", "CONTACTANOS!"];
+  const repeated = Array.from({ length: 8 }, () => phrases).flat()
+    .map((p) => `${p} ✦ `).join("");
 
   const handleClick = () => {
     window.open(
@@ -36,14 +37,14 @@ const ContactMarquee = () => {
     >
       <div
         className="flex whitespace-nowrap h-full items-center"
-        style={{ animation: "contact-marquee-scroll 20s linear infinite", width: "max-content" }}
+        style={{ animation: "contact-marquee-scroll 35s linear infinite", width: "max-content" }}
       >
         <span style={spanStyle}>{repeated}</span>
         <span style={spanStyle}>{repeated}</span>
       </div>
       <style>{`
         @keyframes contact-marquee-scroll {
-          0% { transform: translateX(0); }
+          0% { transform: translateX(1%); }
           100% { transform: translateX(-50%); }
         }
       `}</style>
