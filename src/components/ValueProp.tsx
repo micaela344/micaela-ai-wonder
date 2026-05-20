@@ -24,7 +24,7 @@ const ValueProp = () => {
               shooting profesional.
             </span>
           </h2>
-          <p className="mt-5 text-base md:text-lg font-sans font-light" style={{ color: '#888888' }}>
+          <p className="mt-5 text-sm md:text-base font-sans font-light" style={{ color: '#888888' }}>
             Envíanos cualquier imagen de referencia. Nosotros la convertimos en una fotografía profesional.
           </p>
           <a
