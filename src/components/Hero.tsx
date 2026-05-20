@@ -47,7 +47,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.1 }}
           >
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>Resultados </span>
+            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 1px 2px rgba(255,255,255,1), 1px 0 2px rgba(255,255,255,0.8), -1px 1px 2px rgba(255,255,255,1), 1px -1px 2px rgba(255,255,255,1), 1px 1px 2px rgba(255,255,255,1), -1px -1px 2px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.5), 1px 1px 2px rgba(255,255,255,1), -1px -1px 2px rgba(255,255,255,1), 0 0 20px rgba(255,255,255,0.5)' }}>Resultados </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>que venden.</span>
           </motion.span>
         </motion.h1>
