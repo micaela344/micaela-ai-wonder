@@ -165,20 +165,18 @@ const Pricing = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {plans.map((plan, i) => {
               const displayPrice = `${plan.pricePrefix}${formatPrice(plan.priceEUR, currency)}`;
-              return (
+              const cardContent = (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className={`relative rounded-2xl p-5 sm:p-7 flex flex-col ${
+                className={`relative rounded-2xl p-5 sm:p-7 flex flex-col h-full ${
                   plan.highlighted
                     ? "bg-[#111111]"
                     : "border border-[#1a1a1a] bg-[#0d0d0d]"
                 }`}
                 style={plan.highlighted ? {
-                  border: '2px solid transparent',
-                  borderImage: 'linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0, #F5E6C4, #FBF1D9) 1',
                   background: 'linear-gradient(180deg, rgba(245,230,196,0.10) 0%, #111111 40%)',
                   boxShadow: '0 0 24px rgba(245,230,196,0.35), 0 0 50px rgba(245,230,196,0.18)',
                 } : {}}
@@ -229,6 +227,20 @@ const Pricing = () => {
                   Comenzar
                 </button>
               </motion.div>
+              );
+
+              if (!plan.highlighted) return cardContent;
+
+              return (
+                <div
+                  key={`${plan.name}-wrapper`}
+                  className="rounded-2xl p-[2px] h-full"
+                  style={{
+                    background: 'linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0, #F5E6C4, #FBF1D9)',
+                  }}
+                >
+                  {cardContent}
+                </div>
               );
             })}
           </div>
