@@ -173,12 +173,11 @@ const Pricing = () => {
                 transition={{ duration: 0.6, delay: i * 0.12 }}
                 className={`relative rounded-2xl p-5 sm:p-7 flex flex-col h-full ${
                   plan.highlighted
-                    ? "bg-[#111111]"
+                    ? "bg-[#0d0d0d]"
                     : "border border-[#1a1a1a] bg-[#0d0d0d]"
                 }`}
                 style={plan.highlighted ? {
-                  background: 'linear-gradient(180deg, rgba(245,230,196,0.10) 0%, #111111 40%)',
-                  boxShadow: '0 0 24px rgba(245,230,196,0.35), 0 0 50px rgba(245,230,196,0.18)',
+                  boxShadow: '0 0 24px rgba(245,230,196,0.25), 0 0 50px rgba(245,230,196,0.12)',
                 } : {}}
               >
                 {plan.badge && (
