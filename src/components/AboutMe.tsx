@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Instagram, MessageCircle } from "lucide-react";
 import fotoMica from "@/assets/about-me.png";
 
 const AboutMe = () => {
