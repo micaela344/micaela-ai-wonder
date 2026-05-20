@@ -4,7 +4,7 @@ import marquee1 from "@/assets/marquee-1.webp";
 import marquee2 from "@/assets/marquee-2.webp";
 import marquee3 from "@/assets/marquee-3.webp";
 import marquee4 from "@/assets/marquee-4.webp";
-import marquee5 from "@/assets/marquee-5.webp";
+
 import marquee6 from "@/assets/marquee-6.webp";
 import marquee7 from "@/assets/marquee-7.webp";
 import marqueeYoga from "@/assets/marquee-yoga.webp";
@@ -17,7 +17,7 @@ const showcaseRow: ShowcaseItem[] = [
   { type: "image", src: marquee2 },
   { type: "image", src: marquee3 },
   { type: "image", src: marquee4 },
-  { type: "image", src: marquee5 },
+  
   { type: "image", src: marquee6 },
   { type: "image", src: marquee7 },
 ];
