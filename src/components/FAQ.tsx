@@ -323,9 +323,44 @@ const categories: Category[] = [
 
 const allFaqs = categories.flatMap((c) => c.faqs);
 
+const nodeToText = (node: ReactNode): string => {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(nodeToText).join(" ");
+  if (typeof node === "object" && "props" in (node as any)) {
+    return nodeToText((node as any).props?.children);
+  }
+  return "";
+};
+
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
 const FAQ = () => {
   const [openItem, setOpenItem] = useState<string>("");
   const [highlighted, setHighlighted] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
+
+  const filteredCategories = useMemo(() => {
+    const q = normalize(query.trim());
+    if (!q) return categories;
+    return categories
+      .map((cat) => {
+        const catMatch = normalize(cat.title).includes(q);
+        const faqs = cat.faqs.filter((f) => {
+          const haystack = normalize(
+            `${cat.title} ${f.question} ${nodeToText(f.answer)}`
+          );
+          return haystack.includes(q);
+        });
+        if (catMatch && faqs.length === 0) return { ...cat, faqs: cat.faqs };
+        return { ...cat, faqs };
+      })
+      .filter((c) => c.faqs.length > 0);
+  }, [query]);
 
   useEffect(() => {
     const handleHash = () => {
