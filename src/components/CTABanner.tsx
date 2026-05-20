@@ -26,25 +26,26 @@ const CTABanner = () => {
               color: '#F5F5F0',
             }}
           >
-            <span className="inline-flex items-center gap-2 flex-wrap justify-center">
-              <span>Tu próxima campaña, lista en{" "}</span>
-              <span style={{ fontWeight: 700, color: '#FFFFFF' }}>3-7 días</span>
-              <span>.</span>
-              <a
-                href="#faq-entrega"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.hash = "faq-entrega";
-                  setTimeout(() => {
-                    document.getElementById("faq-entrega")?.scrollIntoView({ behavior: "smooth", block: "center" });
-                  }, 50);
-                }}
-                className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all shrink-0"
-                aria-label="Más información sobre tiempos de entrega"
-                title="Más información sobre tiempos de entrega"
-              >
-                <Info size={14} />
-              </a>
+            <span className="inline-flex flex-col items-center gap-1">
+              <span>Tu próxima campaña</span>
+              <span className="inline-flex items-center gap-2">
+                <span>lista en <span style={{ fontWeight: 700, color: '#FFFFFF' }}>3-7 días</span>.</span>
+                <a
+                  href="#faq-entrega"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.hash = "faq-entrega";
+                    setTimeout(() => {
+                      document.getElementById("faq-entrega")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 50);
+                  }}
+                  className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all shrink-0"
+                  aria-label="Más información sobre tiempos de entrega"
+                  title="Más información sobre tiempos de entrega"
+                >
+                  <Info size={14} />
+                </a>
+              </span>
             </span>
           </h2>
 
