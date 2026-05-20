@@ -10,7 +10,7 @@ const ValueProp = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
         >
-          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-[clamp(2.5rem,6vw,5rem)] leading-[1.15] tracking-tight">
+          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-[clamp(2rem,5.5vw,4rem)] leading-[1.15] tracking-tight">
             <span className="block font-bold" style={{ color: '#FFFFFF' }}>
               De tu foto de móvil a
             </span>
@@ -24,7 +24,7 @@ const ValueProp = () => {
               shooting profesional.
             </span>
           </h2>
-          <p className="mt-5 text-base md:text-lg font-sans font-light" style={{ color: '#888888' }}>
+          <p className="mt-5 text-sm md:text-base font-sans font-light" style={{ color: '#888888' }}>
             Envíanos cualquier imagen de referencia. Nosotros la convertimos en una fotografía profesional.
           </p>
           <a
