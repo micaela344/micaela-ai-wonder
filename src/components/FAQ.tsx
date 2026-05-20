@@ -383,18 +383,47 @@ const FAQ = () => {
   return (
     <section className="bg-background text-foreground py-16 md:py-24 px-6">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-10 md:mb-14 text-center">
+        <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-8 md:mb-10 text-center">
           Preguntas frecuentes.
         </h2>
 
-        <Accordion
-          type="single"
-          collapsible
-          className="w-full"
-          value={openItem}
-          onValueChange={setOpenItem}
-        >
-          {categories.map((category, idx) => (
+        <div className="relative mb-10 md:mb-12 max-w-xl mx-auto">
+          <Search
+            size={16}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
+          />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Busca por palabra clave (ej. servicios, precios, videos...)"
+            className="w-full rounded-full bg-black/40 border border-white/15 pl-10 pr-10 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-all focus:border-white/40 focus:[box-shadow:0_0_18px_rgba(255,255,255,0.25)]"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Limpiar búsqueda"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-1"
+            >
+              <X size={14} />
+            </button>
+          )}
+        </div>
+
+        {filteredCategories.length === 0 ? (
+          <p className="text-center text-white/50 text-sm py-8">
+            No encontramos preguntas que coincidan con "{query}".
+          </p>
+        ) : (
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            value={openItem}
+            onValueChange={setOpenItem}
+          >
+            {filteredCategories.map((category, idx) => (
             <div key={category.title} className={idx === 0 ? "" : "mt-10"}>
               <div className="flex items-center gap-3 mb-4 px-1">
                 <span
