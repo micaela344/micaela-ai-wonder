@@ -78,7 +78,24 @@ const BlogArticle = () => {
       setLoading(false);
     };
     fetchArticle();
+    window.scrollTo(0, 0);
   }, [slug]);
+
+  useEffect(() => {
+    if (!article) return;
+    const seo = articleSeoMap[article.slug];
+    const keywordsList = seo ? [seo.keyword, ...seo.secondary].join(", ") : "";
+    document.title = `${article.title} | MIC AI Studio`;
+    setMeta("description", article.description);
+    if (keywordsList) setMeta("keywords", keywordsList);
+    setMeta("og:title", article.title, "property");
+    setMeta("og:description", article.description, "property");
+    setMeta("og:type", "article", "property");
+    setMeta("og:url", `https://micaistudio.com/blog/${article.slug}`, "property");
+    return () => {
+      document.title = "MIC AI Studio";
+    };
+  }, [article]);
 
   if (loading) {
     return (
