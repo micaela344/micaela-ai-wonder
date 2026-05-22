@@ -1,0 +1,1 @@
+UPDATE public.articles SET content = regexp_replace(content, E'\\s*<p><em>Palabras clave:[^<]*</em></p>', '', 'g') WHERE content ~ '<p><em>Palabras clave:[^<]*</em></p>';
