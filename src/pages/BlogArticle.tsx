@@ -18,6 +18,50 @@ type Article = {
   cover_image: string | null;
 };
 
+const articleSeoMap: Record<string, { keyword: string; secondary: string[] }> = {
+  "que-es-la-ia-generativa-y-como-esta-cambiando-la-fotografia-de-producto": { keyword: "IA generativa fotografía producto", secondary: ["fotografía de producto IA", "inteligencia artificial imágenes"] },
+  "como-crear-fotografia-publicitaria-profesional-sin-estudio-fotografico": { keyword: "fotografía publicitaria sin estudio", secondary: ["fotografía publicitaria IA", "fotos profesionales sin fotógrafo"] },
+  "herramientas-de-ia-generativa-para-crear-imagenes-de-producto-en-2026": { keyword: "herramientas IA imágenes producto 2026", secondary: ["Midjourney producto", "herramientas IA marketing visual"] },
+  "fotografia-de-producto-sin-sesion-fotografica-la-guia-completa-con-ia": { keyword: "fotografía de producto sin sesión fotográfica", secondary: ["foto producto IA", "fotografía ecommerce sin fotógrafo"] },
+  "como-usar-ia-generativa-para-crear-fotos-profesionales-de-tu-marca": { keyword: "fotos profesionales marca con IA", secondary: ["fotos profesionales IA", "imágenes marca pequeña empresa"] },
+  "animacion-de-imagenes-con-ia-como-darle-vida-a-tu-contenido-visual": { keyword: "animación de imágenes con IA", secondary: ["animación digital IA", "animar imágenes inteligencia artificial"] },
+  "ia-generativa-para-marketing-visual-todo-lo-que-necesitas-saber": { keyword: "IA generativa marketing visual", secondary: ["marketing visual inteligencia artificial", "contenido visual IA"] },
+  "como-crear-carteles-publicitarios-con-inteligencia-artificial-en-minutos": { keyword: "carteles publicitarios con IA", secondary: ["afiches publicitarios IA", "carteles digitales inteligencia artificial"] },
+  "fotografia-de-producto-para-e-commerce-sin-presupuesto-de-agencia": { keyword: "fotografía producto ecommerce sin agencia", secondary: ["foto producto ecommerce", "fotografía ecommerce Chile España"] },
+  "como-mejorar-la-imagen-de-marca-de-tu-pyme-con-ia-generativa": { keyword: "mejorar imagen de marca PYME IA", secondary: ["imagen de marca PYME", "identidad visual pequeña empresa IA"] },
+  "afiches-publicitarios-con-ia-para-pymes-chilenas-guia-practica": { keyword: "afiches publicitarios IA PYMEs Chile", secondary: ["afiches publicitarios Chile", "propaganda IA pequeña empresa"] },
+  "fotos-profesionales-para-redes-sociales-sin-contratar-un-fotografo": { keyword: "fotos profesionales redes sociales sin fotógrafo", secondary: ["fotos redes sociales IA", "imágenes Instagram profesionales"] },
+  "publicidad-de-producto-en-instagram-con-imagenes-generadas-con-ia": { keyword: "publicidad de producto Instagram IA", secondary: ["publicidad producto redes sociales", "imágenes publicitarias IA"] },
+  "estrategia-de-contenido-visual-para-e-commerce-en-chile-y-espana": { keyword: "estrategia contenido visual ecommerce Chile España", secondary: ["contenido visual ecommerce", "marketing visual tienda online"] },
+  "como-crear-una-campana-visual-completa-sin-agencia-de-publicidad": { keyword: "campaña visual sin agencia publicidad", secondary: ["campaña publicitaria IA", "campaña visual pequeña empresa"] },
+  "que-es-un-estudio-creativo-con-ia-y-por-que-tu-marca-lo-necesita": { keyword: "estudio creativo con IA", secondary: ["estudio creativo inteligencia artificial", "agencia IA contenido"] },
+  "direccion-de-arte-con-ia-generativa-creatividad-con-criterio-estrategico": { keyword: "dirección de arte IA generativa", secondary: ["dirección de arte inteligencia artificial", "arte IA marcas"] },
+  "como-producir-videos-cortos-para-redes-sociales-con-ia-generativa": { keyword: "videos cortos redes sociales IA", secondary: ["videos IA redes sociales", "reels con inteligencia artificial"] },
+  "animacion-digital-para-redes-sociales-como-hacerlo-con-ia": { keyword: "animación digital redes sociales IA", secondary: ["animación digital IA", "animaciones para Instagram TikTok"] },
+  "produccion-audiovisual-con-ia-rapida-profesional-y-sin-equipo-tecnico": { keyword: "producción audiovisual con IA", secondary: ["producción contenido IA Chile", "audiovisual inteligencia artificial"] },
+  "como-crear-campanas-publicitarias-completas-con-inteligencia-artificial": { keyword: "campañas publicitarias inteligencia artificial", secondary: ["campaña completa IA", "publicidad digital inteligencia artificial"] },
+  "tendencias-de-marketing-visual-para-pymes-en-2026": { keyword: "tendencias marketing visual PYMEs 2026", secondary: ["marketing visual 2026", "tendencias contenido digital 2026"] },
+  "el-futuro-de-la-fotografia-publicitaria-en-la-era-de-la-ia": { keyword: "futuro fotografía publicitaria IA", secondary: ["fotografía publicitaria futuro", "IA fotografía comercial"] },
+  "como-esta-cambiando-la-publicidad-digital-con-inteligencia-artificial": { keyword: "publicidad digital inteligencia artificial cambios", secondary: ["publicidad digital IA", "marketing digital inteligencia artificial"] },
+  "ia-generativa-en-agencias-creativas-el-nuevo-estandar-del-sector": { keyword: "IA generativa agencias creativas", secondary: ["agencias creativas IA", "estudio creativo inteligencia artificial"] },
+  "por-que-las-marcas-que-no-usan-ia-en-su-contenido-visual-estan-perdiendo-clientes": { keyword: "marcas sin IA contenido visual pierden clientes", secondary: ["contenido visual IA ventas", "marketing IA resultados"] },
+  "antes-y-despues-como-transformamos-la-fotografia-de-producto-con-ia": { keyword: "antes después fotografía producto IA", secondary: ["resultados fotografía IA", "casos reales IA fotografía"] },
+  "casos-reales-de-marcas-que-mejoraron-sus-ventas-con-contenido-visual-ia": { keyword: "casos reales marcas contenido visual IA", secondary: ["marcas IA resultados", "contenido visual IA ventas reales"] },
+  "resultados-reales-de-usar-ia-generativa-en-fotografia-publicitaria": { keyword: "resultados IA fotografía publicitaria", secondary: ["resultados fotografía IA", "casos reales IA fotografía"] },
+  "de-brief-a-campana-completa-asi-trabaja-mic-ai-studio": { keyword: "MIC AI Studio cómo trabaja campaña completa", secondary: ["estudio creativo IA Chile España", "MIC AI Studio servicios"] },
+};
+
+const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
+  if (!content) return;
+  let el = document.head.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, name);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+};
+
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<Article | null>(null);
