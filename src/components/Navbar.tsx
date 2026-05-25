@@ -108,12 +108,12 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="/" className="flex items-center notranslate" translate="no">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-3 items-center">
+        <a href="/" className="flex items-center notranslate justify-self-start" translate="no">
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
 
-        <div translate="no" className="notranslate hidden md:flex items-center gap-5 lg:gap-8 whitespace-nowrap">
+        <div translate="no" className="notranslate hidden md:flex items-center justify-self-center gap-8 lg:gap-10 whitespace-nowrap">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
@@ -139,7 +139,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="hidden md:flex items-center gap-2 lg:gap-3">
+        <div className="hidden md:flex items-center gap-2 lg:gap-3 justify-self-end">
           <a
             href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
             target="_blank"
