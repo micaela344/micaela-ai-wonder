@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Check, ArrowRight, Info } from "lucide-react";
-import PaymentModal from "./PaymentModal";
+
 
 type CurrencyCode = "EUR" | "USD" | "CLP";
 
@@ -93,8 +94,11 @@ const scrollToFaq = (faqId: string) => {
 const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [paymentItem, setPaymentItem] = useState<{ name: string; price: string } | null>(null);
+  const navigate = useNavigate();
   const [currency, setCurrency] = useState<CurrencyCode>("EUR");
+
+  const goToCheckout = (plan: string) => navigate("/checkout", { state: { plan, currency } });
+
 
   const currencyOptions: { code: CurrencyCode; label: string }[] = [
     { code: "EUR", label: "EUR €" },
@@ -211,7 +215,7 @@ const Pricing = () => {
                 </ul>
 
                 <button
-                  onClick={() => setPaymentItem({ name: `Plan ${plan.name}`, price: `${displayPrice}${plan.period}` })}
+                  onClick={() => goToCheckout(plan.name)}
                   className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
                     plan.highlighted
                       ? ""
@@ -292,7 +296,7 @@ const Pricing = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-foreground font-medium">{displayPrice}</span>
                     <button
-                      onClick={() => setPaymentItem({ name: s.name, price: displayPrice })}
+                      onClick={() => navigate("/checkout", { state: { plan: "Pro", currency } })}
                       className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
                     >
                       Contratar
@@ -343,12 +347,8 @@ const Pricing = () => {
           </a>
         </motion.p>
       </div>
-      <PaymentModal
-        isOpen={!!paymentItem}
-        onClose={() => setPaymentItem(null)}
-        itemName={paymentItem?.name ?? ""}
-        itemPrice={paymentItem?.price ?? ""}
-      />
+
+
     </section>
   );
 };
