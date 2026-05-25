@@ -296,7 +296,7 @@ const Pricing = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-foreground font-medium">{displayPrice}</span>
                     <button
-                      onClick={() => setPaymentItem({ name: s.name, price: displayPrice })}
+                      onClick={() => navigate("/checkout", { state: { plan: "Pro", currency } })}
                       className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
                     >
                       Contratar
