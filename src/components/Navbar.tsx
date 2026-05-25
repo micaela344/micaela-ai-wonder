@@ -172,7 +172,7 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground inline-flex items-center justify-center w-11 h-11 -mr-2"
+          className="md:hidden text-foreground inline-flex items-center justify-center w-11 h-11 -mr-2 col-start-3 justify-self-end"
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
