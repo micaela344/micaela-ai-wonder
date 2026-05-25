@@ -347,12 +347,8 @@ const Pricing = () => {
           </a>
         </motion.p>
       </div>
-      <PaymentModal
-        isOpen={!!paymentItem}
-        onClose={() => setPaymentItem(null)}
-        itemName={paymentItem?.name ?? ""}
-        itemPrice={paymentItem?.price ?? ""}
-      />
+
+
     </section>
   );
 };
