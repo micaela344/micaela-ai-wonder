@@ -12,6 +12,8 @@ import Branding from "./pages/Branding.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import ProduccionEjemplos from "./pages/ProduccionEjemplos.tsx";
+import Checkout from "./pages/Checkout.tsx";
+
 import PoliticaDeCookies from "./pages/PoliticaDeCookies.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
