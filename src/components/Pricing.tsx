@@ -94,8 +94,11 @@ const scrollToFaq = (faqId: string) => {
 const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [paymentItem, setPaymentItem] = useState<{ name: string; price: string } | null>(null);
+  const navigate = useNavigate();
   const [currency, setCurrency] = useState<CurrencyCode>("EUR");
+
+  const goToCheckout = (plan: string) => navigate("/checkout", { state: { plan, currency } });
+
 
   const currencyOptions: { code: CurrencyCode; label: string }[] = [
     { code: "EUR", label: "EUR €" },
