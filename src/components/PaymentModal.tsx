@@ -6,8 +6,6 @@ import { Elements, CardElement, useStripe, useElements } from "@stripe/react-str
 import { supabase } from "@/integrations/supabase/client";
 import { isValidEmail, EMAIL_ERROR, isValidPhone, Country } from "@/lib/formValidation";
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
-import { usePricingForm } from "@/hooks/usePricingForm";
-import { saveToContacts } from "@/lib/my-supabase";
 
 const stripePromise = loadStripe("pk_test_51TEDFIC1QQPOr4ssWrWvdlkMcoPTCFeumI4Dwnw6ZNCZZN5XCutH5ib9o69wZApQfqlqwuhrLObFNsTFRijLyHQU00eWDjXqfZ");
 
@@ -425,31 +423,66 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
-  // Debounced auto-save (800ms) via reusable hook
-  const { saveProgress } = usePricingForm();
-  const myDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const buildMessage = () => {
+    const parts: string[] = [];
+    if (step1.service) parts.push(`Servicio: ${serviceTypes.find((s) => s.id === step1.service)?.label ?? step1.service}`);
+    if (step2.sector) parts.push(`Sector: ${step2.sector}`);
+    if (step2.teamSize) parts.push(`Equipo: ${step2.teamSize}`);
+    if (step2.hasWeb && step2.webUrl) parts.push(`Web: ${step2.webUrl}`);
+    if (step3.expectations) parts.push(`Expectativas: ${step3.expectations}`);
+    if (step3.references) parts.push(`Referencias: ${step3.references}`);
+    if (step3.deadline) parts.push(`Plazo: ${step3.deadline}`);
+    return parts.join(" | ") || null;
+  };
+
+  const saveProgressFull = async (payment_status: string) => {
+    const email = step4.email.trim().toLowerCase();
+    if (!isValidEmail(email)) return;
+    try {
+      await supabase.rpc("upsert_contact", {
+        p_email: email,
+        p_nombre: step4.name?.trim() || null,
+        p_compania: step2.company?.trim() || null,
+        p_phone: formattedPhone || null,
+        p_plan_selected: (step1.plan || itemName)?.trim() || null,
+        p_message: buildMessage(),
+        p_source: "pricing_modal",
+        p_payment_status: payment_status,
+      });
+    } catch (e) {
+      console.warn("[PaymentModal] silent fallback", e);
+    }
+  };
+
+  // Save when user advances steps (once email is known)
+  const prevStepRef = useRef(step);
+  useEffect(() => {
+    if (!isOpen) return;
+    if (prevStepRef.current !== step) {
+      prevStepRef.current = step;
+      if (isValidEmail(step4.email)) {
+        const status = step >= 4 ? "payment_pending" : step === 3 ? "contact_captured" : "started";
+        saveProgressFull(status);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, isOpen]);
+
+  // Debounced save while user edits fields on step 4+
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (!isOpen) return;
     if (!isValidEmail(step4.email)) return;
-    saveProgress({
-      email: step4.email,
-      name: step4.name,
-      company: step2.company,
-      phone: formattedPhone,
-      plan_selected: step1.plan || itemName,
-    });
-    if (myDebounceRef.current) clearTimeout(myDebounceRef.current);
-    myDebounceRef.current = setTimeout(() => {
-      saveToContacts({
-        name: step4.name?.trim() || undefined,
-        email: step4.email.trim().toLowerCase(),
-        company: step2.company?.trim() || undefined,
-        phone: formattedPhone || undefined,
-        plan_selected: (step1.plan || itemName)?.trim() || undefined,
-        source: "plan_form",
-      });
-    }, 800);
-  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName, saveProgress, formattedPhone]);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      const status = step >= 4 ? "payment_pending" : "contact_captured";
+      saveProgressFull(status);
+    }, 700);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, step4.email, step4.name, step4.phone, step2.company, step1.plan, itemName]);
 
   const handleClose = () => {
     onClose();
@@ -483,34 +516,15 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   const totalSteps = 5;
 
-  const savePaymentStatus = async (payment_status: string) => {
-    const email = step4.email.trim().toLowerCase();
-    if (!isValidEmail(email)) return;
-    try {
-      await supabase.rpc("upsert_contact", {
-        p_email: email,
-        p_nombre: step4.name?.trim() || null,
-        p_compania: step2.company?.trim() || null,
-        p_phone: formattedPhone || null,
-        p_plan_selected: (step1.plan || itemName)?.trim() || null,
-        p_message: null,
-        p_source: "plan_form",
-        p_payment_status: payment_status,
-      });
-    } catch (e) {
-      console.warn("[PaymentModal] silent fallback", e);
-    }
-  };
-
   const handlePaymentSuccess = async () => {
-    await savePaymentStatus("initiated");
+    await saveProgressFull("completed");
     setSuccess(true);
   };
 
   const handlePayLater = async () => {
     if (!isValidEmail(step4.email)) return;
     setPayLaterLoading(true);
-    await savePaymentStatus("pay_later");
+    await saveProgressFull("payment_pending");
     setPayLaterLoading(false);
     setPayLater(true);
     const planLabel = step1.plan || itemName;
