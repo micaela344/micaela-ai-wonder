@@ -371,7 +371,7 @@ const Checkout = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
         <div className="mb-8">
-          <h1 className="text-foreground text-2xl md:text-3xl font-semibold tracking-tight mb-1">Checkout</h1>
+          <h1 className="text-foreground text-3xl md:text-4xl font-bold tracking-tight mb-1">Checkout</h1>
           <p className="text-muted-foreground text-sm">Completa los pasos para iniciar tu proyecto</p>
         </div>
 
