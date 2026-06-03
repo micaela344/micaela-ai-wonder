@@ -108,7 +108,7 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 pb-2 grid grid-cols-3 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 grid grid-cols-3 items-center">
         <a href="/" className="flex items-center notranslate justify-self-start" translate="no">
           <img src={micAiLogo} alt="MIC AI" className="h-16 sm:h-20 md:h-28" />
         </a>
