@@ -16,13 +16,12 @@ import persona1 from "@/assets/persona-1.webp";
 import persona2 from "@/assets/persona-2.webp";
 import persona3 from "@/assets/persona-3.webp";
 import persona4 from "@/assets/persona-4.webp";
-import ambienteVacio from "@/assets/ambiente-vacio.webp";
-import ambienteEscandinavo from "@/assets/ambiente-escandinavo.webp";
-import ambienteColorido from "@/assets/ambiente-colorido.webp";
-import ambienteBoho from "@/assets/ambiente-boho.webp";
-import ambienteNatural from "@/assets/ambiente-natural.webp";
-import ambienteMediterraneo from "@/assets/ambiente-mediterraneo.webp";
-import ambienteIndustrial from "@/assets/ambiente-industrial.webp";
+import ambiente1 from "@/assets/ambientes/ambiente-1.png.asset.json";
+import ambiente2 from "@/assets/ambientes/ambiente-2.png.asset.json";
+import ambiente3 from "@/assets/ambientes/ambiente-3.png.asset.json";
+import ambiente4 from "@/assets/ambientes/ambiente-4.png.asset.json";
+import ambiente5 from "@/assets/ambientes/ambiente-5.png.asset.json";
+import ambiente6 from "@/assets/ambientes/ambiente-6.png.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
@@ -30,12 +29,12 @@ const productoImages = [productoIA1, productoIA2, productoIA3, productoIA4];
 const beautyImages = [beautyIA1, beautyIA2, beautyIA3, beautyIA4];
 const personasImages = [persona1, persona2, persona3, persona4];
 const ambienteResultados = [
-  { src: ambienteEscandinavo, alt: "Decoración escandinava minimalista" },
-  { src: ambienteBoho, alt: "Decoración boho con texturas naturales" },
-  { src: ambienteNatural, alt: "Decoración natural con plantas" },
-  { src: ambienteColorido, alt: "Decoración colorida y vibrante" },
-  { src: ambienteMediterraneo, alt: "Decoración mediterránea luminosa" },
-  { src: ambienteIndustrial, alt: "Decoración industrial loft" },
+  { src: ambiente1.url, alt: "Decoración de ambiente 1" },
+  { src: ambiente2.url, alt: "Decoración de ambiente 2" },
+  { src: ambiente3.url, alt: "Decoración de ambiente 3" },
+  { src: ambiente4.url, alt: "Decoración de ambiente 4" },
+  { src: ambiente5.url, alt: "Decoración de ambiente 5" },
+  { src: ambiente6.url, alt: "Decoración de ambiente 6" },
 ];
 
 const ImagenesIA = () => (
