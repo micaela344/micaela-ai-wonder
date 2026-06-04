@@ -81,20 +81,10 @@ const ImagenesIA = () => (
           </div>
 
           <h2 className="text-2xl font-semibold text-foreground mb-6">Decoración de ambientes</h2>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-3xl mb-6">
-            Partimos de un espacio vacío y generamos múltiples propuestas de decoración con distintos estilos, manteniendo la arquitectura original intacta.
-          </p>
-          <div className="mb-6">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Espacio original</p>
-            <div className="rounded-lg overflow-hidden border border-border max-w-2xl">
-              <img src={ambienteVacio} alt="Espacio vacío original" className="w-full h-auto object-cover" />
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Resultados</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
             {ambienteResultados.map((img, i) => (
               <div key={i} className="rounded-lg overflow-hidden border border-border">
-                <img src={img.src} alt={img.alt} className="w-full h-auto object-cover aspect-[4/3]" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover aspect-[3/4]" loading="lazy" />
               </div>
             ))}
           </div>
