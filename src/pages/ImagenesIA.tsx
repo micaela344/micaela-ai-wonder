@@ -16,13 +16,12 @@ import persona1 from "@/assets/persona-1.webp";
 import persona2 from "@/assets/persona-2.webp";
 import persona3 from "@/assets/persona-3.webp";
 import persona4 from "@/assets/persona-4.webp";
-import ambienteVacio from "@/assets/ambiente-vacio.webp";
-import ambienteEscandinavo from "@/assets/ambiente-escandinavo.webp";
-import ambienteColorido from "@/assets/ambiente-colorido.webp";
-import ambienteBoho from "@/assets/ambiente-boho.webp";
-import ambienteNatural from "@/assets/ambiente-natural.webp";
-import ambienteMediterraneo from "@/assets/ambiente-mediterraneo.webp";
-import ambienteIndustrial from "@/assets/ambiente-industrial.webp";
+import ambiente1 from "@/assets/ambientes/ambiente-1.png.asset.json";
+import ambiente2 from "@/assets/ambientes/ambiente-2.png.asset.json";
+import ambiente3 from "@/assets/ambientes/ambiente-3.png.asset.json";
+import ambiente4 from "@/assets/ambientes/ambiente-4.png.asset.json";
+import ambiente5 from "@/assets/ambientes/ambiente-5.png.asset.json";
+import ambiente6 from "@/assets/ambientes/ambiente-6.png.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
@@ -30,12 +29,12 @@ const productoImages = [productoIA1, productoIA2, productoIA3, productoIA4];
 const beautyImages = [beautyIA1, beautyIA2, beautyIA3, beautyIA4];
 const personasImages = [persona1, persona2, persona3, persona4];
 const ambienteResultados = [
-  { src: ambienteEscandinavo, alt: "Decoración escandinava minimalista" },
-  { src: ambienteBoho, alt: "Decoración boho con texturas naturales" },
-  { src: ambienteNatural, alt: "Decoración natural con plantas" },
-  { src: ambienteColorido, alt: "Decoración colorida y vibrante" },
-  { src: ambienteMediterraneo, alt: "Decoración mediterránea luminosa" },
-  { src: ambienteIndustrial, alt: "Decoración industrial loft" },
+  { src: ambiente1.url, alt: "Decoración de ambiente 1" },
+  { src: ambiente2.url, alt: "Decoración de ambiente 2" },
+  { src: ambiente3.url, alt: "Decoración de ambiente 3" },
+  { src: ambiente4.url, alt: "Decoración de ambiente 4" },
+  { src: ambiente5.url, alt: "Decoración de ambiente 5" },
+  { src: ambiente6.url, alt: "Decoración de ambiente 6" },
 ];
 
 const ImagenesIA = () => (
@@ -82,20 +81,10 @@ const ImagenesIA = () => (
           </div>
 
           <h2 className="text-2xl font-semibold text-foreground mb-6">Decoración de ambientes</h2>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-3xl mb-6">
-            Partimos de un espacio vacío y generamos múltiples propuestas de decoración con distintos estilos, manteniendo la arquitectura original intacta.
-          </p>
-          <div className="mb-6">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Espacio original</p>
-            <div className="rounded-lg overflow-hidden border border-border max-w-2xl">
-              <img src={ambienteVacio} alt="Espacio vacío original" className="w-full h-auto object-cover" />
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3">Resultados</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
             {ambienteResultados.map((img, i) => (
               <div key={i} className="rounded-lg overflow-hidden border border-border">
-                <img src={img.src} alt={img.alt} className="w-full h-auto object-cover aspect-[4/3]" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover aspect-[3/4]" loading="lazy" />
               </div>
             ))}
           </div>
