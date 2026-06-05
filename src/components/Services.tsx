@@ -124,6 +124,15 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           >
             Ver más <ArrowRight size={16} />
           </span>
+          <a
+            href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="block mt-3 text-xs text-black no-underline hover:text-neutral-700 transition-colors"
+          >
+            ¿Te interesa? Escríbeme directamente →
+          </a>
         </div>
       </motion.div>
     </Link>
