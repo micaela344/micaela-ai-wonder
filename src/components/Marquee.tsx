@@ -1,25 +1,29 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import marquee1 from "@/assets/marquee-1.webp";
-import marquee2 from "@/assets/marquee-2.webp";
-import marquee3 from "@/assets/marquee-3.webp";
-import marquee4 from "@/assets/marquee-4.webp";
-import marquee5 from "@/assets/marquee-5.webp";
-import marquee6 from "@/assets/marquee-6.webp";
-import marquee7 from "@/assets/marquee-7.webp";
-import marqueeYoga from "@/assets/marquee-yoga.webp";
+import marquee1 from "@/assets/home-marquee/home-marquee-1.png.asset.json";
+import marquee2 from "@/assets/home-marquee/home-marquee-2.png.asset.json";
+import marquee3 from "@/assets/home-marquee/home-marquee-3.mp4.asset.json";
+import marquee4 from "@/assets/home-marquee/home-marquee-4.png.asset.json";
+import marquee5 from "@/assets/home-marquee/home-marquee-5.png.asset.json";
+import marquee6 from "@/assets/home-marquee/home-marquee-6.png.asset.json";
+import marquee7 from "@/assets/home-marquee/home-marquee-7.png.asset.json";
+import marquee8 from "@/assets/home-marquee/home-marquee-8.mp4.asset.json";
+import marquee9 from "@/assets/home-marquee/home-marquee-9.png.asset.json";
+import marquee10 from "@/assets/home-marquee/home-marquee-10.png.asset.json";
 
 type ShowcaseItem = { type: "image"; src: string } | { type: "video"; src: string };
 
 const showcaseRow: ShowcaseItem[] = [
-  { type: "image", src: marquee1 },
-  { type: "image", src: marqueeYoga },
-  { type: "image", src: marquee2 },
-  { type: "image", src: marquee3 },
-  { type: "image", src: marquee4 },
-  { type: "image", src: marquee5 },
-  { type: "image", src: marquee6 },
-  { type: "image", src: marquee7 },
+  { type: "image", src: marquee1.url },
+  { type: "image", src: marquee2.url },
+  { type: "video", src: marquee3.url },
+  { type: "image", src: marquee4.url },
+  { type: "image", src: marquee5.url },
+  { type: "image", src: marquee6.url },
+  { type: "image", src: marquee7.url },
+  { type: "video", src: marquee8.url },
+  { type: "image", src: marquee9.url },
+  { type: "image", src: marquee10.url },
 ];
 
 const Marquee = () => {
