@@ -22,20 +22,32 @@ const ServiceCTAButtons = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-      <button
-        onClick={handleVerPlanes}
-        className="rounded-full bg-white text-black px-8 py-3 text-base font-semibold shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6),0_0_60px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300"
-      >
-        Ver planes
-      </button>
-      <button
-        onClick={handleHablemos}
-        className="rounded-full bg-background text-foreground border-[1.5px] border-white/60 px-8 py-3 text-base font-medium hover:bg-white/10 transition-all duration-300"
-      >
-        Hablemos
-      </button>
-    </div>
+    <>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+        <button
+          onClick={handleVerPlanes}
+          className="rounded-full bg-white text-black px-8 py-3 text-base font-semibold shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6),0_0_60px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300"
+        >
+          Ver planes
+        </button>
+        <button
+          onClick={handleHablemos}
+          className="rounded-full bg-background text-foreground border-[1.5px] border-white/60 px-8 py-3 text-base font-medium hover:bg-white/10 transition-all duration-300"
+        >
+          Hablemos
+        </button>
+      </div>
+      <div className="flex justify-center mt-6">
+        <a
+          href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-foreground no-underline hover:text-muted-foreground transition-colors"
+        >
+          ¿Te interesa? Escríbeme directamente →
+        </a>
+      </div>
+    </>
   );
 };
 

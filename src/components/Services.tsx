@@ -129,7 +129,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="block mt-3 text-xs text-black no-underline hover:text-neutral-700 transition-colors"
+            className="block mt-3 text-xs text-foreground no-underline hover:text-muted-foreground transition-colors"
           >
             ¿Te interesa? Escríbeme directamente →
           </a>
