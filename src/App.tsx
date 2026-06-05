@@ -18,6 +18,7 @@ import PoliticaDeCookies from "./pages/PoliticaDeCookies.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NewsletterPopup from "./components/NewsletterPopup.tsx";
+import WhatsAppFloat from "./components/WhatsAppFloat.tsx";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ChatWidget />
+        <WhatsAppFloat />
         <CookieBanner />
         <NewsletterPopup />
       </BrowserRouter>

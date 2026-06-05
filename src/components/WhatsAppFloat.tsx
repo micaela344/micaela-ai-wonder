@@ -6,7 +6,7 @@ const WhatsAppFloat = () => {
     <button
       onClick={() => window.open(WHATSAPP_URL, '_blank')}
       aria-label="Chatea con nosotros por WhatsApp"
-      className="group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-[1.08] hover:brightness-110 cursor-pointer border-none"
+      className="group fixed bottom-20 right-4 md:bottom-24 md:right-6 z-[9999] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-[1.08] hover:brightness-110 cursor-pointer border-none"
       style={{ backgroundColor: "#25D366" }}
     >
       <svg
