@@ -187,10 +187,13 @@
     animation-duration: 300ms;
   }
   .animate-marquee-left,
-  .animate-marquee-left-fast,
   .animate-marquee-right {
     animation-duration: 60s;
   }
+  .animate-marquee-left-fast {
+    animation-duration: 20s;
+  }
+
   /* Heavy blurs tank scroll FPS on mobile GPUs */
   [class*="blur-["],
   [class*="backdrop-blur"] {
