@@ -25,27 +25,27 @@ const Hero = () => {
         >
           <motion.span
             className="block"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Creatividad </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>con propósito,</span>
           </motion.span>
           <motion.span
             className="block"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
           >
             <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Estrategia </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>con criterio,</span>
           </motion.span>
           <motion.span
             className="block"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.1 }}
+            transition={{ duration: 0.5, delay: 0.31, ease: [0.22, 1, 0.36, 1] }}
           >
             <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Resultados </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>que venden.</span>
@@ -54,18 +54,19 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.5 }}
+          transition={{ duration: 0.5, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2"
         >
           Fotografía de producto, imágenes y campañas generadas con IA para pymes, ecommerce y agencias que quieren destacar
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.9 }}
+          transition={{ duration: 0.5, delay: 0.58, ease: [0.22, 1, 0.36, 1] }}
+
           className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
