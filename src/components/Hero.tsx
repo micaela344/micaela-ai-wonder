@@ -29,7 +29,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>Creatividad </span>
+            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Creatividad </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>con propósito,</span>
           </motion.span>
           <motion.span
@@ -38,7 +38,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>Estrategia </span>
+            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Estrategia </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>con criterio,</span>
           </motion.span>
           <motion.span
@@ -47,8 +47,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.1 }}
           >
-            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}>Resultados </span>
+            <span style={{ fontWeight: 800, color: '#ffffff', textShadow: '0 0 8px rgba(255,255,255,0.25), 0 0 16px rgba(255,255,255,0.12)' }}>Resultados </span>
             <span style={{ fontWeight: 300, color: '#666666' }}>que venden.</span>
+
           </motion.span>
         </motion.h1>
 
