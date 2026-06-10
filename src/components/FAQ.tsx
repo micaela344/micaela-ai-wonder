@@ -443,8 +443,13 @@ const FAQ = () => {
                 <span className="flex-1 h-px bg-white/10" />
               </div>
 
-              <div className="space-y-3">
-                {category.faqs.map((faq) => (
+              {(() => {
+                const isSearching = !!query.trim();
+                const highlightInCat = category.faqs.some((f) => f.id === highlighted);
+                const isExpanded = isSearching || highlightInCat || !!expandedCategories[category.title];
+                const [firstFaq, ...restFaqs] = category.faqs;
+
+                const renderItem = (faq: Faq) => (
                   <AccordionItem
                     key={faq.id}
                     id={faq.id}
@@ -471,9 +476,43 @@ const FAQ = () => {
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
-                ))}
-              </div>
-            </div>
+                );
+
+                return (
+                  <div className="space-y-3">
+                    {firstFaq && renderItem(firstFaq)}
+
+                    {restFaqs.length > 0 && (
+                      <>
+                        <div
+                          className="grid transition-[grid-template-rows] duration-500 ease-out"
+                          style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
+                          aria-hidden={!isExpanded}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="space-y-3 pt-3">
+                              {restFaqs.map(renderItem)}
+                            </div>
+                          </div>
+                        </div>
+
+                        {!isSearching && !highlightInCat && (
+                          <button
+                            type="button"
+                            onClick={() => toggleCategory(category.title)}
+                            className="mt-3 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4"
+                            aria-expanded={isExpanded}
+                          >
+                            {isExpanded
+                              ? "− Ver menos preguntas"
+                              : `+ Ver más preguntas (${restFaqs.length})`}
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })()}
             ))}
           </Accordion>
         )}
