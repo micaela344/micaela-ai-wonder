@@ -343,6 +343,10 @@ const FAQ = () => {
   const [openItem, setOpenItem] = useState<string>("");
   const [highlighted, setHighlighted] = useState<string>("");
   const [query, setQuery] = useState<string>("");
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
+  const toggleCategory = (title: string) =>
+    setExpandedCategories((prev) => ({ ...prev, [title]: !prev[title] }));
 
   const filteredCategories = useMemo(() => {
     const q = normalize(query.trim());
