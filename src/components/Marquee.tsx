@@ -52,7 +52,7 @@ const Marquee = () => {
                 e.preventDefault();
                 document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group flex-shrink-0 w-[30rem] h-80 md:w-[36rem] md:h-96 rounded-lg overflow-hidden cursor-pointer"
+              className="group flex-shrink-0 w-[36rem] h-96 md:w-[42rem] md:h-[28rem] rounded-lg overflow-hidden cursor-pointer"
             >
               {item.type === "video" ? (
                 <video
