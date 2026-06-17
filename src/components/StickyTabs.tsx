@@ -13,7 +13,11 @@ const services = [
     image: serviciosImagenesCover,
     video: null,
     align: "left" as const,
-    benefits: [],
+    benefits: [
+      "Imágenes y vídeos profesionales sin estudio fotográfico",
+      "Producto, moda, belleza y personas hiperrealistas con IA",
+      "Videos de 5-15 segundos listos para redes sociales en el formato que desees",
+    ],
     href: "/servicios/imagenes-ia",
     faqId: "faq-imagenes",
   },
