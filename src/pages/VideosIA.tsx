@@ -35,23 +35,31 @@ const VideosIA = () => {
             Renders, animaciones y visualizaciones de interiores, exteriores y arquitectura generados con IA.
           </h2>
           <div className="space-y-10 mb-12">
-            {examples.map((ex, i) => (
-              <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <div className="flex-1 w-full">
-                  <div className="rounded-xl overflow-hidden border border-border">
-                    <img src={ex.base.url} alt="Imágen base" className="w-full h-64 md:h-[320px] object-cover" />
+            {examples.map((ex, i) => {
+              const mediaClass = ex.portrait
+                ? "w-full aspect-[9/16] object-cover"
+                : "w-full h-64 md:h-[320px] object-cover";
+              const wrapperClass = ex.portrait
+                ? "w-full md:max-w-[260px] mx-auto"
+                : "flex-1 w-full";
+              return (
+                <div key={i} className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                  <div className={wrapperClass}>
+                    <div className="rounded-xl overflow-hidden border border-border">
+                      <img src={ex.base.url} alt={ex.baseLabel} className={mediaClass} />
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">{ex.baseLabel}</p>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Imágen base</p>
-                </div>
-                <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
-                <div className="flex-1 w-full">
-                  <div className="rounded-xl overflow-hidden border border-border">
-                    <video src={ex.video.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[320px] object-cover" />
+                  <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
+                  <div className={wrapperClass}>
+                    <div className="rounded-xl overflow-hidden border border-border">
+                      <video src={ex.video.url} autoPlay loop muted playsInline className={mediaClass} />
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">{ex.videoLabel}</p>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Variaciones de espacio</p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
             Adaptamos cada pieza al formato que necesites: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
