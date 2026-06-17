@@ -157,10 +157,6 @@ const Services = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Lo que hacemos</h2>
         </motion.div>
 
-        <h3 className="text-foreground font-semibold text-base md:text-lg tracking-wide mb-6">
-          ① PRODUCTO, MODA & BELLEZA
-        </h3>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
