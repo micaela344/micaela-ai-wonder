@@ -162,6 +162,7 @@ const StickyTabs = () => {
                 ¿Te interesa? Escríbeme directamente →
               </a>
             </motion.div>
+            </div>
           ))}
         </div>
       </div>
