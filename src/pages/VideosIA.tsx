@@ -65,7 +65,7 @@ const VideosIA = () => {
             </div>
           </div>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
-            Adaptamos cada pieza al formato que tu marca necesita: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
+            Adaptamos cada pieza al formato que necesites: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
           </p>
 
           <ServiceCTAButtons />
