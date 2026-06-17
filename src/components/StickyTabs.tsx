@@ -24,9 +24,9 @@ const services = [
     video: espaciosVideoAsset.url,
     align: "right" as const,
     benefits: [
-      "Videos cortos para redes sociales",
-      "Animaciones y motion graphics con IA",
-      "Producción 10x más rápida que lo tradicional",
+      "Renders de interiores y ambientes sin obra ni locación",
+      "Visualiza tu proyecto antes de construirlo o decorarlo",
+      "Animaciones y recorridos virtuales para presentaciones",
     ],
     href: "/servicios/videos-ia",
     faqId: "faq-videos",
