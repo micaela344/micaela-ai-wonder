@@ -59,7 +59,7 @@ const ImagenesIA = () => (
             <img src={aiImageCover} alt="Imágenes con IA" className="w-full h-64 md:h-[420px] object-cover" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Imágenes-Animaciones-Campañas</h1>
-          <ul className="space-y-2 text-base md:text-lg text-muted-foreground mb-12">
+          <ul className="list-disc pl-6 space-y-2 text-base md:text-lg text-muted-foreground mb-12">
             <li>Imágenes y vídeos profesionales sin estudio fotográfico</li>
             <li>Producto, moda, belleza y personas hiperrealistas con IA</li>
             <li>Videos de 5-15 segundos listos para redes sociales</li>
