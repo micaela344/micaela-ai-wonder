@@ -31,14 +31,24 @@ const VideosIA = () => {
           <h2 className="text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] tracking-tight font-light text-foreground mb-12">
             Renders, animaciones y visualizaciones de interiores, exteriores y arquitectura generados con IA.
           </h2>
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-12">
-            <div className="flex-1 rounded-xl overflow-hidden border border-border w-full">
-              <img src={espacioBase.url} alt="Espacio base sin amueblar" className="w-full h-64 md:h-[320px] object-cover" />
-            </div>
-            <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
-            <div className="flex-1 rounded-xl overflow-hidden border border-border w-full">
-              <video src={espacioVariaciones.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[320px] object-cover" />
-            </div>
+          <div className="space-y-10 mb-12">
+            {examples.map((ex, i) => (
+              <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+                <div className="flex-1 w-full">
+                  <div className="rounded-xl overflow-hidden border border-border">
+                    <img src={ex.base.url} alt="Imagen base" className="w-full h-64 md:h-[320px] object-cover" />
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Imagen base</p>
+                </div>
+                <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
+                <div className="flex-1 w-full">
+                  <div className="rounded-xl overflow-hidden border border-border">
+                    <video src={ex.video.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[320px] object-cover" />
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Variaciones de espacio</p>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="space-y-8 mb-12">
             <div>
