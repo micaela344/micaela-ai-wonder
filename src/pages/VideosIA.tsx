@@ -7,6 +7,13 @@ import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import heroVideo from "@/assets/videos-ia/animaciones-shorts.mp4.asset.json";
 import espacioBase from "@/assets/videos-ia/espacio-base.jpg.asset.json";
 import espacioVariaciones from "@/assets/videos-ia/espacio-variaciones.mp4.asset.json";
+import espacioBase2 from "@/assets/videos-ia/espacio-base-2.png.asset.json";
+import espacioVariaciones2 from "@/assets/videos-ia/espacio-variaciones-2.mp4.asset.json";
+
+const examples = [
+  { base: espacioBase, video: espacioVariaciones },
+  { base: espacioBase2, video: espacioVariaciones2 },
+];
 
 const VideosIA = () => {
   return (
