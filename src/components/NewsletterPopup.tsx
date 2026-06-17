@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, Check } from "lucide-react";
 import { EMAIL_ERROR, isValidEmail } from "@/lib/formValidation";
 import { useNewsletter } from "@/hooks/useNewsletter";
+import { supabase } from "@/integrations/supabase/client";
 import { saveToNewsletter } from "@/lib/my-supabase";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error";
@@ -62,6 +63,15 @@ const NewsletterPopup = () => {
     if (duplicate) setStatus("duplicate");
     else if (ok) setStatus("success");
     else setStatus("success"); // silent fallback — never show technical errors
+
+    // Send 10% discount confirmation email
+    try {
+      await supabase.functions.invoke("send-email", {
+        body: { type: "discount", to: value },
+      });
+    } catch (err) {
+      console.warn("[NewsletterPopup] email send failed silently", err);
+    }
   };
 
   if (!open) return null;

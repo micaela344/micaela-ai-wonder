@@ -28,6 +28,7 @@ const Blog = () => {
       const { data } = await supabase
         .from("articles")
         .select("id, title, slug, description, category, published_at, cover_image")
+        .eq("is_published", true)
         .order("published_at", { ascending: false });
       if (data) setArticles(data);
       setLoading(false);

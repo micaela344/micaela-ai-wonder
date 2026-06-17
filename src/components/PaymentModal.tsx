@@ -516,8 +516,30 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
 
   const totalSteps = 5;
 
+  const sendOrderEmail = async (statusLabel: string) => {
+    const email = step4.email.trim().toLowerCase();
+    if (!isValidEmail(email)) return;
+    const planLabel = step1.plan || itemName;
+    const date = new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
+    try {
+      await supabase.functions.invoke("send-email", {
+        body: {
+          type: "purchase",
+          to: email,
+          name: step4.name?.trim() || "",
+          plan: planLabel,
+          status: statusLabel,
+          date,
+        },
+      });
+    } catch (e) {
+      console.warn("[PaymentModal] order email failed silently", e);
+    }
+  };
+
   const handlePaymentSuccess = async () => {
     await saveProgressFull("completed");
+    await sendOrderEmail("Pago completado");
     setSuccess(true);
   };
 
@@ -525,6 +547,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
     if (!isValidEmail(step4.email)) return;
     setPayLaterLoading(true);
     await saveProgressFull("payment_pending");
+    await sendOrderEmail("Pago pendiente");
     setPayLaterLoading(false);
     setPayLater(true);
     const planLabel = step1.plan || itemName;
