@@ -4,38 +4,33 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import aiImageCoverAsset from "@/assets/ai-image-cover.png.asset.json";
-const aiImageCover = aiImageCoverAsset.url;
-import productoIA1 from "@/assets/producto-ia-1.webp";
-import productoIA2 from "@/assets/producto-ia-2.webp";
-import productoIA3 from "@/assets/producto-ia-3.webp";
-import productoIA4 from "@/assets/producto-ia-4.webp";
-import beautyIA1 from "@/assets/beauty-ia-1.webp";
-import beautyIA2 from "@/assets/beauty-ia-2.webp";
-import beautyIA3 from "@/assets/beauty-ia-3.webp";
-import beautyIA4 from "@/assets/beauty-ia-4.webp";
-import persona1 from "@/assets/persona-1.webp";
-import persona2 from "@/assets/persona-2.webp";
-import persona3 from "@/assets/persona-3.webp";
-import persona4 from "@/assets/persona-4.webp";
-import ambiente1 from "@/assets/ambientes/ambiente-1.png.asset.json";
-import ambiente2 from "@/assets/ambientes/ambiente-2.png.asset.json";
-import ambiente3 from "@/assets/ambientes/ambiente-3.png.asset.json";
-import ambiente4 from "@/assets/ambientes/ambiente-4.png.asset.json";
-import ambiente5 from "@/assets/ambientes/ambiente-5.png.asset.json";
-import ambiente6 from "@/assets/ambientes/ambiente-6.png.asset.json";
+import fotoRefBaseAsset from "@/assets/imagenes-ia/foto-ref-base.png.asset.json";
+import resultado1Asset from "@/assets/imagenes-ia/imagen-resultado-1.png.asset.json";
+import resultado2Asset from "@/assets/imagenes-ia/imagen-resultado-2.png.asset.json";
+import resultado3Asset from "@/assets/imagenes-ia/imagen-resultado-3.png.asset.json";
+import resultado4Asset from "@/assets/imagenes-ia/imagen-resultado-4.png.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
-const productoImages = [productoIA1, productoIA2, productoIA3, productoIA4];
-const beautyImages = [beautyIA1, beautyIA2, beautyIA3, beautyIA4];
-const personasImages = [persona1, persona2, persona3, persona4];
-const ambienteResultados = [
-  { src: ambiente1.url, alt: "Decoración de ambiente 1" },
-  { src: ambiente2.url, alt: "Decoración de ambiente 2" },
-  { src: ambiente3.url, alt: "Decoración de ambiente 3" },
-  { src: ambiente4.url, alt: "Decoración de ambiente 4" },
-  { src: ambiente5.url, alt: "Decoración de ambiente 5" },
-  { src: ambiente6.url, alt: "Decoración de ambiente 6" },
+const aiImageCover = aiImageCoverAsset.url;
+
+const imagenesProductoResultado = [
+  {
+    src: resultado1Asset.url,
+    alt: "Resultado generado del producto en contexto de playa",
+  },
+  {
+    src: resultado2Asset.url,
+    alt: "Resultado generado editorial del producto caminando en la playa",
+  },
+  {
+    src: resultado3Asset.url,
+    alt: "Resultado generado en detalle macro del producto",
+  },
+  {
+    src: resultado4Asset.url,
+    alt: "Resultado generado del producto sobre roca en exterior",
+  },
 ];
 
 const ImagenesIA = () => (
@@ -54,40 +49,66 @@ const ImagenesIA = () => (
             Imágenes, animaciones y campañas completas generadas con IA para tu marca.
           </p>
 
-          {/* Sección: Imágenes */}
           <div className="border-t border-border/60 pt-12 mb-24">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Imágenes</h2>
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Fotografía de producto, moda y belleza con calidad de estudio
             </p>
-            {/* Espacio para imágenes — se añadirán manualmente */}
-            <div className="min-h-[120px]" />
+
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_auto_minmax(0,1.65fr)] items-center">
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
+                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                  <img
+                    src={fotoRefBaseAsset.url}
+                    alt="Imagen base del producto: sandalias fotografiadas sobre fondo blanco"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center">
+                <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Resultado</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {imagenesProductoResultado.map((imagen) => (
+                    <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img
+                        src={imagen.src}
+                        alt={imagen.alt}
+                        className="w-full aspect-[4/5] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Sección: Animaciones */}
           <div className="border-t border-border/60 pt-12 mb-24">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Animaciones</h2>
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Vídeos cortos de 5 a 15 segundos listos para redes sociales
             </p>
-            {/* Espacio para vídeos — se añadirán manualmente */}
             <div className="min-h-[120px]" />
           </div>
 
-          {/* Sección: Campañas */}
           <div className="border-t border-border/60 pt-12 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Campañas</h2>
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Del brief al resultado final — así se ve una campaña completa con IA
             </p>
-            {/* Espacio para contenido de campaña — se añadirá manualmente */}
             <div className="min-h-[120px]" />
           </div>
 
           <ServiceCTAButtons />
 
           <NextServiceLink to="/servicios/espacios-arquitectura" label="Ver Espacios & Arquitectura" />
-
         </motion.div>
       </div>
     </section>
