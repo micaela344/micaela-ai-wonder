@@ -61,7 +61,7 @@ const ImagenesIA = () => (
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-12">Imágenes-Animaciones-Campañas</h1>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <div className="flex flex-wrap items-center justify-between gap-6">
+            <div className="flex flex-nowrap items-center justify-between gap-4 overflow-x-auto">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
                 <div className="w-[240px] overflow-hidden rounded-lg border border-border bg-muted/20">
