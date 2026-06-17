@@ -144,14 +144,16 @@ const StickyTabs = () => {
                 </a>
               </div>
 
-              <a
-                href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 text-xs text-foreground no-underline hover:text-muted-foreground transition-colors"
-              >
-                ¿Te interesa? Escríbeme directamente →
-              </a>
+              {service.id !== "imagenes" && (
+                <a
+                  href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 text-xs text-foreground no-underline hover:text-muted-foreground transition-colors"
+                >
+                  ¿Te interesa? Escríbeme directamente →
+                </a>
+              )}
             </motion.div>
             </div>
           ))}
