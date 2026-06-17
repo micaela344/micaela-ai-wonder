@@ -51,7 +51,7 @@ const ImagenesIA = () => (
           </p>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Imágenes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Imágenes, animaciones, campañas</h2>
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Fotografía de producto, moda y belleza con calidad de estudio
             </p>
@@ -105,21 +105,6 @@ const ImagenesIA = () => (
             </div>
           </div>
 
-          <div className="border-t border-border/60 pt-12 mb-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Animaciones</h2>
-            <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
-              Vídeos cortos de 5 a 15 segundos listos para redes sociales
-            </p>
-            <div className="min-h-[120px]" />
-          </div>
-
-          <div className="border-t border-border/60 pt-12 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Campañas</h2>
-            <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
-              Del brief al resultado final — así se ve una campaña completa con IA
-            </p>
-            <div className="min-h-[120px]" />
-          </div>
 
           <ServiceCTAButtons />
 
