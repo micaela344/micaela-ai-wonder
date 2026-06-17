@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
-import heroVideo from "@/assets/videos-ia/final-hero.mp4.asset.json";
+import heroVideo from "@/assets/videos-ia/animaciones-shorts.mp4.asset.json";
 
 const videos = [
   "/videos/final-animacion.mov",
