@@ -9,6 +9,7 @@ import resultado1Asset from "@/assets/imagenes-ia/imagen-resultado-1.png.asset.j
 import resultado2Asset from "@/assets/imagenes-ia/imagen-resultado-2.png.asset.json";
 import resultado3Asset from "@/assets/imagenes-ia/imagen-resultado-3.png.asset.json";
 import resultado4Asset from "@/assets/imagenes-ia/imagen-resultado-4.png.asset.json";
+import animacionDemoAsset from "@/assets/imagenes-ia/animacion-demo.mp4.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
 
@@ -95,7 +96,17 @@ const ImagenesIA = () => (
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Vídeos cortos de 5 a 15 segundos listos para redes sociales
             </p>
-            <div className="min-h-[120px]" />
+            <div className="rounded-2xl overflow-hidden border border-border/40 bg-muted/20">
+              <video
+                src={animacionDemoAsset.url}
+                className="w-full h-auto block"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              />
+            </div>
           </div>
 
           <div className="border-t border-border/60 pt-12 mb-16">
