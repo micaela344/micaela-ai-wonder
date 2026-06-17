@@ -9,10 +9,13 @@ import espacioBase from "@/assets/videos-ia/espacio-base.jpg.asset.json";
 import espacioVariaciones from "@/assets/videos-ia/espacio-variaciones.mp4.asset.json";
 import espacioBase2 from "@/assets/videos-ia/espacio-base-2.png.asset.json";
 import espacioVariaciones2 from "@/assets/videos-ia/espacio-variaciones-2.mp4.asset.json";
+import terrenoBase from "@/assets/videos-ia/terreno-base.png.asset.json";
+import procesoObra from "@/assets/videos-ia/proceso-obra.mp4.asset.json";
 
 const examples = [
-  { base: espacioBase, video: espacioVariaciones },
-  { base: espacioBase2, video: espacioVariaciones2 },
+  { base: espacioBase, video: espacioVariaciones, baseLabel: "Imágen base", videoLabel: "Variaciones de espacio" },
+  { base: espacioBase2, video: espacioVariaciones2, baseLabel: "Imágen base", videoLabel: "Variaciones de espacio" },
+  { base: terrenoBase, video: procesoObra, baseLabel: "Terreno base", videoLabel: "Proceso de obra", portrait: true },
 ];
 
 const VideosIA = () => {
