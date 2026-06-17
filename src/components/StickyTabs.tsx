@@ -31,20 +31,6 @@ const services = [
     href: "/servicios/videos-ia",
     faqId: "faq-videos",
   },
-  {
-    id: "campanas",
-    label: "Campañas",
-    image: null,
-    video: "/videos/campanas-portada-v3.mp4",
-    align: "left" as const,
-    benefits: [
-      "Estrategia creativa basada en datos",
-      "A/B testing visual automatizado",
-      "Assets para todas las plataformas",
-    ],
-    href: "/servicios/campanas",
-    faqId: "faq-campanas",
-  },
 ];
 
 const StickyTabs = () => {
