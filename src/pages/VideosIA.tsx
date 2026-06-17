@@ -36,9 +36,9 @@ const VideosIA = () => {
               <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
                 <div className="flex-1 w-full">
                   <div className="rounded-xl overflow-hidden border border-border">
-                    <img src={ex.base.url} alt="Imagen base" className="w-full h-64 md:h-[320px] object-cover" />
+                    <img src={ex.base.url} alt="Imágen base" className="w-full h-64 md:h-[320px] object-cover" />
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Imagen base</p>
+                  <p className="mt-2 text-sm text-muted-foreground text-center uppercase tracking-wide">Imágen base</p>
                 </div>
                 <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
                 <div className="flex-1 w-full">
