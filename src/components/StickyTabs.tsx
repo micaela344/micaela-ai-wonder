@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import serviciosImagenesCoverAsset from "@/assets/ai-image-cover.png.asset.json";
 const serviciosImagenesCover = serviciosImagenesCoverAsset.url;
 import serviciosCampanasCover from "@/assets/campanas-cover.webp";
+import espaciosVideoAsset from "@/assets/home/espacios-arquitectura.mp4.asset.json";
 
 const services = [
   {
