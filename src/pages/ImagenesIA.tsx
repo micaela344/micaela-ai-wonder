@@ -96,7 +96,7 @@ const ImagenesIA = () => (
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Vídeos cortos de 5 a 15 segundos listos para redes sociales
             </p>
-            <div className="rounded-2xl overflow-hidden border border-border/40 bg-muted/20">
+            <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border/40 bg-muted/20">
               <video
                 src={animacionDemoAsset.url}
                 className="w-full h-auto block"
