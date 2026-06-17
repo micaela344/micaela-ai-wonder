@@ -19,6 +19,9 @@ const VideosIA = () => {
           <div className="rounded-xl overflow-hidden border border-border mb-10">
             <video src={heroVideo.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[420px] object-cover" />
           </div>
+          <h2 className="text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] tracking-tight font-light text-foreground mb-12">
+            Renders, animaciones y visualizaciones de interiores, exteriores y arquitectura generados con IA.
+          </h2>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
             Adaptamos cada pieza al formato que tu marca necesita: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
           </p>
