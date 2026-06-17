@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import serviciosImagenesCoverAsset from "@/assets/ai-image-cover.png.asset.json";
 const serviciosImagenesCover = serviciosImagenesCoverAsset.url;
 import serviciosCampanasCover from "@/assets/campanas-cover.webp";
+import espaciosVideoAsset from "@/assets/home/espacios-arquitectura.mp4.asset.json";
 
 const services = [
   {
@@ -20,7 +21,7 @@ const services = [
     id: "animaciones",
     label: "Animaciones",
     image: null,
-    video: "/videos/sombra_de_maquillaje-2.mp4",
+    video: espaciosVideoAsset.url,
     align: "right" as const,
     benefits: [
       "Videos cortos para redes sociales",
