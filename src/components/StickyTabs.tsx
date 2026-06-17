@@ -21,7 +21,7 @@ const services = [
     id: "animaciones",
     label: "Animaciones",
     image: null,
-    video: "/videos/sombra_de_maquillaje-2.mp4",
+    video: espaciosVideoAsset.url,
     align: "right" as const,
     benefits: [
       "Videos cortos para redes sociales",
