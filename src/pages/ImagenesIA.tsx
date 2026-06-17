@@ -56,7 +56,7 @@ const ImagenesIA = () => (
               Fotografía de producto, moda y belleza con calidad de estudio
             </p>
 
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_auto_minmax(0,1.65fr)] items-center">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)_minmax(0,0.7fr)] items-center">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
                 <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
@@ -74,7 +74,7 @@ const ImagenesIA = () => (
               </div>
 
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Resultado</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Variaciones</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {imagenesProductoResultado.map((imagen) => (
                     <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
@@ -88,6 +88,20 @@ const ImagenesIA = () => (
                   ))}
                 </div>
               </div>
+
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Animación</p>
+                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                  <video
+                    src={animacionDemoAsset.url}
+                    className="w-full h-auto block"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -96,17 +110,7 @@ const ImagenesIA = () => (
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Vídeos cortos de 5 a 15 segundos listos para redes sociales
             </p>
-            <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border/40 bg-muted/20">
-              <video
-                src={animacionDemoAsset.url}
-                className="w-full h-auto block"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              />
-            </div>
+            <div className="min-h-[120px]" />
           </div>
 
           <div className="border-t border-border/60 pt-12 mb-16">
