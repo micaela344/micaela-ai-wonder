@@ -10,8 +10,20 @@ import resultado2Asset from "@/assets/imagenes-ia/imagen-resultado-2.png.asset.j
 import resultado3Asset from "@/assets/imagenes-ia/imagen-resultado-3.png.asset.json";
 import resultado4Asset from "@/assets/imagenes-ia/imagen-resultado-4.png.asset.json";
 import animacionDemoAsset from "@/assets/imagenes-ia/animacion-demo.mp4.asset.json";
+import joyaBase1Asset from "@/assets/imagenes-ia/campana/joya-base-1.png.asset.json";
+import joyaBase2Asset from "@/assets/imagenes-ia/campana/joya-base-2.png.asset.json";
+import joyaBase3Asset from "@/assets/imagenes-ia/campana/joya-base-3.png.asset.json";
+import joyaBase4Asset from "@/assets/imagenes-ia/campana/joya-base-4.png.asset.json";
+import campanaFinalAsset from "@/assets/imagenes-ia/campana/campana-final.mp4.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
+
+const productosBaseCampana = [
+  { src: joyaBase1Asset.url, alt: "Joya base: aretes con cauri y cristales" },
+  { src: joyaBase2Asset.url, alt: "Joya base: collar con cauris y cristales" },
+  { src: joyaBase3Asset.url, alt: "Joya base: anillo con cauri y cristales" },
+  { src: joyaBase4Asset.url, alt: "Joya base: pulsera con cauris y cristales" },
+];
 
 const aiImageCover = aiImageCoverAsset.url;
 
@@ -82,7 +94,45 @@ const ImagenesIA = () => (
                     </div>
                   ))}
                 </div>
+          </div>
+
+          <div className="border-t border-border/60 pt-12 mb-24">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)] items-center">
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Productos base</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {productosBaseCampana.map((imagen) => (
+                    <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img
+                        src={imagen.src}
+                        alt={imagen.alt}
+                        className="w-full aspect-[9/16] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              <div className="flex items-center justify-center">
+                <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Campaña</p>
+                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                  <video
+                    src={campanaFinalAsset.url}
+                    className="w-full h-auto block"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Animación</p>
