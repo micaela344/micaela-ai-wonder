@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import heroVideo from "@/assets/videos-ia/animaciones-shorts.mp4.asset.json";
+import espacioBase from "@/assets/videos-ia/espacio-base.jpg.asset.json";
+import espacioVariaciones from "@/assets/videos-ia/espacio-variaciones.mp4.asset.json";
 
 const VideosIA = () => {
   return (
