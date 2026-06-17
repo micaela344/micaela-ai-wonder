@@ -114,7 +114,7 @@ const StickyTabs = () => {
                 )}
               </div>
 
-              {service.id !== "imagenes" && (
+              {service.id !== "imagenes" && service.id !== "animaciones" && (
                 <div className="flex items-center gap-2 mb-4">
                   <h3 className="text-xl font-semibold text-foreground">{service.label}</h3>
                 </div>
