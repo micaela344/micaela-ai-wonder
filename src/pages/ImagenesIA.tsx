@@ -50,9 +50,8 @@ const ImagenesIA = () => (
           <div className="rounded-xl overflow-hidden border border-border mb-10">
             <img src={aiImageCover} alt="Imágenes con IA" className="w-full h-64 md:h-[420px] object-cover" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Imágenes de producto con IA</h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
-            Creamos fotografías hiperrealistas y arte digital utilizando los modelos de inteligencia artificial más avanzados del mercado.
+            Imágenes, animaciones y campañas completas generadas con IA para tu marca.
           </p>
 
           {/* Sección: Imágenes */}
