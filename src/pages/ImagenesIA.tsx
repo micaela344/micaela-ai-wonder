@@ -63,11 +63,11 @@ const ImagenesIA = () => (
           <div className="border-t border-border/60 pt-12 mb-24">
             <div className="flex flex-nowrap items-center justify-between gap-4 overflow-x-auto">
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imágen base</p>
                 <div className="w-[240px] overflow-hidden rounded-lg border border-border bg-muted/20">
                   <img
                     src={fotoRefBaseAsset.url}
-                    alt="Imagen base del producto: sandalias fotografiadas sobre fondo blanco"
+                    alt="Imágen base del producto: sandalias fotografiadas sobre fondo blanco"
                     className="w-full aspect-[4/5] object-cover"
                     loading="lazy"
                   />
