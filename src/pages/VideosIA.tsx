@@ -39,17 +39,6 @@ const VideosIA = () => {
           <div className="rounded-xl overflow-hidden border border-border mb-10">
             <video src={heroVideo.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[420px] object-cover" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Animaciones/Shorts</h1>
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
-            Producimos contenido audiovisual generativo para redes sociales, anuncios y presentaciones. Videos cortos, animaciones y motion graphics creados con IA, 10x más rápido que la producción tradicional.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {["Videos cortos para redes sociales", "Animaciones y motion graphics", "Producción 10x más rápida", "Contenido para ads y presentaciones"].map((item) => (
-              <div key={item} className="p-5 rounded-lg border border-border bg-card">
-                <p className="text-foreground text-sm">{item}</p>
-              </div>
-            ))}
-          </div>
           <div className="relative mb-12">
             <div
               ref={scrollerRef}
