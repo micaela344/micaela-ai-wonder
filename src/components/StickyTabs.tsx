@@ -121,9 +121,11 @@ const StickyTabs = () => {
                 )}
               </div>
 
-              <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-xl font-semibold text-foreground">{service.label}</h3>
-              </div>
+              {service.id !== "imagenes" && (
+                <div className="flex items-center gap-2 mb-4">
+                  <h3 className="text-xl font-semibold text-foreground">{service.label}</h3>
+                </div>
+              )}
 
               <ul className="space-y-3">
                 {service.benefits.map((b) => (
