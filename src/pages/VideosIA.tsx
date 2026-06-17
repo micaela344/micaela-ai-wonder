@@ -24,6 +24,15 @@ const VideosIA = () => {
           <h2 className="text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] tracking-tight font-light text-foreground mb-12">
             Renders, animaciones y visualizaciones de interiores, exteriores y arquitectura generados con IA.
           </h2>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-12">
+            <div className="flex-1 rounded-xl overflow-hidden border border-border w-full">
+              <img src={espacioBase.url} alt="Espacio base sin amueblar" className="w-full h-64 md:h-[320px] object-cover" />
+            </div>
+            <span className="text-4xl md:text-5xl font-light text-foreground select-none">=</span>
+            <div className="flex-1 rounded-xl overflow-hidden border border-border w-full">
+              <video src={espacioVariaciones.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[320px] object-cover" />
+            </div>
+          </div>
           <div className="space-y-8 mb-12">
             <div>
               <h3 className="text-2xl md:text-3xl font-light text-foreground mb-2">Imágenes</h3>
