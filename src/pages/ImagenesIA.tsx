@@ -61,28 +61,26 @@ const ImagenesIA = () => (
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-12">Imágenes-Animaciones-Campañas</h1>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)_minmax(0,0.7fr)] items-center">
+            <div className="flex flex-wrap items-center justify-center gap-8">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
-                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                <div className="w-[140px] overflow-hidden rounded-lg border border-border bg-muted/20">
                   <img
                     src={fotoRefBaseAsset.url}
                     alt="Imagen base del producto: sandalias fotografiadas sobre fondo blanco"
-                    className="w-full h-full object-cover"
+                    className="w-full aspect-[4/5] object-cover"
                     loading="lazy"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-center">
-                <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
-              </div>
+              <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
 
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Variaciones</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 w-[292px]">
                   {imagenesProductoResultado.map((imagen) => (
-                    <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                    <div key={imagen.src} className="w-[140px] overflow-hidden rounded-lg border border-border bg-muted/20">
                       <img
                         src={imagen.src}
                         alt={imagen.alt}
@@ -95,11 +93,11 @@ const ImagenesIA = () => (
               </div>
 
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Animación</p>
-                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                <p className="text-xs uppercase tracking-[0.18em] text-primary">Animación</p>
+                <div className="w-[220px] overflow-hidden rounded-lg border-2 border-primary/40 bg-muted/20 shadow-lg shadow-primary/10">
                   <video
                     src={animacionDemoAsset.url}
-                    className="w-full h-auto block"
+                    className="w-full aspect-[4/5] object-cover block"
                     autoPlay
                     muted
                     loop
@@ -111,12 +109,12 @@ const ImagenesIA = () => (
           </div>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)] items-center">
+            <div className="flex flex-wrap items-center justify-center gap-8">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Productos base</p>
-                <div className="grid grid-cols-2 gap-4 max-w-[280px]">
+                <div className="grid grid-cols-2 gap-3 w-[292px]">
                   {productosBaseCampana.map((imagen) => (
-                    <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                    <div key={imagen.src} className="w-[140px] overflow-hidden rounded-lg border border-border bg-muted/20">
                       <img
                         src={imagen.src}
                         alt={imagen.alt}
@@ -128,16 +126,14 @@ const ImagenesIA = () => (
                 </div>
               </div>
 
-              <div className="flex items-center justify-center">
-                <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
-              </div>
+              <span className="text-4xl md:text-6xl font-light text-muted-foreground">=</span>
 
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Campaña</p>
-                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                <p className="text-xs uppercase tracking-[0.18em] text-primary">Campaña</p>
+                <div className="w-[220px] overflow-hidden rounded-lg border-2 border-primary/40 bg-muted/20 shadow-lg shadow-primary/10">
                   <video
                     src={campanaFinalAsset.url}
-                    className="w-full h-auto block"
+                    className="w-full aspect-[4/5] object-cover block"
                     autoPlay
                     muted
                     loop
