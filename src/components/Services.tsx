@@ -2,39 +2,50 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Building2 } from "lucide-react";
+import { ArrowRight, Image, Video, Megaphone, Palette } from "lucide-react";
 import aiImageCoverAsset from "@/assets/ai-image-cover.png.asset.json";
 const aiImageCover = aiImageCoverAsset.url;
-import ambiente1 from "@/assets/ambientes/ambiente-1.png.asset.json";
+import campaignCover from "@/assets/campanas-cover.webp";
+import aiImage2 from "@/assets/ai-image-2.webp";
+import aiImage3 from "@/assets/ai-image-3.webp";
+import aiImage4 from "@/assets/ai-image-4.webp";
 
 const services = [
   {
-    icon: Sparkles,
-    title: "Producto, Moda & Belleza",
-    bullets: [
-      "Fotografía de producto sin sesión fotográfica",
-      "Moda, belleza y personas hiperrealistas",
-      "Animaciones y vídeos cortos para redes sociales",
-      "Campañas visuales completas para tu marca",
-    ],
+    icon: Image,
+    title: "Imágenes con IA",
+    description: "Fotografías hiperrealistas y arte digital generado con los modelos más avanzados.",
     image: aiImageCover,
     video: null,
     slug: "/servicios/imagenes-ia",
     faqId: "faq-imagenes",
   },
   {
-    icon: Building2,
-    title: "Espacios & Arquitectura",
-    bullets: [
-      "Renders de interiores y decoración de ambientes",
-      "Arquitectura y espacios generados con IA",
-      "Animaciones de recorridos y presentaciones",
-      "Visualización de proyectos antes de construir",
-    ],
-    image: ambiente1.url,
-    video: null,
+    icon: Video,
+    title: "Animaciones/Shorts",
+    description: "Contenido audiovisual generativo para redes sociales, ads y presentaciones.",
+    image: null,
+    video: "/videos/sombra_de_maquillaje.mp4",
     slug: "/servicios/videos-ia",
     faqId: "faq-videos",
+  },
+  {
+    icon: Megaphone,
+    title: "Campañas Publicitarias",
+    description: "Estrategia creativa potenciada por IA para campañas que convierten.",
+    image: null,
+    video: "/videos/campanas-portada.mp4",
+    slug: "/servicios/campanas",
+    faqId: "faq-campanas",
+  },
+  {
+    icon: Palette,
+    title: "Branding & Contenido",
+    description: "Identidad visual y contenido de marca construido con inteligencia artificial.",
+    image: aiImage4,
+    video: null,
+    slug: "/servicios/branding",
+    faqId: "faq-branding",
   },
 ];
 
@@ -51,6 +62,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       return;
     }
     if (window.location.hash === `#${id}`) {
+      // force re-trigger
       window.location.hash = "";
     }
     window.location.hash = `#${id}`;
@@ -63,7 +75,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: index * 0.15 }}
-        className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-muted-foreground/30 transition-all duration-500 hover:-translate-y-1 h-full flex flex-col"
+        className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-muted-foreground/30 transition-all duration-500 hover:-translate-y-1"
       >
         <button
           type="button"
@@ -102,17 +114,10 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
             />
           )}
         </div>
-        <div className="p-6 flex flex-col flex-1">
+        <div className="p-6">
           <service.icon className="text-muted-foreground mb-3" size={20} />
-          <h3 className="text-foreground font-semibold text-lg mb-3">{service.title}</h3>
-          <ul className="text-muted-foreground text-sm leading-relaxed mb-5 space-y-1.5 flex-1">
-            {service.bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span className="text-foreground/60 mt-[2px]">•</span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+          <h3 className="text-foreground font-semibold text-lg mb-2">{service.title}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.description}</p>
           <span
             className="inline-flex items-center justify-center min-h-[44px] gap-2 text-sm font-semibold text-white bg-black px-5 py-2.5 rounded-full transition-all duration-300 group-hover:gap-3"
             style={{ border: '1.5px solid #FFFFFF', boxShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)' }}
@@ -149,10 +154,10 @@ const Services = () => {
           className="mb-16"
         >
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">Servicios</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Nuestros Servicios</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Lo que hacemos</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
