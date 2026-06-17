@@ -37,7 +37,7 @@ const VideosIA = () => {
         </Link>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="rounded-xl overflow-hidden border border-border mb-10">
-            <video src="/videos/sombra_de_maquillaje.mp4" autoPlay loop muted playsInline className="w-full h-64 md:h-[420px] object-cover" />
+            <video src={heroVideo.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[420px] object-cover" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Animaciones/Shorts</h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
