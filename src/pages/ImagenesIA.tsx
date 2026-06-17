@@ -62,7 +62,7 @@ const ImagenesIA = () => (
           <ul className="space-y-2 text-base md:text-lg text-muted-foreground mb-12">
             <li>Imágenes y vídeos profesionales sin estudio fotográfico</li>
             <li>Producto, moda, belleza y personas hiperrealistas con IA</li>
-            <li>Desde una foto de móvil hasta una campaña completa</li>
+            <li>Videos de 5-15 segundos listos para redes sociales</li>
           </ul>
 
           <div className="border-t border-border/60 pt-12 mb-24">
