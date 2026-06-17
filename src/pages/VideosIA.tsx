@@ -50,20 +50,6 @@ const VideosIA = () => {
               </div>
             ))}
           </div>
-          <div className="space-y-8 mb-12">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-light text-foreground mb-2">Imágenes</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Renders de interiores, ambientes y arquitectura con calidad profesional
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl md:text-3xl font-light text-foreground mb-2">Animaciones</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Recorridos virtuales y presentaciones animadas para tus proyectos
-              </p>
-            </div>
-          </div>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
             Adaptamos cada pieza al formato que necesites: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
           </p>
