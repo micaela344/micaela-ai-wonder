@@ -46,15 +46,13 @@ const ImagenesIA = () => (
           <div className="rounded-xl overflow-hidden border border-border mb-10">
             <img src={aiImageCover} alt="Imágenes con IA" className="w-full h-64 md:h-[420px] object-cover" />
           </div>
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
-            Imágenes, animaciones y campañas completas generadas con IA para tu marca.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-12">Imágenes-Animaciones-Campañas</h1>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Imágenes, animaciones, campañas</h2>
             <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
               Fotografía de producto, moda y belleza con calidad de estudio
             </p>
+
 
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)_minmax(0,0.7fr)] items-center">
               <div className="space-y-4">
