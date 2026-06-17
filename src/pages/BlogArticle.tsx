@@ -73,6 +73,7 @@ const BlogArticle = () => {
         .from("articles")
         .select("*")
         .eq("slug", slug)
+        .eq("is_published", true)
         .maybeSingle();
       if (data) setArticle(data as Article);
       setLoading(false);
