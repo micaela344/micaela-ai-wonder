@@ -55,48 +55,39 @@ const ImagenesIA = () => (
             Creamos fotografías hiperrealistas y arte digital utilizando los modelos de inteligencia artificial más avanzados del mercado.
           </p>
 
-          <h2 className="text-2xl font-semibold text-foreground mb-6">Productos</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {productoImages.map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-border aspect-square">
-                <img src={img} alt={`Producto IA ${i + 1}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
+          {/* Sección: Imágenes */}
+          <div className="border-t border-border/60 pt-12 mb-24">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Imágenes</h2>
+            <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
+              Fotografía de producto, moda y belleza con calidad de estudio
+            </p>
+            {/* Espacio para imágenes — se añadirán manualmente */}
+            <div className="min-h-[120px]" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {beautyImages.map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-border aspect-square">
-                <img src={img} alt={`Beauty IA ${i + 1}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
+          {/* Sección: Animaciones */}
+          <div className="border-t border-border/60 pt-12 mb-24">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Animaciones</h2>
+            <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
+              Vídeos cortos de 5 a 15 segundos listos para redes sociales
+            </p>
+            {/* Espacio para vídeos — se añadirán manualmente */}
+            <div className="min-h-[120px]" />
           </div>
 
-          <h2 className="text-2xl font-semibold text-foreground mb-6">Personas Hiperrealistas</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {personasImages.map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-border aspect-square">
-                <img src={img} alt={`Persona hiperrealista ${i + 1}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
+          {/* Sección: Campañas */}
+          <div className="border-t border-border/60 pt-12 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Campañas</h2>
+            <p className="text-muted-foreground text-base md:text-lg font-light max-w-2xl mb-10">
+              Del brief al resultado final — así se ve una campaña completa con IA
+            </p>
+            {/* Espacio para contenido de campaña — se añadirá manualmente */}
+            <div className="min-h-[120px]" />
           </div>
-
-          <h2 className="text-2xl font-semibold text-foreground mb-6">Decoración de ambientes</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-            {ambienteResultados.map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden border border-border">
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover aspect-[3/4]" loading="lazy" />
-              </div>
-            ))}
-          </div>
-
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-12">
-            Adaptamos cada pieza al formato que tu marca necesita: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
-          </p>
 
           <ServiceCTAButtons />
 
-          <NextServiceLink to="/servicios/videos-ia" label="Ver Animaciones/Shorts" />
+          <NextServiceLink to="/servicios/espacios-arquitectura" label="Ver Espacios & Arquitectura" />
 
         </motion.div>
       </div>
