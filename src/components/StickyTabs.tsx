@@ -13,9 +13,9 @@ const services = [
     video: null,
     align: "left" as const,
     benefits: [
-      "Fotografía de producto sin sesión fotográfica",
-      "Retratos y modelos generados desde cero",
-      "Iteraciones ilimitadas en minutos",
+      "Imágenes y vídeos profesionales sin estudio fotográfico",
+      "Producto, moda, belleza y personas hiperrealistas con IA",
+      "Desde una foto de móvil hasta una campaña completa",
     ],
     href: "/servicios/imagenes-ia",
     faqId: "faq-imagenes",
