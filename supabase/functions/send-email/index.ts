@@ -4,7 +4,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const FROM = "MIC AI Studio <hola@micaistudio.com>";
+const FROM = "MIC AI Studio <noreply@micaistudio.com>";
 
 function escapeHtml(s: string) {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
@@ -25,6 +25,8 @@ Guárdalo bien — lo necesitarás al momento de contratar cualquiera de nuestro
 Si tienes dudas o quieres empezar, escríbenos directamente:
 👉 https://wa.me/34663474019
 
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+
 Nos vemos pronto,
 Micaela
 MIC AI Studio`;
@@ -36,6 +38,7 @@ MIC AI Studio`;
     <p>Guárdalo bien — lo necesitarás al momento de contratar cualquiera de nuestros servicios.</p>
     <p>Si tienes dudas o quieres empezar, escríbenos directamente:<br/>
     👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
     <p>Nos vemos pronto,<br/>Micaela<br/><strong>MIC AI Studio</strong></p>
   </div>`;
   return { subject, text, html };
@@ -60,6 +63,8 @@ En menos de 24 horas nos pondremos en contacto contigo para coordinar los detall
 Si tienes cualquier pregunta mientras tanto, escríbenos por WhatsApp:
 👉 https://wa.me/34663474019
 
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+
 ¡Nos vemos pronto!
 Micaela
 MIC AI Studio
@@ -76,6 +81,7 @@ micaistudio.com`;
     <p><strong>¿Qué pasa ahora?</strong><br/>En menos de 24 horas nos pondremos en contacto contigo para coordinar los detalles de tu proyecto y comenzar a trabajar.</p>
     <p>Si tienes cualquier pregunta mientras tanto, escríbenos por WhatsApp:<br/>
     👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
     <p>¡Nos vemos pronto!<br/>Micaela<br/><strong>MIC AI Studio</strong><br/><a href="https://micaistudio.com">micaistudio.com</a></p>
   </div>`;
   return { subject, text, html };
