@@ -70,6 +70,10 @@ const StickyTabs = () => {
           </h2>
         </motion.div>
 
+        <h3 className="text-foreground font-semibold text-base md:text-lg tracking-wide mb-8 md:mb-10">
+          ① PRODUCTO, MODA & BELLEZA
+        </h3>
+
         <div className="space-y-12 md:space-y-20">
           {services.map((service, i) => (
             <motion.div
