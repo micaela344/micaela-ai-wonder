@@ -61,8 +61,6 @@ const ImagenesIA = () => (
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-12">Imágenes-Animaciones-Campañas</h1>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-
-
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)_minmax(0,0.7fr)] items-center">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Imagen base</p>
@@ -94,10 +92,26 @@ const ImagenesIA = () => (
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Animación</p>
+                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
+                  <video
+                    src={animacionDemoAsset.url}
+                    className="w-full h-auto block"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)] items-center">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_auto_minmax(0,0.7fr)] items-center">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Productos base</p>
                 <div className="grid grid-cols-2 gap-4">
@@ -123,22 +137,6 @@ const ImagenesIA = () => (
                 <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
                   <video
                     src={campanaFinalAsset.url}
-                    className="w-full h-auto block"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-              <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Animación</p>
-                <div className="overflow-hidden rounded-lg border border-border bg-muted/20">
-                  <video
-                    src={animacionDemoAsset.url}
                     className="w-full h-auto block"
                     autoPlay
                     muted
