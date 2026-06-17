@@ -10,8 +10,20 @@ import resultado2Asset from "@/assets/imagenes-ia/imagen-resultado-2.png.asset.j
 import resultado3Asset from "@/assets/imagenes-ia/imagen-resultado-3.png.asset.json";
 import resultado4Asset from "@/assets/imagenes-ia/imagen-resultado-4.png.asset.json";
 import animacionDemoAsset from "@/assets/imagenes-ia/animacion-demo.mp4.asset.json";
+import joyaBase1Asset from "@/assets/imagenes-ia/campana/joya-base-1.png.asset.json";
+import joyaBase2Asset from "@/assets/imagenes-ia/campana/joya-base-2.png.asset.json";
+import joyaBase3Asset from "@/assets/imagenes-ia/campana/joya-base-3.png.asset.json";
+import joyaBase4Asset from "@/assets/imagenes-ia/campana/joya-base-4.png.asset.json";
+import campanaFinalAsset from "@/assets/imagenes-ia/campana/campana-final.mp4.asset.json";
 import ServiceCTAButtons from "@/components/ServiceCTAButtons";
 import NextServiceLink from "@/components/NextServiceLink";
+
+const productosBaseCampana = [
+  { src: joyaBase1Asset.url, alt: "Joya base: aretes con cauri y cristales" },
+  { src: joyaBase2Asset.url, alt: "Joya base: collar con cauris y cristales" },
+  { src: joyaBase3Asset.url, alt: "Joya base: anillo con cauri y cristales" },
+  { src: joyaBase4Asset.url, alt: "Joya base: pulsera con cauris y cristales" },
+];
 
 const aiImageCover = aiImageCoverAsset.url;
 
