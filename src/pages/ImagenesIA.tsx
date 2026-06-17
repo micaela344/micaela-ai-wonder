@@ -111,16 +111,16 @@ const ImagenesIA = () => (
           </div>
 
           <div className="border-t border-border/60 pt-12 mb-24">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_auto_minmax(0,0.7fr)] items-center">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.4fr)] items-center">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">Productos base</p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4 max-w-[280px]">
                   {productosBaseCampana.map((imagen) => (
                     <div key={imagen.src} className="overflow-hidden rounded-lg border border-border bg-muted/20">
                       <img
                         src={imagen.src}
                         alt={imagen.alt}
-                        className="w-full aspect-[9/16] object-cover"
+                        className="w-full aspect-[4/5] object-cover"
                         loading="lazy"
                       />
                     </div>
