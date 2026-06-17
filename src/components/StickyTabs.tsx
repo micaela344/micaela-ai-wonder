@@ -66,8 +66,8 @@ const StickyTabs = () => {
           </h2>
         </motion.div>
 
-        <h3 className="text-2xl md:text-3xl tracking-tight mb-8 md:mb-10">
-          <span style={{ fontWeight: 800, color: '#ffffff' }}>PRODUCTO, MODA & BELLEZA</span>
+        <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.15] tracking-tight font-bold mb-8 md:mb-10" >
+          <span style={{ color: '#ffffff' }}>PRODUCTO, MODA & BELLEZA</span>
         </h3>
 
         <div className="space-y-12 md:space-y-20">
