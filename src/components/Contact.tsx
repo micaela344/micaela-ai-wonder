@@ -5,6 +5,7 @@ import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 import { useContactForm } from "@/hooks/useContactForm";
 import { saveToContacts } from "@/lib/my-supabase";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const ref = useRef(null);
