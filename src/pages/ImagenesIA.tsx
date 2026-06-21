@@ -146,6 +146,10 @@ const ImagenesIA = () => (
           </div>
 
 
+          <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+            Adaptamos cada pieza al formato que necesites: Feed (4:5), Reels & Stories (9:16) o formatos horizontales (16:9), optimizados para cada plataforma.
+          </p>
+
           <ServiceCTAButtons />
 
           <NextServiceLink to="/servicios/videos-ia" label="Ver Espacios & Arquitectura" />
