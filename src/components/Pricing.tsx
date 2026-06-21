@@ -296,10 +296,10 @@ const Pricing = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-20 md:mt-28 mb-8 md:mb-10"
         >
-          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">A medida</p>
+          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">Puntuales</p>
           <h2 className="text-3xl md:text-4xl tracking-tight">
             <span style={{ fontWeight: 300, color: '#666666' }}>Servicios </span>
-            <span style={{ fontWeight: 800, color: '#ffffff' }}>a medida</span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>puntuales</span>
           </h2>
           <p className="text-muted-foreground text-sm md:text-base font-light max-w-2xl mx-auto mt-4">
             Soluciones visuales y audiovisuales adaptadas a las necesidades de cada proyecto.
