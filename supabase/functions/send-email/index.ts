@@ -133,7 +133,7 @@ Deno.serve(async (req) => {
     }
 
     const body = await req.json();
-    const { type, to } = body as { type: "discount" | "purchase"; to: string };
+    const { type, to } = body as { type: "discount" | "purchase" | "contact"; to: string };
     if (!to || !type) {
       return new Response(JSON.stringify({ error: "invalid_payload" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
