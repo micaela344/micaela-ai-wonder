@@ -370,14 +370,24 @@ const Pricing = () => {
               </ul>
 
               <button
-                onClick={goToContact}
+                onClick={() => startCheckoutService(s)}
                 className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
               >
-                Solicitar propuesta
+                Quiero este servicio
               </button>
             </motion.div>
           ))}
         </div>
+
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={goToContact}
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+          >
+            Solicitar propuesta
+          </button>
+        </div>
+
 
         {/* Doubt Banner */}
         <motion.div
