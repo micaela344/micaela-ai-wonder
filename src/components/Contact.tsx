@@ -208,11 +208,12 @@ const Contact = () => {
               <option value="" disabled className="text-muted-foreground">
                 Servicio que necesitas
               </option>
-              <option value="imagenes">Imágenes IA</option>
-              <option value="videos">Videos IA</option>
-              <option value="campana">Campaña</option>
-              <option value="branding">Branding</option>
-              <option value="otro">Otro</option>
+              <option value="contenido-visual-ia">Contenido Visual IA</option>
+              <option value="video-ia">Video IA</option>
+              <option value="campana-creativa">Campaña Creativa</option>
+              <option value="arquitectura-espacios">Arquitectura y Espacios</option>
+              <option value="branding-identidad">Branding e Identidad Visual</option>
+              <option value="proyecto-a-medida">Proyecto a Medida (recomendado si no estás seguro)</option>
             </select>
             <div>
               <textarea
