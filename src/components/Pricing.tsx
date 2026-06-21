@@ -168,7 +168,7 @@ const Pricing = () => {
             <span style={{ fontWeight: 800, color: '#ffffff' }}>perfecto para tu marca</span>
           </h2>
           <p className="text-muted-foreground text-sm md:text-base font-light max-w-2xl mx-auto mt-4">
-            Planes flexibles para marcas y proyectos. Si necesitas una campaña, visualización arquitectónica o producción a medida, solicita una propuesta personalizada.
+            Planes flexibles para marcas y proyectos. Si necesitas una campaña de producto, visualización arquitectónica o producción a medida, solicita una propuesta personalizada.
           </p>
         </motion.div>
 
