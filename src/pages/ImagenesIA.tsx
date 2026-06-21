@@ -148,7 +148,7 @@ const ImagenesIA = () => (
 
           <ServiceCTAButtons />
 
-          <NextServiceLink to="/servicios/espacios-arquitectura" label="Ver Espacios & Arquitectura" />
+          <NextServiceLink to="/servicios/videos-ia" label="Ver Espacios & Arquitectura" />
         </motion.div>
       </div>
     </section>
