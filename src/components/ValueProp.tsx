@@ -25,7 +25,7 @@ const ValueProp = () => {
             </span>
           </h2>
           <p className="mt-5 text-sm md:text-base font-sans font-light" style={{ color: '#888888' }}>
-            Envíanos cualquier imagen de referencia. Nosotros la convertimos en una fotografía profesional.
+            Envíanos una imagen de referencia. Nosotros la transformamos en imágenes, videos y contenido visual premium para tu marca.
           </p>
           <a
             href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
