@@ -74,18 +74,20 @@ const PLANS: Record<string, PlanInfo> = {
 };
 
 const ADDONS: { id: string; name: string; priceEUR: number }[] = [
-  { id: "catalogo", name: "Pack Catálogo (10 piezas)", priceEUR: 250 },
-  { id: "campana6", name: "Pack Campaña (6 piezas)", priceEUR: 390 },
-  { id: "video", name: "Video corto para redes", priceEUR: 200 },
-  { id: "campana", name: "Campaña completa", priceEUR: 800 },
+  { id: "catalogo", name: "Catálogo Visual IA", priceEUR: 250 },
+  { id: "video", name: "Video IA para Redes", priceEUR: 200 },
+  { id: "campana-visual", name: "Campaña Visual IA", priceEUR: 390 },
+  { id: "arquitectura", name: "Arquitectura y Espacios", priceEUR: 450 },
+  { id: "campana-audiovisual", name: "Campaña Audiovisual Completa", priceEUR: 800 },
 ];
 
 const serviceTypes = [
-  { id: "foto", label: "Fotografía de producto", icon: Camera },
-  { id: "campana", label: "Campaña publicitaria", icon: Megaphone },
-  { id: "identidad", label: "Identidad visual", icon: Palette },
-  { id: "video", label: "Video para redes", icon: Video },
-  { id: "pack", label: "Pack completo", icon: Layers },
+  { id: "contenido-ia", label: "Contenido Visual IA", icon: Camera },
+  { id: "video-ia", label: "Video IA", icon: Video },
+  { id: "campanas", label: "Campañas Creativas", icon: Megaphone },
+  { id: "arquitectura", label: "Visualización Arquitectónica", icon: Layers },
+  { id: "branding", label: "Branding e Identidad Visual", icon: Palette },
+  { id: "medida", label: "Proyecto a Medida", icon: Plus },
 ];
 
 const planOptions = ["Essential", "Growth", "Studio"];
