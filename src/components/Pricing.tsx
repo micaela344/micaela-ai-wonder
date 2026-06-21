@@ -139,11 +139,32 @@ const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currency, setCurrency] = useState<CurrencyCode>("EUR");
+  const navigate = useNavigate();
 
   const goToContact = () => {
     const el = document.getElementById("contacto");
     if (el) el.scrollIntoView({ behavior: "smooth" });
     else window.location.hash = "contacto";
+  };
+
+  const startCheckoutPlan = (planName: string) => {
+    navigate("/checkout", { state: { plan: planName, currency } });
+  };
+
+  const startCheckoutService = (svc: { name: string; priceEUR: number; subtitle: string; features: string[] }) => {
+    navigate("/checkout", {
+      state: {
+        plan: svc.name,
+        currency,
+        customPlan: {
+          name: svc.name,
+          priceEUR: svc.priceEUR,
+          period: "Pago único",
+          description: svc.subtitle,
+          features: svc.features,
+        },
+      },
+    });
   };
 
   const currencyOptions: { code: CurrencyCode; label: string }[] = [
