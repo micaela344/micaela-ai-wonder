@@ -87,6 +87,39 @@ micaistudio.com`;
   return { subject, text, html };
 }
 
+function contactEmail(params: { name: string }) {
+  const { name } = params;
+  const subject = "¡Hemos recibido tu mensaje en MIC AI Studio!";
+  const text = `Hola ${name},
+
+¡Gracias por contactarnos! 🙌
+
+Hemos recibido correctamente tu mensaje y toda la información que nos enviaste.
+
+¿Qué pasa ahora?
+En menos de 24 horas nos pondremos en contacto contigo para responder tus preguntas y ver cómo podemos ayudarte con tu proyecto.
+
+Si tienes algo urgente, escríbenos directamente:
+👉 https://wa.me/34663474019
+
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+
+Nos vemos pronto,
+Micaela
+MIC AI Studio`;
+  const html = `<div style="font-family:Inter,Arial,sans-serif;color:#111;line-height:1.6;max-width:560px;margin:0 auto;padding:24px">
+    <p>Hola ${escapeHtml(name)},</p>
+    <p>¡Gracias por contactarnos! 🙌</p>
+    <p>Hemos recibido correctamente tu mensaje y toda la información que nos enviaste.</p>
+    <p><strong>¿Qué pasa ahora?</strong><br/>En menos de 24 horas nos pondremos en contacto contigo para responder tus preguntas y ver cómo podemos ayudarte con tu proyecto.</p>
+    <p>Si tienes algo urgente, escríbenos directamente:<br/>
+    👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    <p>Nos vemos pronto,<br/>Micaela<br/><strong>MIC AI Studio</strong></p>
+  </div>`;
+  return { subject, text, html };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -100,7 +133,7 @@ Deno.serve(async (req) => {
     }
 
     const body = await req.json();
-    const { type, to } = body as { type: "discount" | "purchase"; to: string };
+    const { type, to } = body as { type: "discount" | "purchase" | "contact"; to: string };
     if (!to || !type) {
       return new Response(JSON.stringify({ error: "invalid_payload" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -116,6 +149,8 @@ Deno.serve(async (req) => {
         status: body.status || "",
         date: body.date || new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" }),
       });
+    } else if (type === "contact") {
+      payload = contactEmail({ name: body.name || "" });
     } else {
       return new Response(JSON.stringify({ error: "unknown_type" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },

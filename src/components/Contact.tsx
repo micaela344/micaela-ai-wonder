@@ -5,6 +5,7 @@ import { EMAIL_ERROR, isValidEmail, isValidPhone, countPhoneDigits } from "@/lib
 import { PhoneInput, useDefaultCountry } from "@/components/PhoneInput";
 import { useContactForm } from "@/hooks/useContactForm";
 import { saveToContacts } from "@/lib/my-supabase";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -71,6 +72,13 @@ const Contact = () => {
         message,
         source: "contact_form",
       });
+      try {
+        await supabase.functions.invoke("send-email", {
+          body: { type: "contact", to: form.email.trim().toLowerCase(), name: form.nombre.trim() },
+        });
+      } catch (mailErr) {
+        console.warn("[Contact] email send failed", mailErr);
+      }
     } catch (err) {
       console.warn("[Contact] silent fallback", err);
     } finally {
