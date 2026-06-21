@@ -91,7 +91,7 @@ const serviceTypes = [
 ];
 
 const planOptions = ["Essential", "Growth", "Studio"];
-const sectorOptions = ["Moda", "Cosmética", "Alimentación", "Tecnología", "Otro"];
+const sectorOptions = ["Moda", "Cosmética", "Arquitectura y Espacios", "Tecnología", "Otro"];
 const teamSizes = ["1-5", "6-20", "21-50", "+50"];
 const deadlineOptions = ["Menos de 1 semana", "2 semanas", "1 mes", "Sin prisa"];
 const stepLabels = ["Servicio", "Tu marca", "Objetivos", "Contacto", "Pago"];
