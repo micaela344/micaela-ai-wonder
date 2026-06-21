@@ -31,7 +31,6 @@ const VideosIA = () => {
           <div className="rounded-xl overflow-hidden border border-border mb-10">
             <video src={heroVideo.url} autoPlay loop muted playsInline className="w-full h-64 md:h-[420px] object-cover" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Espacios & Arquitectura</h1>
           <p className="text-3xl md:text-4xl font-bold text-foreground mb-12">
             Creación de renders, animaciones y experiencias visuales para proyectos de arquitectura, interiorismo y paisajismo mediante IA.
           </p>
