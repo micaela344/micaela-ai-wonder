@@ -59,7 +59,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2"
         >
-          Fotografía de producto, imágenes y campañas generadas con IA para pymes, ecommerce y agencias que quieren destacar
+          Creamos contenido visual y audiovisual con IA para transformar ideas en experiencias visuales memorables
         </motion.p>
 
         <motion.div
