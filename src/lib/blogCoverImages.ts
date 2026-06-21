@@ -65,6 +65,17 @@ const fallbackCoversBySlug: Record<string, string> = {
   "casos-reales-de-marcas-que-mejoraron-sus-ventas-con-contenido-visual-ia": casosRealesMarcasContenidoVisualIa,
   "resultados-reales-de-usar-ia-generativa-en-fotografia-publicitaria": resultadosIaFotografiaPublicitaria,
   "de-brief-a-campana-completa-asi-trabaja-mic-ai-studio": micAiStudioBriefCampana,
+  // New drafts (Dec 2026 batch)
+  "como-elegir-el-plan-de-fotografia-con-ia-adecuado-para-tu-marca": estrategiaContenidoVisualEcommerce,
+  "errores-comunes-al-usar-ia-para-fotografia-de-producto-y-como-evitarlos": herramientasIaImagenesProducto2026,
+  "fotografia-de-producto-para-amazon-requisitos-y-mejores-practicas-con-ia": fotografiaProductoEcommerce,
+  "como-briefar-correctamente-un-proyecto-de-fotografia-con-ia": micAiStudioBriefCampana,
+  "ia-generativa-vs-banco-de-imagenes-por-que-la-diferencia-importa-para-tu-marca": iaGenerativaMarketingVisual,
+  "cuantas-imagenes-necesita-tu-ecommerce-y-con-que-frecuencia-renovarlas": fotosProfesionalesRedesSociales,
+  "fotografia-de-producto-para-temporadas-y-fechas-especiales-con-ia": campanasPublicitariasIa,
+  "como-preparar-tu-producto-antes-de-enviarlo-a-un-estudio-de-fotografia-con-ia": fotografiaProductoSinSesion,
+  "cliente-real-cuenta-su-experiencia-de-fotos-amateur-a-campana-profesional": casosRealesMarcasContenidoVisualIa,
+  "preguntas-frecuentes-sobre-fotografia-de-producto-con-inteligencia-artificial": queEsIaGenerativaFotografiaProducto,
 };
 
 export const getBlogCoverImage = (article: ArticleCoverSource) => {
