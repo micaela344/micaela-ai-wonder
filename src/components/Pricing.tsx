@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 
@@ -138,11 +139,32 @@ const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currency, setCurrency] = useState<CurrencyCode>("EUR");
+  const navigate = useNavigate();
 
   const goToContact = () => {
     const el = document.getElementById("contacto");
     if (el) el.scrollIntoView({ behavior: "smooth" });
     else window.location.hash = "contacto";
+  };
+
+  const startCheckoutPlan = (planName: string) => {
+    navigate("/checkout", { state: { plan: planName, currency } });
+  };
+
+  const startCheckoutService = (svc: { name: string; priceEUR: number; subtitle: string; features: string[] }) => {
+    navigate("/checkout", {
+      state: {
+        plan: svc.name,
+        currency,
+        customPlan: {
+          name: svc.name,
+          priceEUR: svc.priceEUR,
+          period: "Pago único",
+          description: svc.subtitle,
+          features: svc.features,
+        },
+      },
+    });
   };
 
   const currencyOptions: { code: CurrencyCode; label: string }[] = [
@@ -258,7 +280,7 @@ const Pricing = () => {
                 </ul>
 
                 <button
-                  onClick={goToContact}
+                  onClick={() => startCheckoutPlan(plan.name)}
                   className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
                     plan.highlighted ? "" : "border border-[#333333] text-foreground hover:bg-[#141414]"
                   }`}
@@ -268,7 +290,7 @@ const Pricing = () => {
                     boxShadow: '0 0 18px rgba(245,230,196,0.55), 0 0 36px rgba(245,230,196,0.25)',
                   } : {}}
                 >
-                  Solicitar propuesta
+                  Quiero este plan
                 </button>
               </motion.div>
             );
@@ -288,6 +310,16 @@ const Pricing = () => {
             );
           })}
         </div>
+
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={goToContact}
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+          >
+            Solicitar propuesta
+          </button>
+        </div>
+
 
         {/* Servicios a medida */}
         <motion.div
@@ -338,14 +370,24 @@ const Pricing = () => {
               </ul>
 
               <button
-                onClick={goToContact}
+                onClick={() => startCheckoutService(s)}
                 className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
               >
-                Solicitar propuesta
+                Quiero este servicio
               </button>
             </motion.div>
           ))}
         </div>
+
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={goToContact}
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+          >
+            Solicitar propuesta
+          </button>
+        </div>
+
 
         {/* Doubt Banner */}
         <motion.div

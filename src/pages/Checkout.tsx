@@ -26,40 +26,49 @@ const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
   return `$${formatted}`;
 };
 
-const PLANS: Record<string, { name: string; priceEUR: number; period: string; description: string; features: string[] }> = {
-  Starter: {
-    name: "Starter",
+type PlanInfo = { name: string; priceEUR: number; period: string; description: string; features: string[] };
+
+const PLANS: Record<string, PlanInfo> = {
+  Essential: {
+    name: "Essential",
     priceEUR: 450,
     period: "/mes",
-    description: "Renueva tu catálogo y presencia digital",
+    description: "Para marcas que necesitan renovar su contenido visual.",
     features: [
-      "12 imágenes IA con dirección creativa",
-      "Optimizadas para ecommerce y RRSS",
-      "Entrega en 3–7 días",
+      "12 imágenes generadas con IA",
+      "Dirección creativa incluida",
+      "Adaptaciones para web y redes sociales",
+      "Formatos optimizados para marketing digital",
+      "Uso comercial",
+      "Entrega rápida",
     ],
   },
-  Pro: {
-    name: "Pro",
+  Growth: {
+    name: "Growth",
     priceEUR: 800,
     period: "/mes",
-    description: "Crea tu calendario de marketing completo",
+    description: "Para marcas que necesitan contenido visual y audiovisual de forma constante.",
     features: [
-      "25 imágenes IA con dirección creativa",
-      "4 videos cortos para redes",
-      "Imágenes en 2K y 4K",
-      "Entrega en 5–14 días",
+      "25 imágenes generadas con IA",
+      "4 videos cortos",
+      "Dirección creativa incluida",
+      "Adaptaciones multiformato",
+      "Resolución hasta 4K",
+      "Uso comercial",
     ],
   },
   Studio: {
     name: "Studio",
     priceEUR: 1500,
     period: "/mes",
-    description: "Producción creativa mensual completa",
+    description: "Producción creativa integral para marcas y proyectos.",
     features: [
-      "50 imágenes IA con dirección creativa",
-      "8 videos cortos para redes",
-      "Campañas completas para Meta, Google y TikTok",
-      "Entrega en 7–14 días",
+      "50 imágenes generadas con IA",
+      "8 videos cortos",
+      "Desarrollo de campañas creativas",
+      "Dirección de arte",
+      "Adaptaciones para múltiples formatos",
+      "Atención prioritaria",
     ],
   },
 };
@@ -79,7 +88,7 @@ const serviceTypes = [
   { id: "pack", label: "Pack completo", icon: Layers },
 ];
 
-const planOptions = ["Starter", "Pro", "Studio"];
+const planOptions = ["Essential", "Growth", "Studio"];
 const sectorOptions = ["Moda", "Cosmética", "Alimentación", "Tecnología", "Otro"];
 const teamSizes = ["1-5", "6-20", "21-50", "+50"];
 const deadlineOptions = ["Menos de 1 semana", "2 semanas", "1 mes", "Sin prisa"];
@@ -174,8 +183,17 @@ const PaymentForm = ({ email, totalLabel, onSuccess, onPayLater, payLaterLoading
 const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const state = (location.state ?? {}) as { plan?: string; currency?: CurrencyCode };
-  const initialPlan = state.plan && PLANS[state.plan] ? state.plan : "Pro";
+  const state = (location.state ?? {}) as {
+    plan?: string;
+    currency?: CurrencyCode;
+    customPlan?: PlanInfo;
+  };
+  const customPlanFromState = state.customPlan;
+  const initialPlan = customPlanFromState
+    ? customPlanFromState.name
+    : state.plan && PLANS[state.plan]
+    ? state.plan
+    : "Growth";
   const initialCurrency: CurrencyCode = state.currency ?? "EUR";
 
   const [currency] = useState<CurrencyCode>(initialCurrency);
@@ -193,7 +211,9 @@ const Checkout = () => {
 
   const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
-  const selectedPlan = PLANS[step1.plan] ?? PLANS.Pro;
+  const selectedPlan: PlanInfo =
+    PLANS[step1.plan] ??
+    (customPlanFromState && customPlanFromState.name === step1.plan ? customPlanFromState : PLANS.Growth);
   const selectedAddons = ADDONS.filter((a) => step1.addons.includes(a.id));
   const subtotalEUR = selectedPlan.priceEUR + selectedAddons.reduce((s, a) => s + a.priceEUR, 0);
   const totalLabel = formatPrice(subtotalEUR, currency);
@@ -399,6 +419,14 @@ const Checkout = () => {
                         {planOptions.map((p) => (
                           <SelectionChip key={p} label={`${p} · ${formatPrice(PLANS[p].priceEUR, currency)}`} selected={step1.plan === p} onClick={() => setStep1((prev) => ({ ...prev, plan: p }))} />
                         ))}
+                        {customPlanFromState && !PLANS[customPlanFromState.name] && (
+                          <SelectionChip
+                            key={customPlanFromState.name}
+                            label={`${customPlanFromState.name} · ${formatPrice(customPlanFromState.priceEUR, currency)}`}
+                            selected={step1.plan === customPlanFromState.name}
+                            onClick={() => setStep1((prev) => ({ ...prev, plan: customPlanFromState.name }))}
+                          />
+                        )}
                       </div>
                     </div>
                     <div>
