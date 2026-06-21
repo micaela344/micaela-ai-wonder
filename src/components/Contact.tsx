@@ -72,6 +72,13 @@ const Contact = () => {
         message,
         source: "contact_form",
       });
+      try {
+        await supabase.functions.invoke("send-email", {
+          body: { type: "contact", to: form.email.trim().toLowerCase(), name: form.nombre.trim() },
+        });
+      } catch (mailErr) {
+        console.warn("[Contact] email send failed", mailErr);
+      }
     } catch (err) {
       console.warn("[Contact] silent fallback", err);
     } finally {
