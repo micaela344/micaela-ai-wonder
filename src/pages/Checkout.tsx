@@ -26,40 +26,49 @@ const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
   return `$${formatted}`;
 };
 
-const PLANS: Record<string, { name: string; priceEUR: number; period: string; description: string; features: string[] }> = {
-  Starter: {
-    name: "Starter",
+type PlanInfo = { name: string; priceEUR: number; period: string; description: string; features: string[] };
+
+const PLANS: Record<string, PlanInfo> = {
+  Essential: {
+    name: "Essential",
     priceEUR: 450,
     period: "/mes",
-    description: "Renueva tu catálogo y presencia digital",
+    description: "Para marcas que necesitan renovar su contenido visual.",
     features: [
-      "12 imágenes IA con dirección creativa",
-      "Optimizadas para ecommerce y RRSS",
-      "Entrega en 3–7 días",
+      "12 imágenes generadas con IA",
+      "Dirección creativa incluida",
+      "Adaptaciones para web y redes sociales",
+      "Formatos optimizados para marketing digital",
+      "Uso comercial",
+      "Entrega rápida",
     ],
   },
-  Pro: {
-    name: "Pro",
+  Growth: {
+    name: "Growth",
     priceEUR: 800,
     period: "/mes",
-    description: "Crea tu calendario de marketing completo",
+    description: "Para marcas que necesitan contenido visual y audiovisual de forma constante.",
     features: [
-      "25 imágenes IA con dirección creativa",
-      "4 videos cortos para redes",
-      "Imágenes en 2K y 4K",
-      "Entrega en 5–14 días",
+      "25 imágenes generadas con IA",
+      "4 videos cortos",
+      "Dirección creativa incluida",
+      "Adaptaciones multiformato",
+      "Resolución hasta 4K",
+      "Uso comercial",
     ],
   },
   Studio: {
     name: "Studio",
     priceEUR: 1500,
     period: "/mes",
-    description: "Producción creativa mensual completa",
+    description: "Producción creativa integral para marcas y proyectos.",
     features: [
-      "50 imágenes IA con dirección creativa",
-      "8 videos cortos para redes",
-      "Campañas completas para Meta, Google y TikTok",
-      "Entrega en 7–14 días",
+      "50 imágenes generadas con IA",
+      "8 videos cortos",
+      "Desarrollo de campañas creativas",
+      "Dirección de arte",
+      "Adaptaciones para múltiples formatos",
+      "Atención prioritaria",
     ],
   },
 };
