@@ -66,7 +66,7 @@ const StickyTabs = () => {
             <div key={service.id}>
               {service.id === "animaciones" && (
                 <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.15] tracking-tight font-bold mb-8 md:mb-10">
-                  <span style={{ color: '#ffffff' }}>ESPACIOS & ARQUITECTURA</span>
+                  <span style={{ color: '#ffffff' }}>ARQUITECTURA & ESPACIOS</span>
                 </h3>
               )}
             <motion.div
