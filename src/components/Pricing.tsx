@@ -306,14 +306,16 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
           {serviciosMedida.map((s, i) => (
             <motion.div
               key={s.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
-              className="relative rounded-2xl p-5 sm:p-7 flex flex-col h-full border border-[#1a1a1a] bg-[#0d0d0d]"
+              className={`relative rounded-2xl p-5 sm:p-7 flex flex-col h-full border border-[#1a1a1a] bg-[#0d0d0d] lg:col-span-2 ${
+                i === 3 ? "lg:col-start-2" : i === 4 ? "lg:col-start-4" : ""
+              }`}
             >
               <p className="text-muted-foreground text-sm font-light tracking-wide">{s.name}</p>
 
