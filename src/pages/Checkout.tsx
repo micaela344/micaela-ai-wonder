@@ -419,6 +419,14 @@ const Checkout = () => {
                         {planOptions.map((p) => (
                           <SelectionChip key={p} label={`${p} · ${formatPrice(PLANS[p].priceEUR, currency)}`} selected={step1.plan === p} onClick={() => setStep1((prev) => ({ ...prev, plan: p }))} />
                         ))}
+                        {customPlanFromState && !PLANS[customPlanFromState.name] && (
+                          <SelectionChip
+                            key={customPlanFromState.name}
+                            label={`${customPlanFromState.name} · ${formatPrice(customPlanFromState.priceEUR, currency)}`}
+                            selected={step1.plan === customPlanFromState.name}
+                            onClick={() => setStep1((prev) => ({ ...prev, plan: customPlanFromState.name }))}
+                          />
+                        )}
                       </div>
                     </div>
                     <div>
