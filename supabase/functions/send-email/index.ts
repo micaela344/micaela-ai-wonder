@@ -149,6 +149,8 @@ Deno.serve(async (req) => {
         status: body.status || "",
         date: body.date || new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" }),
       });
+    } else if (type === "contact") {
+      payload = contactEmail({ name: body.name || "" });
     } else {
       return new Response(JSON.stringify({ error: "unknown_type" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
