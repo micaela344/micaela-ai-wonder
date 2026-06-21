@@ -183,8 +183,17 @@ const PaymentForm = ({ email, totalLabel, onSuccess, onPayLater, payLaterLoading
 const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const state = (location.state ?? {}) as { plan?: string; currency?: CurrencyCode };
-  const initialPlan = state.plan && PLANS[state.plan] ? state.plan : "Pro";
+  const state = (location.state ?? {}) as {
+    plan?: string;
+    currency?: CurrencyCode;
+    customPlan?: PlanInfo;
+  };
+  const customPlanFromState = state.customPlan;
+  const initialPlan = customPlanFromState
+    ? customPlanFromState.name
+    : state.plan && PLANS[state.plan]
+    ? state.plan
+    : "Growth";
   const initialCurrency: CurrencyCode = state.currency ?? "EUR";
 
   const [currency] = useState<CurrencyCode>(initialCurrency);
@@ -202,7 +211,9 @@ const Checkout = () => {
 
   const formattedPhone = step4.phone.trim() ? `${country.dial} ${step4.phone.trim()}` : "";
 
-  const selectedPlan = PLANS[step1.plan] ?? PLANS.Pro;
+  const selectedPlan: PlanInfo =
+    PLANS[step1.plan] ??
+    (customPlanFromState && customPlanFromState.name === step1.plan ? customPlanFromState : PLANS.Growth);
   const selectedAddons = ADDONS.filter((a) => step1.addons.includes(a.id));
   const subtotalEUR = selectedPlan.priceEUR + selectedAddons.reduce((s, a) => s + a.priceEUR, 0);
   const totalLabel = formatPrice(subtotalEUR, currency);
