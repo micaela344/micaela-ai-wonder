@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import { Check, ArrowRight, Info } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 
 type CurrencyCode = "EUR" | "USD" | "CLP";
@@ -22,37 +21,35 @@ const formatPrice = (eurAmount: number, currency: CurrencyCode) => {
 
 const plans = [
   {
-    name: "Starter",
+    name: "Essential",
     priceEUR: 450,
     pricePrefix: "Desde ",
     period: "/mes",
-    subtitle: "Renueva tu catálogo y presencia digital",
+    subtitle: "Para marcas que necesitan renovar su contenido visual.",
     features: [
-      "12 imágenes IA con dirección creativa",
-      "Optimizadas para ecommerce y RRSS",
-      "3+ formatos web, Meta y Google",
-      "Imágenes en 2K (PNG listo para web)",
-      "Uso comercial ilimitado",
-      "Entrega en 3–7 días",
+      "12 imágenes generadas con IA",
+      "Dirección creativa incluida",
+      "Adaptaciones para web y redes sociales",
+      "Formatos optimizados para marketing digital",
+      "Uso comercial",
+      "Entrega rápida",
     ],
     highlighted: false,
   },
   {
-    name: "Pro",
+    name: "Growth",
     priceEUR: 800,
     pricePrefix: "Desde ",
     period: "/mes",
     badge: "Recomendado",
-    subtitle: "Crea tu calendario de marketing completo",
+    subtitle: "Para marcas que necesitan contenido visual y audiovisual de forma constante.",
     features: [
-      "25 imágenes IA con dirección creativa",
-      "Fotografía lifestyle y editorial",
-      "4 videos cortos para redes",
-      "5+ formatos para Meta, Google y TikTok",
-      "Alineado con tu brand manual",
-      "Imágenes en 2K y 4K",
-      "Uso comercial ilimitado",
-      "Entrega en 5–14 días",
+      "25 imágenes generadas con IA",
+      "4 videos cortos",
+      "Dirección creativa incluida",
+      "Adaptaciones multiformato",
+      "Resolución hasta 4K",
+      "Uso comercial",
     ],
     highlighted: true,
   },
@@ -61,44 +58,92 @@ const plans = [
     priceEUR: 1500,
     pricePrefix: "Desde ",
     period: "/mes",
-    subtitle: "Producción creativa mensual completa",
+    subtitle: "Producción creativa integral para marcas y proyectos.",
     features: [
-      "50 imágenes IA con dirección creativa",
-      "8 videos cortos para redes",
-      "Campañas completas para Meta, Google y TikTok",
-      "Identidad visual y brand manual incluido",
-      "Formatos para digital, impresión y gran formato",
-      "Uso comercial ilimitado",
-      "Revisiones ilimitadas",
-      "Entrega en 7–14 días",
+      "50 imágenes generadas con IA",
+      "8 videos cortos",
+      "Desarrollo de campañas creativas",
+      "Dirección de arte",
+      "Adaptaciones para múltiples formatos",
+      "Atención prioritaria",
     ],
     highlighted: false,
   },
 ];
 
-const serviciosPuntuales = [
-  { name: "Pack Catálogo (10 piezas)", priceEUR: 250, pricePrefix: "desde ", faqId: "faq-imagenes" },
-  { name: "Pack Campaña (6 piezas)", priceEUR: 390, pricePrefix: "desde ", faqId: "faq-campanas" },
-  { name: "Video corto para redes", priceEUR: 200, pricePrefix: "desde ", faqId: "faq-videos" },
-  { name: "Campaña completa", priceEUR: 800, pricePrefix: "desde ", faqId: "faq-campanas" },
+const serviciosMedida = [
+  {
+    name: "Catálogo Visual IA",
+    priceEUR: 250,
+    pricePrefix: "Desde ",
+    subtitle: "Imágenes para ecommerce, moda, belleza, gastronomía y joyería.",
+    features: [
+      "10 imágenes generadas con IA",
+      "Dirección visual",
+      "Formatos para web y redes sociales",
+      "Uso comercial",
+    ],
+  },
+  {
+    name: "Video IA para Redes",
+    priceEUR: 200,
+    pricePrefix: "Desde ",
+    subtitle: "Videos cortos para campañas, publicidad y redes sociales.",
+    features: [
+      "Video vertical u horizontal",
+      "Optimizado para Instagram, TikTok y Meta",
+      "Exportación en alta calidad",
+    ],
+  },
+  {
+    name: "Campaña Visual IA",
+    priceEUR: 390,
+    pricePrefix: "Desde ",
+    subtitle: "Concepto creativo, dirección visual y piezas para campañas.",
+    features: [
+      "Desarrollo conceptual",
+      "Dirección creativa",
+      "Imágenes para lanzamiento o campaña",
+      "Uso comercial",
+    ],
+  },
+  {
+    name: "Arquitectura y Espacios",
+    priceEUR: 450,
+    pricePrefix: "Desde ",
+    subtitle: "Visualización arquitectónica para interiores y exteriores.",
+    features: [
+      "Renders generados con IA",
+      "Visualizaciones interiores y exteriores",
+      "Animaciones arquitectónicas",
+      "Recorridos virtuales",
+    ],
+  },
+  {
+    name: "Campaña Audiovisual Completa",
+    priceEUR: 800,
+    pricePrefix: "Desde ",
+    subtitle: "Producción visual y audiovisual para lanzamientos y campañas integrales.",
+    features: [
+      "Imágenes generadas con IA",
+      "Videos promocionales",
+      "Concepto creativo",
+      "Dirección de arte",
+      "Adaptaciones para múltiples formatos",
+    ],
+  },
 ];
-
-const scrollToFaq = (faqId: string) => {
-  if (window.location.hash === `#${faqId}`) {
-    document.getElementById(faqId)?.scrollIntoView({ behavior: "smooth", block: "center" });
-  } else {
-    window.location.hash = faqId;
-  }
-};
 
 const Pricing = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const navigate = useNavigate();
   const [currency, setCurrency] = useState<CurrencyCode>("EUR");
 
-  const goToCheckout = (plan: string) => navigate("/checkout", { state: { plan, currency } });
-
+  const goToContact = () => {
+    const el = document.getElementById("contacto");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    else window.location.hash = "contacto";
+  };
 
   const currencyOptions: { code: CurrencyCode; label: string }[] = [
     { code: "EUR", label: "EUR €" },
@@ -115,13 +160,16 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-6 md:mb-10"
+          className="text-center mb-6 md:mb-8"
         >
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">Planes</p>
           <h2 className="text-3xl md:text-4xl tracking-tight">
             <span style={{ fontWeight: 300, color: '#666666' }}>Elige el plan </span>
             <span style={{ fontWeight: 800, color: '#ffffff' }}>perfecto para tu marca</span>
           </h2>
+          <p className="text-muted-foreground text-sm md:text-base font-light max-w-2xl mx-auto mt-4">
+            Planes flexibles para marcas y proyectos. Si necesitas una campaña, visualización arquitectónica o producción a medida, solicita una propuesta personalizada.
+          </p>
         </motion.div>
 
         {/* Currency Selector */}
@@ -163,22 +211,17 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* Two-column layout: Plans + Servicios Puntuales */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
-          {/* Left: Plans Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {plans.map((plan, i) => {
-              const displayPrice = `${plan.pricePrefix}${formatPrice(plan.priceEUR, currency)}`;
-              const cardContent = (
+        {/* Plans Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {plans.map((plan, i) => {
+            const cardContent = (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
                 className={`relative rounded-2xl p-5 sm:p-7 flex flex-col h-full ${
-                  plan.highlighted
-                    ? "bg-[#0d0d0d]"
-                    : "border border-[#1a1a1a] bg-[#0d0d0d]"
+                  plan.highlighted ? "bg-[#0d0d0d]" : "border border-[#1a1a1a] bg-[#0d0d0d]"
                 }`}
                 style={plan.highlighted ? {
                   boxShadow: '0 0 24px rgba(245,230,196,0.25), 0 0 50px rgba(245,230,196,0.12)',
@@ -215,11 +258,9 @@ const Pricing = () => {
                 </ul>
 
                 <button
-                  onClick={() => goToCheckout(plan.name)}
+                  onClick={goToContact}
                   className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full transition-all ${
-                    plan.highlighted
-                      ? ""
-                      : "border border-[#333333] text-foreground hover:bg-[#141414]"
+                    plan.highlighted ? "" : "border border-[#333333] text-foreground hover:bg-[#141414]"
                   }`}
                   style={plan.highlighted ? {
                     background: 'linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0)',
@@ -227,113 +268,111 @@ const Pricing = () => {
                     boxShadow: '0 0 18px rgba(245,230,196,0.55), 0 0 36px rgba(245,230,196,0.25)',
                   } : {}}
                 >
-                  Comenzar
+                  Solicitar propuesta
                 </button>
               </motion.div>
-              );
+            );
 
-              if (!plan.highlighted) return cardContent;
+            if (!plan.highlighted) return cardContent;
 
-              return (
-                <div
-                  key={`${plan.name}-wrapper`}
-                  className="rounded-2xl p-[2px] h-full"
-                  style={{
-                    background: 'linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0, #F5E6C4, #FBF1D9)',
-                  }}
-                >
-                  {cardContent}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Right: Servicios Puntuales */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <h3 className="text-lg md:text-xl tracking-tight mb-6 flex items-center gap-2">
-              <span>
-                <span style={{ fontWeight: 300, color: '#666666' }}>Servicios </span>
-                <span style={{ fontWeight: 800, color: '#ffffff' }}>puntuales</span>
-              </span>
-              <button
-                type="button"
-                onClick={() => scrollToFaq("faq-imagenes")}
-                aria-label="Ver detalles de cada servicio en preguntas frecuentes"
-                title="Ver detalles de cada servicio"
-                className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#333333] text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-              >
-                <Info size={13} />
-              </button>
-            </h3>
-
-            <div className="border border-[#1a1a1a] rounded-2xl divide-y divide-[#1a1a1a] bg-[#0d0d0d]">
-              {serviciosPuntuales.map((s, i) => {
-                const displayPrice = `${s.pricePrefix}${formatPrice(s.priceEUR, currency)}`;
-                return (
-                <motion.div
-                  key={s.name}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
-                  className="px-5 py-4 space-y-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground font-light">{s.name}</span>
-                    <button
-                      type="button"
-                      onClick={() => scrollToFaq(s.faqId)}
-                      aria-label={`Ver detalles de ${s.name}`}
-                      title="Ver detalles"
-                      className="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <Info size={12} />
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-foreground font-medium">{displayPrice}</span>
-                    <button
-                      onClick={() => navigate("/checkout", { state: { plan: "Pro", currency } })}
-                      className="inline-flex items-center justify-center min-h-[36px] px-4 py-1.5 text-xs font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
-                    >
-                      Contratar
-                    </button>
-                  </div>
-                </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Doubt Banner */}
-            <div
-              className="mt-6 rounded-2xl p-6 text-center"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            >
-              <p className="text-foreground font-semibold text-base mb-1">¿Aún tienes dudas?</p>
-              <p className="text-muted-foreground text-sm font-light mb-4">
-                Contáctame y te las resuelvo en menos de 24 horas.
-              </p>
-              <a
-                href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background transition-all hover:scale-105"
+            return (
+              <div
+                key={`${plan.name}-wrapper`}
+                className="rounded-2xl p-[2px] h-full"
                 style={{
-                  boxShadow: '0 0 20px rgba(255,255,255,0.45), 0 0 40px rgba(255,255,255,0.25), 0 0 60px rgba(255,255,255,0.12)',
+                  background: 'linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0, #F5E6C4, #FBF1D9)',
                 }}
               >
-                Hablar con Micaela <ArrowRight size={14} />
-              </a>
-            </div>
-          </motion.div>
+                {cardContent}
+              </div>
+            );
+          })}
         </div>
+
+        {/* Servicios a medida */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-20 md:mt-28 mb-8 md:mb-10"
+        >
+          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-3">A medida</p>
+          <h2 className="text-3xl md:text-4xl tracking-tight">
+            <span style={{ fontWeight: 300, color: '#666666' }}>Servicios </span>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>a medida</span>
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-base font-light max-w-2xl mx-auto mt-4">
+            Soluciones visuales y audiovisuales adaptadas a las necesidades de cada proyecto.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {serviciosMedida.map((s, i) => (
+            <motion.div
+              key={s.name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
+              className="relative rounded-2xl p-5 sm:p-7 flex flex-col h-full border border-[#1a1a1a] bg-[#0d0d0d]"
+            >
+              <p className="text-muted-foreground text-sm font-light tracking-wide">{s.name}</p>
+
+              <div className="mt-3 mb-2 flex items-baseline gap-1">
+                <span className="text-xs text-muted-foreground font-light tracking-wide">{s.pricePrefix}</span>
+                <span className="text-3xl font-bold text-foreground tracking-tight">{formatPrice(s.priceEUR, currency)}</span>
+              </div>
+
+              <p className="text-muted-foreground text-xs font-light mb-6">{s.subtitle}</p>
+
+              <div className="w-full h-px bg-border mb-6" />
+
+              <ul className="space-y-3 mb-8 flex-1">
+                {s.features.map((f) => (
+                  <li key={f} className="flex items-center gap-2.5 text-sm text-muted-foreground font-light">
+                    <Check size={14} className="text-foreground flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={goToContact}
+                className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-medium rounded-full border border-[#333333] text-foreground hover:bg-[#141414] transition-all"
+              >
+                Solicitar propuesta
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Doubt Banner */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8 }}
+          className="mt-12 max-w-xl mx-auto rounded-2xl p-6 text-center"
+          style={{
+            background: 'rgba(255,255,255,0.03)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.08)',
+          }}
+        >
+          <p className="text-foreground font-semibold text-base mb-1">¿Aún tienes dudas?</p>
+          <p className="text-muted-foreground text-sm font-light mb-4">
+            Contáctame y te las resuelvo en menos de 24 horas.
+          </p>
+          <a
+            href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background transition-all hover:scale-105"
+            style={{
+              boxShadow: '0 0 20px rgba(255,255,255,0.45), 0 0 40px rgba(255,255,255,0.25), 0 0 60px rgba(255,255,255,0.12)',
+            }}
+          >
+            Hablar con Micaela <ArrowRight size={14} />
+          </a>
+        </motion.div>
 
         {/* CTA */}
         <motion.p
@@ -347,8 +386,6 @@ const Pricing = () => {
           </a>
         </motion.p>
       </div>
-
-
     </section>
   );
 };
