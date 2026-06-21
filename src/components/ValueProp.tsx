@@ -21,7 +21,7 @@ const ValueProp = () => {
                 textShadow: '0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 45px rgba(255,255,255,0.15)',
               }}
             >
-              shooting profesional.
+              campaña profesional.
             </span>
           </h2>
           <p className="mt-5 text-sm md:text-base font-sans font-light" style={{ color: '#888888' }}>
