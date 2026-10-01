@@ -42,10 +42,10 @@ const Footer = () => (
             micaistudio1@gmail.com
           </a>
           <a
-            href="tel:+34663474019"
+            href="tel:+56976175733"
             className="block mt-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            +34 663 474 019
+            +56 9 7617 5733
           </a>
         </div>
       </div>

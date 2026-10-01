@@ -1,5 +1,5 @@
 const WHATSAPP_URL =
-  "https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F";
+  "https://wa.me/56976175733?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F";
 
 const WhatsAppFloat = () => {
   return (

@@ -303,7 +303,7 @@ const Checkout = () => {
     setPayLaterLoading(false);
     setPayLater(true);
     const msg = encodeURIComponent(`Hola, quiero reservar el plan ${selectedPlan.name} (${totalLabel}) y pagar más tarde.`);
-    window.open(`https://wa.me/34663474019?text=${msg}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/56976175733?text=${msg}`, "_blank", "noopener,noreferrer");
   };
 
   const Summary = ({ compact = false }: { compact?: boolean }) => (

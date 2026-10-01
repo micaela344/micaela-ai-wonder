@@ -23,9 +23,9 @@ BIENVENIDO10
 Guárdalo bien — lo necesitarás al momento de contratar cualquiera de nuestros servicios.
 
 Si tienes dudas o quieres empezar, escríbenos directamente:
-👉 https://wa.me/34663474019
+👉 https://wa.me/56976175733
 
-¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/56976175733
 
 Nos vemos pronto,
 Micaela
@@ -37,8 +37,8 @@ MIC AI Studio`;
     <p style="font-size:22px;font-weight:700;letter-spacing:2px;background:#f4f4f4;padding:14px 18px;border-radius:10px;text-align:center">BIENVENIDO10</p>
     <p>Guárdalo bien — lo necesitarás al momento de contratar cualquiera de nuestros servicios.</p>
     <p>Si tienes dudas o quieres empezar, escríbenos directamente:<br/>
-    👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
-    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    👉 <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
     <p>Nos vemos pronto,<br/>Micaela<br/><strong>MIC AI Studio</strong></p>
   </div>`;
   return { subject, text, html };
@@ -61,9 +61,9 @@ Hemos recibido tu solicitud correctamente. Aquí tienes el resumen:
 En menos de 24 horas nos pondremos en contacto contigo para coordinar los detalles de tu proyecto y comenzar a trabajar.
 
 Si tienes cualquier pregunta mientras tanto, escríbenos por WhatsApp:
-👉 https://wa.me/34663474019
+👉 https://wa.me/56976175733
 
-¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/56976175733
 
 ¡Nos vemos pronto!
 Micaela
@@ -80,8 +80,8 @@ micaistudio.com`;
     </ul>
     <p><strong>¿Qué pasa ahora?</strong><br/>En menos de 24 horas nos pondremos en contacto contigo para coordinar los detalles de tu proyecto y comenzar a trabajar.</p>
     <p>Si tienes cualquier pregunta mientras tanto, escríbenos por WhatsApp:<br/>
-    👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
-    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    👉 <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
     <p>¡Nos vemos pronto!<br/>Micaela<br/><strong>MIC AI Studio</strong><br/><a href="https://micaistudio.com">micaistudio.com</a></p>
   </div>`;
   return { subject, text, html };
@@ -100,9 +100,9 @@ Hemos recibido correctamente tu mensaje y toda la información que nos enviaste.
 En menos de 24 horas nos pondremos en contacto contigo para responder tus preguntas y ver cómo podemos ayudarte con tu proyecto.
 
 Si tienes algo urgente, escríbenos directamente:
-👉 https://wa.me/34663474019
+👉 https://wa.me/56976175733
 
-¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/34663474019
+¿Tienes alguna pregunta? Escríbenos a micaistudio1@gmail.com o por WhatsApp: https://wa.me/56976175733
 
 Nos vemos pronto,
 Micaela
@@ -113,8 +113,8 @@ MIC AI Studio`;
     <p>Hemos recibido correctamente tu mensaje y toda la información que nos enviaste.</p>
     <p><strong>¿Qué pasa ahora?</strong><br/>En menos de 24 horas nos pondremos en contacto contigo para responder tus preguntas y ver cómo podemos ayudarte con tu proyecto.</p>
     <p>Si tienes algo urgente, escríbenos directamente:<br/>
-    👉 <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
-    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/34663474019">https://wa.me/34663474019</a></p>
+    👉 <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
+    <p style="border-top:1px solid #eee;padding-top:14px;color:#555">¿Tienes alguna pregunta? Escríbenos a <a href="mailto:micaistudio1@gmail.com">micaistudio1@gmail.com</a> o por WhatsApp: <a href="https://wa.me/56976175733">https://wa.me/56976175733</a></p>
     <p>Nos vemos pronto,<br/>Micaela<br/><strong>MIC AI Studio</strong></p>
   </div>`;
   return { subject, text, html };
