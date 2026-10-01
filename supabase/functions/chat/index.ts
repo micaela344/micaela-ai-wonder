@@ -57,7 +57,7 @@ Tiempos de entrega:
 Mercados: Chile y España (trabajamos en remoto con clientes de ambos países).
 
 Canales de contacto:
-- WhatsApp: +34 663 474 019
+- WhatsApp: +56 9 7617 5733
 - Email: micaistudio1@gmail.com
 - Formulario de contacto en la propia web
 - Instagram: @micaistudio

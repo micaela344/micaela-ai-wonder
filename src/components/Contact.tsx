@@ -107,10 +107,10 @@ const Contact = () => {
           </h2>
           <div className="flex items-center justify-center gap-3 mb-4">
             <a
-              href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+              href="https://wa.me/56976175733?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp +34 663 474 019"
+              aria-label="WhatsApp +56 9 7617 5733"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">

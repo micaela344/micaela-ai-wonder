@@ -406,7 +406,7 @@ const Pricing = () => {
             Contáctame y te las resuelvo en menos de 24 horas.
           </p>
           <a
-            href="https://wa.me/34663474019?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
+            href="https://wa.me/56976175733?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 px-6 py-2.5 text-sm font-medium rounded-full bg-foreground text-background transition-all hover:scale-105"

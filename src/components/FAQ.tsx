@@ -29,7 +29,7 @@ const PlanesLink = ({ children = "Ver planes →" }: { children?: ReactNode }) =
 
 const WhatsAppLink = ({ children = "Hablar con nosotros →" }: { children?: ReactNode }) => (
   <a
-    href="https://wa.me/34663474019"
+    href="https://wa.me/56976175733"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-block mt-3 text-white underline underline-offset-4 hover:text-white/80 transition-colors"

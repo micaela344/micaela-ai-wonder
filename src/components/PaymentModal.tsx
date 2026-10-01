@@ -552,7 +552,7 @@ const PaymentModal = ({ isOpen, onClose, itemName, itemPrice }: PaymentModalProp
     setPayLater(true);
     const planLabel = step1.plan || itemName;
     const msg = encodeURIComponent(`Hola, quiero reservar el plan ${planLabel} y pagar más tarde.`);
-    window.open(`https://wa.me/34663474019?text=${msg}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/56976175733?text=${msg}`, "_blank", "noopener,noreferrer");
   };
 
   return (
