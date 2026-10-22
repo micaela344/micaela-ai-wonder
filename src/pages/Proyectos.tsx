@@ -148,7 +148,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SplitTitle = ({ light, bold, className = "" }: { light: string; bold: string; className?: string }) => (
-  <h2 className={`text-3xl md:text-5xl tracking-tight ${className}`}>
+  <h2 className={`text-3xl md:text-5xl tracking-tight leading-[1.1] [&>span]:leading-[1.1] ${className}`}>
     <span style={{ fontWeight: 300, color: "#666666" }}>{light} </span>
     <span style={{ fontWeight: 800, color: "#ffffff" }}>{bold}</span>
   </h2>
@@ -291,8 +291,8 @@ const Proyectos = () => {
     <div className="min-h-screen bg-background">
       {/* Cabecera mínima: sin menú, solo logo y contacto */}
       <header className="absolute inset-x-0 top-0 z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <img src={micAiLogo} alt="MIC AI Studio" className="h-14 md:h-16 w-auto" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between">
+          <img src={micAiLogo} alt="MIC AI Studio" className="h-16 sm:h-20 md:h-28 w-auto" />
           <a
             href={WA_GENERAL}
             target="_blank"
@@ -336,7 +336,7 @@ const Proyectos = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease }}
-            className="text-[clamp(2.2rem,6vw,5rem)] tracking-tight leading-[0.98] max-w-4xl"
+            className="text-[clamp(2.2rem,6vw,5rem)] tracking-tight leading-[1] [&>span]:leading-[1.02] max-w-4xl"
           >
             <span
               className="block"
@@ -549,7 +549,7 @@ const Proyectos = () => {
             <p className="text-xs md:text-sm uppercase tracking-widest mb-3" style={{ color: "#666666" }}>
               Por qué video
             </p>
-            <h2 className="text-3xl md:text-5xl tracking-tight">
+            <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] [&>span]:leading-[1.1]">
               <span style={{ fontWeight: 300, color: "#666666" }}>Lo que cambia cuando </span>
               <span style={{ fontWeight: 800, color: "#0A0A0A" }}>el proyecto se ve antes.</span>
             </h2>
@@ -634,7 +634,7 @@ const Proyectos = () => {
       {/* Pie mínimo */}
       <footer className="border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <img src={micAiLogo} alt="MIC AI Studio" className="h-16 w-auto self-start" />
+          <img src={micAiLogo} alt="MIC AI Studio" className="h-24 md:h-28 w-auto self-start" />
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm text-muted-foreground">
             <a href="mailto:micaistudio1@gmail.com" className="hover:text-foreground transition-colors">
               micaistudio1@gmail.com
