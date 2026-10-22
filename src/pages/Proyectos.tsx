@@ -11,8 +11,8 @@ const WHATSAPP_NUMBER = "56976175733";
 
 const waLink = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
-const WA_GENERAL = waLink("Hola Micaela, vi tu página de proyectos. Tengo un proyecto y quiero cotizar un video.");
-const WA_MUESTRA = waLink("Hola Micaela, quiero ver mi proyecto en video. Te envío un render.");
+const WA_GENERAL = waLink("Hola MIC AI Studio, vi su página de proyectos. Tengo un proyecto y quiero cotizar un video.");
+const WA_MUESTRA = waLink("Hola MIC AI Studio, quiero ver mi proyecto en video. Les envío un render.");
 
 const trackWhatsApp = (location: string) => {
   const w = window as unknown as { gtag?: (...args: unknown[]) => void };
@@ -119,27 +119,27 @@ const benefits = [
 ];
 
 const steps = [
-  { title: "Me mandas tu material", text: "Renders, planos, fotos de obra o un video con el celular." },
-  { title: "Apruebas las escenas", text: "Defino luz, materiales y encuadre. Nada se anima sin tu OK." },
+  { title: "Nos mandas tu material", text: "Renders, planos, fotos de obra o un video con el celular." },
+  { title: "Apruebas las escenas", text: "Definimos luz, materiales y encuadre. Nada se anima sin tu OK." },
   { title: "Recibes el video", text: "En los formatos que necesites, con una ronda de ajustes incluida." },
 ];
 
 const faqs = [
   {
     q: "¿Qué necesito enviarte?",
-    a: "Lo que tengas: renders, planos, fotos de la obra o un video recorriendo el lugar. Con eso te propongo las escenas.",
+    a: "Lo que tengas: renders, planos, fotos de la obra o un video recorriendo el lugar. Con eso te proponemos las escenas.",
   },
   {
     q: "¿Se nota que es IA?",
-    a: "Dirijo cada escena y reviso materiales, luz y proporciones contra tu proyecto. No agrego nada que no sea parte de la arquitectura real.",
+    a: "Dirigimos cada escena y revisamos materiales, luz y proporciones contra tu proyecto. No agregamos nada que no sea parte de la arquitectura real.",
   },
   {
     q: "¿Puedo usar los videos en portales y sala de ventas?",
-    a: "Sí. Entrego en los formatos que necesites y con uso comercial.",
+    a: "Sí. Entregamos en los formatos que necesites y con uso comercial.",
   },
   {
     q: "¿Cómo facturas?",
-    a: "Facturo en Chile. Los precios están en pesos chilenos y no incluyen IVA.",
+    a: "Facturamos en Chile. Los precios están en pesos chilenos y no incluyen IVA.",
   },
 ];
 
@@ -279,7 +279,7 @@ const Proyectos = () => {
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Convierto renders, planos y fotos de obra en videos para sala de ventas, portales y redes. Para inmobiliarias, arquitectos, constructoras e interioristas en Chile.",
+      "Convertimos renders, planos y fotos de obra en videos para sala de ventas, portales y redes. Para inmobiliarias, arquitectos, constructoras e interioristas en Chile.",
     );
     return () => {
       document.title = prevTitle;
@@ -300,7 +300,7 @@ const Proyectos = () => {
             onClick={() => trackWhatsApp("header")}
             className="inline-flex items-center rounded-full border border-white/40 px-5 py-2 text-xs sm:text-sm text-white hover:bg-white hover:text-black transition-colors"
           >
-            Escríbeme
+            Escríbenos
           </a>
         </div>
       </header>
@@ -354,7 +354,7 @@ const Proyectos = () => {
             transition={{ duration: 0.5, delay: 0.25, ease }}
             className="mt-5 text-base md:text-lg text-white/75 max-w-xl"
           >
-            Convierto renders, planos y fotos de obra en videos para sala de ventas, portales y redes. En días, no en
+            Convertimos renders, planos y fotos de obra en videos para sala de ventas, portales y redes. En días, no en
             semanas.
           </motion.p>
           <motion.div
@@ -364,7 +364,7 @@ const Proyectos = () => {
             className="mt-8 flex flex-col sm:flex-row gap-4"
           >
             <WhatsAppButton href={WA_GENERAL} location="hero">
-              Escríbeme por WhatsApp
+              Escríbenos por WhatsApp
             </WhatsAppButton>
             <a
               href="#trabajos"
@@ -521,7 +521,7 @@ const Proyectos = () => {
                   ))}
                 </ul>
                 <a
-                  href={waLink(`Hola Micaela, me interesa el servicio ${s.name} para mi proyecto.`)}
+                  href={waLink(`Hola MIC AI Studio, me interesa el servicio ${s.name} para mi proyecto.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsApp(`servicio-${s.name}`)}
@@ -537,7 +537,7 @@ const Proyectos = () => {
             ))}
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground">
-            Precios en pesos chilenos. Facturo en Chile.
+            Precios en pesos chilenos. Facturamos en Chile.
           </p>
         </div>
       </section>
@@ -621,7 +621,7 @@ const Proyectos = () => {
             ¿Tienes un proyecto en venta <span style={{ fontWeight: 700, color: "#FFFFFF" }}>o por lanzar?</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Mándame un render y te devuelvo 5 segundos en video. Así ves cómo se vería antes de decidir.
+            Envíanos un render y te devolvemos 5 segundos en video. Así ves cómo se vería antes de decidir.
           </p>
           <div className="mt-8 flex justify-center">
             <WhatsAppButton href={WA_MUESTRA} location="cierre">

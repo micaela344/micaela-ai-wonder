@@ -4,7 +4,7 @@ const WHATSAPP_URL =
   "https://wa.me/56976175733?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F";
 
 const WHATSAPP_URL_PROYECTOS =
-  "https://wa.me/56976175733?text=Hola%20Micaela%2C%20vi%20tu%20p%C3%A1gina%20de%20proyectos.%20Tengo%20un%20proyecto%20y%20quiero%20cotizar%20un%20video.";
+  "https://wa.me/56976175733?text=Hola%20MIC%20AI%20Studio%2C%20vi%20su%20p%C3%A1gina%20de%20proyectos.%20Tengo%20un%20proyecto%20y%20quiero%20cotizar%20un%20video.";
 
 const WhatsAppFloat = () => {
   const { pathname } = useLocation();
