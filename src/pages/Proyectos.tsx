@@ -424,8 +424,8 @@ const Proyectos = () => {
                 }`}
               >
                 <LazyVideo name={w.src} className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 pt-12 bg-gradient-to-b from-transparent to-black/85">
-                  <p className="text-[10px] md:text-[11px] uppercase tracking-widest text-white/60">{w.label}</p>
+                <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 pt-16 bg-gradient-to-b from-transparent via-black/60 to-black/90">
+                  <p className="inline-block mb-1.5 px-2.5 py-1 rounded-full bg-black/55 backdrop-blur-sm border border-white/15 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white">{w.label}</p>
                   <p className="text-xs md:text-sm text-white">{w.title}</p>
                 </div>
               </motion.div>
@@ -468,7 +468,7 @@ const Proyectos = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto">
             <SectionLabel>Servicios</SectionLabel>
-            <SplitTitle light="Elige cuánto" bold="quieres mostrar." />
+            <SplitTitle light="Elige el plan" bold="para tu proyecto." />
             <p className="mt-4 text-sm md:text-base text-muted-foreground">
               Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte y rondas de ajustes.
             </p>
