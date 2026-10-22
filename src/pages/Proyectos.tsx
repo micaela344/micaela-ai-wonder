@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Check, Clapperboard, Eye, LayoutGrid, RefreshCw, Volume2, VolumeX } from "lucide-react";
 import micAiLogo from "@/assets/logo_sin_fondo.webp";
 
 // Landing para arquitectura e inmobiliario. No está enlazada en el menú:
@@ -119,11 +119,58 @@ const services = [
   },
 ];
 
-const benefits = [
-  { title: "Vendes antes", text: "El comprador ve el resultado final antes de la primera piedra." },
-  { title: "Sin rodaje ni obra terminada", text: "No esperas a construir para tener material de venta." },
-  { title: "Cambios sin volver a filmar", text: "Terminaciones, muebles o luz se ajustan sobre la misma pieza." },
-  { title: "Listo para cada canal", text: "Formatos 9:16 y 16:9 para sala de ventas, portales y redes." },
+const Hl = ({ children }: { children: React.ReactNode }) => (
+  <strong
+    className="font-semibold"
+    style={{ color: "#0A0A0A" }}
+  >
+    {children}
+  </strong>
+);
+
+const benefits: { icon: typeof Eye; big: string; title: string; text: React.ReactNode }[] = [
+  {
+    icon: Eye,
+    big: "Desde el plano",
+    title: "Vendes antes",
+    text: (
+      <>
+        Tu comprador <Hl>ve su futuro hogar terminado</Hl> antes de la primera piedra. Empiezas a{" "}
+        <Hl>reservar sin esperar el piloto</Hl>.
+      </>
+    ),
+  },
+  {
+    icon: Clapperboard,
+    big: "0 rodajes",
+    title: "Sin filmación ni obra terminada",
+    text: (
+      <>
+        Sin equipo de grabación ni piloto construido. Tienes <Hl>material de venta desde el primer día</Hl>.
+      </>
+    ),
+  },
+  {
+    icon: RefreshCw,
+    big: "En días",
+    title: "Cambios sin volver a filmar",
+    text: (
+      <>
+        ¿Cambió una terminación, el mobiliario o la luz? <Hl>Lo ajustamos sobre el mismo video</Hl>, sin
+        partir de cero.
+      </>
+    ),
+  },
+  {
+    icon: LayoutGrid,
+    big: "9:16 · 16:9",
+    title: "Listo para cada canal",
+    text: (
+      <>
+        Un solo encargo, formatos para <Hl>sala de ventas, portales, Instagram y TikTok</Hl>.
+      </>
+    ),
+  },
 ];
 
 const steps = [
@@ -577,16 +624,27 @@ const Proyectos = () => {
               <span style={{ fontWeight: 800, color: "#0A0A0A" }}>el proyecto se ve antes.</span>
             </h2>
           </motion.div>
-          <div className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-[#dddddd]">
-            {benefits.map((b) => (
-              <div key={b.title} className="pt-6 pb-2 pr-6">
-                <h3 className="text-lg md:text-xl" style={{ color: "#0A0A0A", fontWeight: 400 }}>
+          <div className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {benefits.map((b, i) => (
+              <motion.div
+                key={b.title}
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: i * 0.08, ease }}
+                className="rounded-2xl bg-white p-6 md:p-7 border border-[#e6e3da] shadow-[0_1px_0_rgba(0,0,0,0.03)]"
+              >
+                <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: "#0A0A0A" }}>
+                  <b.icon className="w-5 h-5" style={{ color: "#F5E6C4" }} strokeWidth={1.75} />
+                </div>
+                <p className="mt-6 text-3xl md:text-[2rem] tracking-tight leading-[1.05]" style={{ color: "#0A0A0A", fontWeight: 800 }}>
+                  {b.big}
+                </p>
+                <h3 className="mt-2 text-xs md:text-sm uppercase tracking-widest" style={{ color: "#666666", fontWeight: 600 }}>
                   {b.title}
                 </h3>
-                <p className="mt-2 text-sm md:text-base" style={{ color: "#666666" }}>
+                <p className="mt-4 text-sm md:text-base leading-relaxed" style={{ color: "#444444" }}>
                   {b.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
