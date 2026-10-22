@@ -38,6 +38,26 @@ CREATE TABLE IF NOT EXISTS public.contacts (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
+-- Compatibilidad con la tabla contacts que ya existía en este Supabase
+-- (usaba "name" y "company"): se agregan las columnas nuevas sin borrar nada.
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS nombre text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS compania text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS phone text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS plan_selected text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS message text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS source text;
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS payment_status text DEFAULT 'pending';
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS created_at timestamptz NOT NULL DEFAULT now();
+ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now();
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='contacts' AND column_name='name') THEN
+    UPDATE public.contacts SET nombre = name WHERE nombre IS NULL;
+  END IF;
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='contacts' AND column_name='company') THEN
+    UPDATE public.contacts SET compania = company WHERE compania IS NULL;
+  END IF;
+END $$;
+CREATE UNIQUE INDEX IF NOT EXISTS contacts_email_key_idx ON public.contacts (email);
 
 CREATE OR REPLACE FUNCTION public.set_updated_at()
 RETURNS trigger LANGUAGE plpgsql SET search_path = public AS $$
