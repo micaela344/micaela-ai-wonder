@@ -52,9 +52,11 @@ ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT 
 DO $$ BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='contacts' AND column_name='name') THEN
     UPDATE public.contacts SET nombre = name WHERE nombre IS NULL;
+    ALTER TABLE public.contacts ALTER COLUMN name DROP NOT NULL;
   END IF;
   IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='contacts' AND column_name='company') THEN
     UPDATE public.contacts SET compania = company WHERE compania IS NULL;
+    ALTER TABLE public.contacts ALTER COLUMN company DROP NOT NULL;
   END IF;
 END $$;
 CREATE UNIQUE INDEX IF NOT EXISTS contacts_email_key_idx ON public.contacts (email);
