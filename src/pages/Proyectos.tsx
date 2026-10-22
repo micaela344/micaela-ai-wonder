@@ -12,7 +12,7 @@ const WHATSAPP_NUMBER = "56976175733";
 const waLink = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
 const WA_GENERAL = waLink("Hola MIC AI Studio, vi su página de proyectos. Tengo un proyecto y quiero cotizar un video.");
-const WA_MUESTRA = waLink("Hola MIC AI Studio, quiero ver mi proyecto en video. Les envío un render.");
+const WA_MEDIDA = waLink("Hola MIC AI Studio, busco algo más específico para mi proyecto y quiero un presupuesto a medida. Les cuento:");
 
 const trackWhatsApp = (location: string) => {
   const w = window as unknown as { gtag?: (...args: unknown[]) => void };
@@ -126,7 +126,7 @@ const steps = [
 
 const faqs = [
   {
-    q: "¿Qué necesito enviarte?",
+    q: "¿Qué necesito enviarles?",
     a: "Lo que tengas: renders, planos, fotos de la obra o un video recorriendo el lugar. Con eso te proponemos las escenas.",
   },
   {
@@ -138,7 +138,7 @@ const faqs = [
     a: "Sí. Entregamos en los formatos que necesites y con uso comercial.",
   },
   {
-    q: "¿Cómo facturas?",
+    q: "¿Cómo facturan?",
     a: "Facturamos en Chile. Los precios están en pesos chilenos y no incluyen IVA.",
   },
 ];
@@ -539,6 +539,29 @@ const Proyectos = () => {
           <p className="mt-6 text-center text-xs text-muted-foreground">
             Precios en pesos chilenos. Facturamos en Chile.
           </p>
+
+          {/* Presupuesto a medida */}
+          <motion.div
+            {...fadeUp}
+            className="mt-10 rounded-2xl border border-[#1a1a1a] bg-[#0d0d0d] p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
+          >
+            <div>
+              <h3 className="text-xl md:text-2xl text-foreground">¿Buscas algo más específico?</h3>
+              <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
+                Varios proyectos o tipologías, contenido mensual para redes, avance de obra o una pieza que no está en
+                estos formatos. Cuéntanos qué necesitas y armamos un presupuesto a tu medida.
+              </p>
+            </div>
+            <a
+              href={WA_MEDIDA}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsApp("presupuesto-medida")}
+              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-full border border-white/40 text-sm font-medium text-white hover:bg-white hover:text-black transition-colors whitespace-nowrap"
+            >
+              Pedir presupuesto a medida
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -621,11 +644,11 @@ const Proyectos = () => {
             ¿Tienes un proyecto en venta <span style={{ fontWeight: 700, color: "#FFFFFF" }}>o por lanzar?</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Envíanos un render y te devolvemos 5 segundos en video. Así ves cómo se vería antes de decidir.
+            Cuéntanos de tu proyecto por WhatsApp. Te respondemos con una propuesta para tu caso.
           </p>
           <div className="mt-8 flex justify-center">
-            <WhatsAppButton href={WA_MUESTRA} location="cierre">
-              Enviar mi render por WhatsApp
+            <WhatsAppButton href={WA_GENERAL} location="cierre">
+              Escríbenos por WhatsApp
             </WhatsAppButton>
           </div>
         </motion.div>
