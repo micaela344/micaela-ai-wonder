@@ -71,41 +71,48 @@ const works: Work[] = [
 const services = [
   {
     name: "Obra gruesa",
-    price: "$220.000",
+    prefix: "Desde",
+    price: "$250.000",
     time: "1–2 días hábiles",
     subtitle: "Tus renders en movimiento.",
     features: [
-      "Renders o planos convertidos en video",
-      "Recorridos de cámara por exterior e interior",
-      "Sin personas en escena",
+      "1 video de 20–30 segundos",
+      "Renders o planos animados con recorridos de cámara",
+      "Sin personas ni interiores ambientados",
       "Formato vertical u horizontal",
+      "1 ronda de ajustes",
     ],
     highlighted: false,
   },
   {
     name: "Piloto",
+    prefix: "Desde",
     price: "$450.000",
     time: "2–3 días hábiles",
     subtitle: "El interior decorado y habitado por tu comprador objetivo.",
     features: [
-      "Interior amoblado y decorado",
+      "1 video de la casa o departamento",
+      "Interiores amoblados y decorados",
       "Escenas con el comprador que buscas",
-      "Luz de día o de atardecer",
       "Formatos para portales y redes",
+      "1 ronda de ajustes",
     ],
+    note: "Con una persona hablando a cámara: $600.000 + IVA",
     highlighted: true,
     badge: "El más elegido",
   },
   {
     name: "Llave en mano",
+    prefix: "Pack",
     price: "$1.200.000",
     time: "5–7 días hábiles",
-    subtitle: "La pieza completa para lanzar tu proyecto.",
+    subtitle: "Pack de 3 videos para lanzar tu proyecto.",
     features: [
-      "Película de lanzamiento de 60 segundos",
-      "Cortes para redes",
-      "Loop para sala de ventas",
-      "Fotos para portales",
+      "1 video del conjunto o exterior",
+      "2 videos de casas o tipologías",
+      "Voz en off",
+      "Cortes verticales para redes",
+      "2 rondas de ajustes",
     ],
     highlighted: false,
   },
@@ -121,7 +128,7 @@ const benefits = [
 const steps = [
   { title: "Nos mandas tu material", text: "Renders, planos, fotos de obra o un video con el celular." },
   { title: "Apruebas las escenas", text: "Definimos luz, materiales y encuadre. Nada se anima sin tu OK." },
-  { title: "Recibes el video", text: "En los formatos que necesites, con una ronda de ajustes incluida." },
+  { title: "Recibes el video", text: "En los formatos que necesites, con rondas de ajustes incluidas." },
 ];
 
 const faqs = [
@@ -462,7 +469,7 @@ const Proyectos = () => {
             <SectionLabel>Servicios</SectionLabel>
             <SplitTitle light="Elige cuánto" bold="quieres mostrar." />
             <p className="mt-4 text-sm md:text-base text-muted-foreground">
-              Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte y una ronda de ajustes.
+              Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte y rondas de ajustes.
             </p>
           </motion.div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -494,7 +501,7 @@ const Proyectos = () => {
                 )}
                 <p className="text-muted-foreground text-sm tracking-wide">{s.name}</p>
                 <div className="mt-3 mb-1 flex items-baseline gap-1.5 flex-wrap">
-                  <span className="text-xs text-muted-foreground">Desde</span>
+                  <span className="text-xs text-muted-foreground">{s.prefix}</span>
                   <span className="text-3xl font-bold text-foreground tracking-tight">{s.price}</span>
                   <span className="text-xs text-muted-foreground">+ IVA</span>
                 </div>
@@ -509,6 +516,9 @@ const Proyectos = () => {
                     </li>
                   ))}
                 </ul>
+                {s.note && (
+                  <p className="-mt-3 mb-6 text-xs text-foreground/80 border-t border-border pt-4">{s.note}</p>
+                )}
                 <a
                   href={waLink(`Hola MIC AI Studio, me interesa el servicio ${s.name} para mi proyecto.`)}
                   target="_blank"
