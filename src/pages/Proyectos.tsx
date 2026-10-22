@@ -122,7 +122,7 @@ const services = [
 const Hl = ({ children }: { children: React.ReactNode }) => (
   <strong
     className="font-semibold"
-    style={{ color: "#0A0A0A", background: "linear-gradient(transparent 58%, #EDD9B0 58%)" }}
+    style={{ color: "#0A0A0A" }}
   >
     {children}
   </strong>
