@@ -1,0 +1,13 @@
+[build]
+  command = "npx tsx scripts/generate-sitemap.ts && npx vite build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_ENABLE_CHAT = "false"
+
+# SPA: todas las rutas sirven index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -4,9 +4,9 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 
 const BASE_URL = "https://micaistudio.com";
-const SUPABASE_URL = "https://cbwafgtvrypgnarmwwam.supabase.co";
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL ?? "https://cbwafgtvrypgnarmwwam.supabase.co";
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNid2FmZ3R2cnlwZ25hcm13d2FtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTczNzUsImV4cCI6MjA5NDQzMzM3NX0.Pd1OBsPHvrsZSnbk1yZ_Bu8Gzed5GaVQApUQJRkR3gI";
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNid2FmZ3R2cnlwZ25hcm13d2FtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTczNzUsImV4cCI6MjA5NDQzMzM3NX0.Pd1OBsPHvrsZSnbk1yZ_Bu8Gzed5GaVQApUQJRkR3gI";
 
 interface SitemapEntry {
   path: string;
