@@ -73,6 +73,8 @@ CREATE TRIGGER contacts_set_updated_at
   BEFORE UPDATE ON public.contacts
   FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
 
+-- La versión antigua devolvía otro tipo; se reemplaza por la de la web.
+DROP FUNCTION IF EXISTS public.upsert_contact(text, text, text, text, text, text, text, text);
 CREATE OR REPLACE FUNCTION public.upsert_contact(
   p_email text,
   p_nombre text DEFAULT NULL,
