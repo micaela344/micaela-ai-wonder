@@ -444,7 +444,7 @@ const Proyectos = () => {
             <SectionLabel>Caso real · AK Obras</SectionLabel>
             <SplitTitle light="La obra de hoy," bold="la casa de mañana." />
             <p className="mt-6 text-base md:text-lg text-muted-foreground">
-              Cristian Aranda, arquitecto de AK Obras, grabó con su celular un recorrido por la casa en construcción.
+              Cristian, arquitecto de AK Obras, grabó con su celular un recorrido por la casa en construcción.
               Mientras habla, la obra se transforma detrás de él en el proyecto terminado, fiel a sus renders.
             </p>
             <ul className="mt-6 space-y-3">
