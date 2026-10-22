@@ -65,6 +65,7 @@ const works: Work[] = [
   { src: "edificio", label: "Edificio", title: "Del terreno al edificio terminado", format: "tall" },
   { src: "estilos", label: "Interiorismo", title: "Un living, seis estilos", format: "tall" },
   { src: "living", label: "Piloto", title: "Living: del vacío al hogar", format: "tall" },
+  { src: "departamento", label: "Departamento piloto", title: "Del acceso al dormitorio, en un solo recorrido", format: "tall" },
   { src: "piscina", label: "Exterior", title: "De la excavación a la piscina", format: "tall" },
 ];
 
@@ -413,13 +414,13 @@ const Proyectos = () => {
             <SectionLabel>Trabajos</SectionLabel>
             <SplitTitle light="Del plano al espacio habitado," bold="en movimiento." />
           </motion.div>
-          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
+          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-10 gap-3 md:gap-4">
             {works.map((w) => (
               <motion.div
                 key={w.src}
                 {...fadeUp}
                 className={`relative overflow-hidden rounded-2xl bg-[#0d0d0d] border border-[#1a1a1a] ${
-                  w.format === "wide" ? "col-span-2 md:col-span-6 aspect-video" : "col-span-1 md:col-span-3 aspect-[9/16]"
+                  w.format === "wide" ? "col-span-2 md:col-span-5 aspect-video" : "col-span-1 md:col-span-2 aspect-[9/16] max-md:last:col-span-2 max-md:last:mx-auto max-md:last:w-[calc(50%-6px)]"
                 }`}
               >
                 <LazyVideo name={w.src} className="absolute inset-0 w-full h-full object-cover" />
