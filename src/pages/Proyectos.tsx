@@ -453,17 +453,6 @@ const Proyectos = () => {
             </ul>
           </motion.div>
         </div>
-        <motion.figure {...fadeUp} className="max-w-7xl mx-auto px-4 sm:px-6 mt-12 md:mt-16">
-          <img
-            src={`${MEDIA}/ak-antes-despues.jpg`}
-            alt="Casa AK Obras: siete escenas de la obra hoy y del proyecto terminado"
-            loading="lazy"
-            className="w-full rounded-2xl border border-[#1a1a1a]"
-          />
-          <figcaption className="mt-3 text-xs md:text-sm text-muted-foreground text-center">
-            Arriba, la obra hoy. Abajo, el proyecto terminado.
-          </figcaption>
-        </motion.figure>
       </section>
 
       {/* Servicios */}
