@@ -61,7 +61,7 @@ type Work = {
 
 const works: Work[] = [
   { src: "obra", label: "Obra completa", title: "De la demolición a la casa habitada", format: "wide" },
-  { src: "terraza", label: "Amoblado virtual", title: "Terraza: de vacía a lista para vivir", format: "wide" },
+  { src: "terraza", label: "Remodelación terraza 360", title: "De vacía a lista para vivir", format: "wide" },
   { src: "edificio", label: "Edificio", title: "Del terreno al edificio terminado", format: "tall" },
   { src: "estilos", label: "Interiorismo", title: "Un living, seis estilos", format: "tall" },
   { src: "living", label: "Piloto", title: "Living: del vacío al hogar", format: "tall" },
