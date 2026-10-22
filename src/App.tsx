@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +13,7 @@ import Blog from "./pages/Blog.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import ProduccionEjemplos from "./pages/ProduccionEjemplos.tsx";
 import Checkout from "./pages/Checkout.tsx";
+import Proyectos from "./pages/Proyectos.tsx";
 
 import PoliticaDeCookies from "./pages/PoliticaDeCookies.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
@@ -21,6 +22,13 @@ import NewsletterPopup from "./components/NewsletterPopup.tsx";
 import WhatsAppFloat from "./components/WhatsAppFloat.tsx";
 
 const queryClient = new QueryClient();
+
+// La landing /proyectos va sin popup de newsletter para no distraer del WhatsApp.
+const NewsletterPopupOutsideLandings = () => {
+  const { pathname } = useLocation();
+  if (pathname.startsWith("/proyectos")) return null;
+  return <NewsletterPopup />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -38,6 +46,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/produccion-visual/ejemplos" element={<ProduccionEjemplos />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/proyectos" element={<Proyectos />} />
 
           <Route path="/politica-de-cookies" element={<PoliticaDeCookies />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
@@ -46,7 +55,7 @@ const App = () => (
         {import.meta.env.VITE_ENABLE_CHAT !== "false" && <ChatWidget />}
         <WhatsAppFloat />
         <CookieBanner />
-        <NewsletterPopup />
+        <NewsletterPopupOutsideLandings />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

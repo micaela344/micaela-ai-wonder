@@ -1,10 +1,17 @@
+import { useLocation } from "react-router-dom";
+
 const WHATSAPP_URL =
   "https://wa.me/56976175733?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20sus%20servicios%2C%20¿me%20pueden%20ayudar%3F";
 
+const WHATSAPP_URL_PROYECTOS =
+  "https://wa.me/56976175733?text=Hola%20Micaela%2C%20vi%20tu%20p%C3%A1gina%20de%20proyectos.%20Tengo%20un%20proyecto%20y%20quiero%20cotizar%20un%20video.";
+
 const WhatsAppFloat = () => {
+  const { pathname } = useLocation();
+  const url = pathname.startsWith("/proyectos") ? WHATSAPP_URL_PROYECTOS : WHATSAPP_URL;
   return (
     <button
-      onClick={() => window.open(WHATSAPP_URL, '_blank')}
+      onClick={() => window.open(url, '_blank')}
       aria-label="Chatea con nosotros por WhatsApp"
       className="group fixed bottom-6 left-6 z-[9999] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-[1.08] cursor-pointer border-none"
       style={{ backgroundColor: "#ffffff" }}
