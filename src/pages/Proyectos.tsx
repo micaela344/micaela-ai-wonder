@@ -210,40 +210,24 @@ const SplitTitle = ({ light, bold, className = "" }: { light: string; bold: stri
 );
 
 // Reproduce el video solo cuando está en pantalla y lo carga recién ahí.
-const LazyVideo = ({ name, className }: { name: string; className?: string }) => {
+// Los videos arrancan apenas se abre la página, sin esperar a que el usuario haga scroll.
+const LoopVideo = ({ name, className }: { name: string; className?: string }) => {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
-    if (!("IntersectionObserver" in window)) {
-      video.src = `${MEDIA}/${name}.mp4`;
-      video.play().catch(() => {});
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (!video.src) video.src = `${MEDIA}/${name}.mp4`;
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(video);
-    return () => io.disconnect();
-  }, [name]);
+    ref.current?.play().catch(() => {});
+  }, []);
 
   return (
     <video
       ref={ref}
+      src={`${MEDIA}/${name}.mp4`}
       poster={`${MEDIA}/${name}.jpg`}
+      autoPlay
       muted
       loop
       playsInline
-      preload="none"
+      preload="auto"
       className={className}
     />
   );
@@ -470,7 +454,7 @@ const Proyectos = () => {
                   w.format === "wide" ? "col-span-2 md:col-span-5 aspect-video" : "col-span-1 md:col-span-2 aspect-[9/16] max-md:last:col-span-2 max-md:last:mx-auto max-md:last:w-[calc(50%-6px)]"
                 }`}
               >
-                <LazyVideo name={w.src} className="absolute inset-0 w-full h-full object-cover" />
+                <LoopVideo name={w.src} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 pt-16 bg-gradient-to-b from-transparent via-black/60 to-black/90">
                   <p className="inline-block mb-1.5 px-2.5 py-1 rounded-full bg-black/55 backdrop-blur-sm border border-white/15 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white">{w.label}</p>
                   <p className="text-xs md:text-sm text-white">{w.title}</p>
