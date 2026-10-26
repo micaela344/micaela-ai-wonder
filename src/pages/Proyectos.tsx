@@ -81,7 +81,6 @@ const services = [
       "Renders o planos animados con recorridos de cámara",
       "Sin personas ni interiores ambientados",
       "Formato vertical u horizontal",
-      "1 ronda de ajustes",
     ],
     highlighted: false,
   },
@@ -96,7 +95,6 @@ const services = [
       "Interiores amoblados y decorados",
       "Escenas con el comprador que buscas",
       "Formatos para portales y redes",
-      "1 ronda de ajustes",
     ],
     note: "Con una persona hablando a cámara: $600.000 + IVA",
     highlighted: true,
@@ -107,13 +105,12 @@ const services = [
     prefix: "Pack",
     price: "$1.200.000",
     time: "5–7 días hábiles",
-    subtitle: "Pack de 3 videos para lanzar tu proyecto.",
+    subtitle: "Pack de 4 videos para lanzar tu proyecto.",
     features: [
       "1 video del conjunto o exterior",
-      "2 videos de casas o tipologías",
+      "3 videos de casas o tipologías",
       "Voz en off",
       "Cortes verticales para redes",
-      "2 rondas de ajustes",
     ],
     highlighted: false,
   },
@@ -176,7 +173,7 @@ const benefits: { icon: typeof Eye; big: string; title: string; text: React.Reac
 const steps = [
   { title: "Nos mandas tu material", text: "Renders, planos, fotos de obra o un video con el celular." },
   { title: "Apruebas las escenas", text: "Definimos luz, materiales y encuadre. Nada se anima sin tu OK." },
-  { title: "Recibes el video", text: "En los formatos que necesites, con rondas de ajustes incluidas." },
+  { title: "Recibes el video", text: "En los formatos que necesites, listo para publicar." },
 ];
 
 const faqs = [
@@ -475,7 +472,7 @@ const Proyectos = () => {
             <SectionLabel>Caso real · AK Obras</SectionLabel>
             <SplitTitle light="La obra de hoy," bold="la casa de mañana." />
             <p className="mt-6 text-base md:text-lg text-muted-foreground">
-              Cristian, arquitecto de AK Obras, grabó con su celular un recorrido por la casa en construcción.
+              Nuestro cliente de AK Obras, grabó con su celular un recorrido por la casa en construcción.
               Mientras habla, la obra se transforma detrás de él en el proyecto terminado, fiel a sus renders.
             </p>
             <ul className="mt-6 space-y-3">
@@ -501,7 +498,7 @@ const Proyectos = () => {
             <SectionLabel>Servicios</SectionLabel>
             <SplitTitle light="Elige el plan" bold="para tu proyecto." />
             <p className="mt-4 text-sm md:text-base text-muted-foreground">
-              Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte y rondas de ajustes.
+              Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte.
             </p>
           </motion.div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -588,7 +585,11 @@ const Proyectos = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsApp("presupuesto-medida")}
-              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-full border border-white/40 text-sm font-medium text-white hover:bg-white hover:text-black transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-full text-sm font-semibold text-black whitespace-nowrap transition-all duration-300 hover:scale-[1.03]"
+              style={{
+                background: "linear-gradient(135deg, #FBF1D9, #F5E6C4, #EDD9B0)",
+                boxShadow: "0 0 24px rgba(245,230,196,0.35)",
+              }}
             >
               Pedir presupuesto a medida
             </a>
