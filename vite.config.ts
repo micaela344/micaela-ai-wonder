@@ -9,6 +9,8 @@ import { componentTagger } from "lovable-tagger";
 const PROYECTOS_META = {
   url: "https://micaistudio.com/proyectos",
   title: "MIC AI Studio | Videos realistas con IA para proyectos inmobiliarios",
+  // Título de la tarjeta al compartir el link (WhatsApp, LinkedIn); la pestaña usa `title`.
+  shareTitle: "MIC AI Studio | Videos realistas con IA para arquitectura, inmobiliarias e interiorismo",
   description:
     "Mostramos tu proyecto terminado antes de construirlo: recorridos, fachadas y reels para venta en verde.",
   image: "https://micaistudio.com/media/proyectos/og.jpg",
@@ -25,10 +27,10 @@ const proyectosHtml = (): Plugin => ({
       .replace(/<title>[^<]*<\/title>/, `<title>${m.title}</title>`)
       .replace(/(<meta name="description" content=")[^"]*/, `$1${m.description}`)
       .replace(/(<meta property="og:url" content=")[^"]*/, `$1${m.url}`)
-      .replace(/(<meta property="og:title" content=")[^"]*/, `$1${m.title}`)
+      .replace(/(<meta property="og:title" content=")[^"]*/, `$1${m.shareTitle}`)
       .replace(/(<meta property="og:description" content=")[^"]*/, `$1${m.description}`)
       .replace(/(<meta property="og:image" content=")[^"]*/, `$1${m.image}`)
-      .replace(/(<meta name="twitter:title" content=")[^"]*/, `$1${m.title}`)
+      .replace(/(<meta name="twitter:title" content=")[^"]*/, `$1${m.shareTitle}`)
       .replace(/(<meta name="twitter:description" content=")[^"]*/, `$1${m.description}`)
       .replace(/(<meta name="twitter:image" content=")[^"]*/, `$1${m.image}`)
       .replace(/(<link rel="canonical" href=")[^"]*/, `$1${m.url}`);
