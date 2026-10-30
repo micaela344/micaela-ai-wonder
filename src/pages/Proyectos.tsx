@@ -69,49 +69,67 @@ const works: Work[] = [
   { src: "piscina", label: "Exterior", title: "De la excavación a la piscina", format: "tall" },
 ];
 
-const services = [
+const services: {
+  name: string;
+  price: string;
+  pack?: string;
+  time: string;
+  subtitle: string;
+  features: string[];
+  notes: string[];
+  highlighted: boolean;
+  badge?: string;
+}[] = [
   {
     name: "Obra gruesa",
-    prefix: "Desde",
-    price: "$250.000",
+    price: "$200.000",
     time: "1–2 días hábiles",
     subtitle: "Tus renders en movimiento.",
     features: [
-      "1 video de 20–30 segundos",
-      "Renders o planos animados con recorridos de cámara",
-      "Sin personas ni interiores ambientados",
-      "Formato vertical u horizontal",
+      "1 video de 25–30 segundos.",
+      "Animación de renders o planos con recorridos de cámara por el exterior del proyecto.",
+      "Incorporación de personas ficticias generadas con IA.",
+      "Música de fondo y logo de tu empresa.",
+      "Formato vertical u horizontal, a elección.",
     ],
+    notes: ["Voz en off disponible con costo adicional."],
     highlighted: false,
   },
   {
     name: "Piloto",
-    prefix: "Desde",
-    price: "$450.000",
+    price: "$350.000",
     time: "2–3 días hábiles",
-    subtitle: "El interior decorado y habitado por tu comprador objetivo.",
+    subtitle: "Tu proyecto por fuera y por dentro, decorado y habitado por tu comprador ideal.",
     features: [
-      "1 video de la casa o departamento",
-      "Interiores amoblados y decorados",
-      "Escenas con el comprador que buscas",
-      "Formatos para portales y redes",
+      "1 video que combina el exterior y el interior de la casa o departamento.",
+      "Interiores amoblados y decorados según el estilo del proyecto.",
+      "Escenas con personas generadas con IA que representan a tu público objetivo.",
+      "Formatos adaptados para portales inmobiliarios y redes sociales.",
+      "Música de fondo y logo de tu empresa.",
     ],
-    note: "Con una persona hablando a cámara: $600.000 + IVA",
+    notes: [
+      "Voz en off disponible con costo adicional.",
+      "¿Tienes un video de una persona presentando el espacio? Podemos incorporar animaciones y transformaciones con IA a su alrededor. Este servicio se cotiza como adicional según su complejidad.",
+    ],
     highlighted: true,
     badge: "El más elegido",
   },
   {
     name: "Llave en mano",
-    prefix: "Pack",
-    price: "$1.200.000",
+    price: "$850.000",
+    pack: "Pack de 3 videos",
     time: "5–7 días hábiles",
-    subtitle: "Pack de 4 videos para lanzar tu proyecto.",
+    subtitle: "Tres videos a tu medida para presentar y promocionar tu proyecto.",
     features: [
-      "1 video del conjunto o exterior",
-      "3 videos de casas o tipologías",
-      "Voz en off",
-      "Cortes verticales para redes",
+      "3 videos de 25–30 segundos de un mismo proyecto.",
+      "Elige tu combinación de exteriores e interiores.",
+      "Ambientación, mobiliario y decoración según el estilo del proyecto.",
+      "Escenas con personas ficticias generadas con IA o integración de material aportado con personas reales.",
+      "Voz en off incluida en los 3 videos.",
+      "Música de fondo y logo de tu empresa.",
+      "Formatos adaptados para portales inmobiliarios y redes sociales.",
     ],
+    notes: ["Las animaciones complejas con IA alrededor de una persona real se cotizan como adicional."],
     highlighted: false,
   },
 ];
@@ -498,7 +516,7 @@ const Proyectos = () => {
             <SectionLabel>Servicios</SectionLabel>
             <SplitTitle light="Elige el plan" bold="para tu proyecto." />
             <p className="mt-4 text-sm md:text-base text-muted-foreground">
-              Tres formatos según la etapa de tu proyecto. Todos incluyen dirección de arte.
+              Tres formatos según la etapa de tu proyecto, o una propuesta a tu medida.
             </p>
           </motion.div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -530,11 +548,13 @@ const Proyectos = () => {
                 )}
                 <p className="text-muted-foreground text-sm tracking-wide">{s.name}</p>
                 <div className="mt-3 mb-1 flex items-baseline gap-1.5 flex-wrap">
-                  <span className="text-xs text-muted-foreground">{s.prefix}</span>
+                  <span className="text-xs text-muted-foreground">Desde</span>
                   <span className="text-3xl font-bold text-foreground tracking-tight">{s.price}</span>
                   <span className="text-xs text-muted-foreground">+ IVA</span>
                 </div>
-                <p className="text-xs text-muted-foreground mb-4">{s.time}</p>
+                <p className="text-xs text-muted-foreground mb-4">
+                  {s.pack ? `${s.pack} · ${s.time}` : s.time}
+                </p>
                 <p className="text-sm text-foreground/85 mb-6">{s.subtitle}</p>
                 <div className="w-full h-px bg-border mb-6" />
                 <ul className="space-y-3 mb-8 flex-1">
@@ -545,9 +565,13 @@ const Proyectos = () => {
                     </li>
                   ))}
                 </ul>
-                {s.note && (
-                  <p className="-mt-3 mb-6 text-xs text-foreground/80 border-t border-border pt-4">{s.note}</p>
-                )}
+                <div className="-mt-3 mb-6 space-y-2 border-t border-border pt-4">
+                  {s.notes.map((n) => (
+                    <p key={n} className="text-xs text-foreground/80">
+                      {n}
+                    </p>
+                  ))}
+                </div>
                 <a
                   href={waLink(`Hola MIC AI Studio, me interesa el servicio ${s.name} para mi proyecto.`)}
                   target="_blank"
@@ -564,9 +588,6 @@ const Proyectos = () => {
               </motion.div>
             ))}
           </div>
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            Precios en pesos chilenos. Facturamos en Chile.
-          </p>
 
           {/* Presupuesto a medida */}
           <motion.div
@@ -574,10 +595,11 @@ const Proyectos = () => {
             className="mt-10 rounded-2xl border border-[#1a1a1a] bg-[#0d0d0d] p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
           >
             <div>
-              <h3 className="text-xl md:text-2xl text-foreground">¿Buscas algo más específico?</h3>
+              <p className="text-muted-foreground text-sm tracking-wide uppercase">A tu medida</p>
+              <h3 className="mt-2 text-xl md:text-2xl text-foreground">Tu proyecto, una propuesta única.</h3>
               <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
-                Varios proyectos o tipologías, contenido mensual para redes, avance de obra o una pieza que no está en
-                estos formatos. Cuéntanos qué necesitas y armamos un presupuesto a tu medida.
+                Cuéntanos qué tienes en mente o déjanos proponerte una idea acorde a tu proyecto. Personalizamos el
+                concepto, la duración, los formatos y los recursos visuales según tus objetivos y presupuesto.
               </p>
             </div>
             <a
@@ -591,9 +613,19 @@ const Proyectos = () => {
                 boxShadow: "0 0 24px rgba(245,230,196,0.35)",
               }}
             >
-              Pedir presupuesto a medida
+              Solicitar cotización personalizada
             </a>
           </motion.div>
+          <div className="mt-8 text-center text-xs text-muted-foreground space-y-1.5 max-w-3xl mx-auto">
+            <p>
+              Todos los planes incluyen dirección de arte y dos rondas de ajustes por video, con aprobación de las
+              imágenes antes de animarlas.
+            </p>
+            <p>
+              Precios en pesos chilenos. Valores base sujetos a duración, cantidad de espacios y complejidad. Los plazos
+              comienzan desde la recepción del material y la aprobación de la propuesta visual.
+            </p>
+          </div>
         </div>
       </section>
 
